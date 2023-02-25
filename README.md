@@ -38,7 +38,7 @@ MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID"})
 
 * **DeviceMatchMode:**
 
-1 = All devices in "DeviceID" must be connected (Default).
+1 = All the devices in "DeviceID" must be connected (Default).
 
 2 = One device in "DeviceID" must be connected.
 
