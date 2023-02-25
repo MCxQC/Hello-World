@@ -14,9 +14,9 @@ AutoHotkey script to find your device's unique IDs.
 
 ### Instructions:
 
-* Run "DeviceIDFinder.ahk" to identify your device.
-* Add your devices IDs and devices names at the top of the script. (DeviceIDPnP.ahk) The device's name doesn't have to exactly match the name found with "DeviceIDFinder.ahk". You can name it whatever you want.
-* Add the devices names and the scripts/programs that you want to run/close when the devices are connecting/disconnecting.
+* Run "DeviceIDFinder.ahk" to identify your devices.
+* Add your device's IDs and device's names at the top of the script (DeviceIDPnP.ahk). The device's names doesn't have to exactly match the names found with "DeviceIDFinder.ahk". You can name them whatever you want.
+* Add the device's names and the scripts that you want to launch when the devices are connected/disconnected.
 
 ### Options:
 
