@@ -25,6 +25,7 @@ AutoHotkey script to find your device's unique IDs.
 
 Name of device. The device's name doesn't have to exactly match the name found with "DeviceIDFinder.ahk". You can name it whatever you want.
 associated action launch
+--------------
 
 * **DeviceID:**
 
