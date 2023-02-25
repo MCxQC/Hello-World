@@ -10,7 +10,7 @@ AutoHotkey script to launch scripts when devices are connected/disconnected.
 
 ### Options:
 
-* DeviceName
+* DeviceName:
 Name of device. The device's name doesn't have to exactly match the name found with "DeviceIDFinder.ahk". You can name it whatever you want.
 associated action launch
 
