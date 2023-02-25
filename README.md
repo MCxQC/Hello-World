@@ -40,6 +40,7 @@ false = Don't Launch device's actions when the script starts.
 * Removed tooltips.
 
 * Syntax changes:
+
 oMyDevices := {} 
 
 Now => MyDevices := []
