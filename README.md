@@ -1,12 +1,22 @@
 # DeviceIDPnP 2.0.0
 AutoHotkey script to launch scripts when devices are connected/disconnected.
 
+# DeviceIDFinder 2.0.0
+Find your device's unique IDs.
+
 ### Requirement:
 * AutoHotkey v2
 
 ### New:
 * Support for the same actions for multiple devices and "DevicesMatchMode" option.
 * Option to not run actions when the script starts/run actions when the script starts (Default).
+
+### Instructions:
+
+:**How to use::**
+* Run "DeviceIDFinder.ahk" to identify your device.
+* Add your devices IDs and devices names at the top of the script. (DeviceIDPnP.ahk) The device's name doesn't have to exactly match the name found with "DeviceIDFinder.ahk". You can name it whatever you want.
+* Add the devices names and the scripts/programs that you want to run/close when the devices are connecting/disconnecting.
 
 ### Options:
 
