@@ -2,7 +2,7 @@
 AutoHotkey script to launch scripts when devices are connected/disconnected.
 
 # DeviceIDFinder 2.0.0
-Find your device's unique IDs.
+AutoHotkey script to find your device's unique IDs.
 
 ### Requirement:
 * AutoHotkey v2
