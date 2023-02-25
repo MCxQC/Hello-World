@@ -32,6 +32,7 @@ MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID"})
 * RunAtStartup:
 
 true = Launch device's actions when the script starts (Default). 
+
 false = Don't Launch device's actions when the script starts.
 
 
