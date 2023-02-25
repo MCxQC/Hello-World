@@ -15,7 +15,7 @@ AutoHotkey script to launch scripts when devices are connected/disconnected.
 Name of device. The device's name doesn't have to exactly match the name found with "DeviceIDFinder.ahk". You can name it whatever you want.
 associated action launch
 
-* DeviceID:
+* **DeviceID:**
 
 ID(s) of device(s).
 
@@ -27,13 +27,13 @@ For multiple devices: Use |&| as a separator.
 
 MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID"})
 
-* DeviceMatchMode:
+* **DeviceMatchMode:**
 
 1 = All devices in "DeviceID" must be connected (Default).
 
 2 = One device in "DeviceID" must be connected.
 
-* RunAtStartup:
+* **RunAtStartup:**
 
 true = Launch device's actions when the script starts (Default). 
 
