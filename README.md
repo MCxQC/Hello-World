@@ -8,6 +8,7 @@ AutoHotkey script to find your device's unique IDs.
 * AutoHotkey v2
 
 ### New:
+* Updated to AutoHotkey v2
 * Support for the same actions for multiple devices and "DevicesMatchMode" option.
 * Option to not launch the device's actions when the script starts.
 
