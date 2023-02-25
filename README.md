@@ -23,7 +23,7 @@ For one device:
 
 MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID"})
 
-For multiple devices:
+For multiple devices: Use |&| as a separator.
 
 MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID"})
 
