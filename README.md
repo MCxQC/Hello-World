@@ -35,9 +35,9 @@ MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID"})
 
 * **RunAtStartup:**
 
-true = Launch device's actions when the script starts (Default). 
+true = The device's actions are launched when the script starts (default). 
 
-false = Don't Launch device's actions when the script starts.
+false = The device's actions are not launched when the script starts.
 
 
 ### Minor differences from DeviceIDPnP 1.2.0:
