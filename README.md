@@ -44,7 +44,7 @@ ID(s) of device(s).
 
 * **RunAtStartup:**
 
-  - true = The device's actions are launched when the script starts (default). 
+  - true = The device's actions are launched when the script starts (Default). 
 
   - false = The device's actions are not launched when the script starts.
 
