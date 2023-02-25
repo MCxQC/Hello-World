@@ -6,7 +6,7 @@ AutoHotkey script to launch scripts when devices are connected/disconnected.
 
 ### New:
 * Support for the same actions for multiple devices and "DevicesMatchMode" option.
-* Option to not run actions when the script starts/run actions when the script starts(Default).
+* Option to not run actions when the script starts/run actions when the script starts (Default).
 
 ### Options:
 
