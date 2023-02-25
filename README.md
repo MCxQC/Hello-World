@@ -38,9 +38,9 @@ For multiple devices: Use |&| as a separator.
 
 * **DeviceMatchMode:**
 
-1 = All the devices in "DeviceID" must be connected (Default).
+  - 1 = All the devices in "DeviceID" must be connected (Default).
 
-2 = One device in "DeviceID" must be connected.
+  - 2 = One device in "DeviceID" must be connected.
 
 * **RunAtStartup:**
 
