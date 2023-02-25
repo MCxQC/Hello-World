@@ -30,11 +30,11 @@ ID(s) of device(s).
 
 For one device:
 
-MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID"})
+        MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID"})
 
 For multiple devices: Use |&| as a separator.
 
-MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID"})
+        MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID"})
 
 * **DeviceMatchMode:**
 
@@ -54,16 +54,16 @@ false = The device's actions are not launched when the script starts.
 
 * **Syntax changes:**
 
-oMyDevices := {} 
+    oMyDevices := {} 
 
     Now => MyDevices := []
 
 
-oMyDevices.Push({"DeviceName":"DeviceName", "DeviceID":"DeviceID"}) 
+    oMyDevices.Push({"DeviceName":"DeviceName", "DeviceID":"DeviceID"}) 
 
     Now => MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID"})
 
 
-DevicesActions(ThisDeviceStatusHasChanged) 
+    DevicesActions(ThisDeviceStatusHasChanged) 
 
     Now => DevicesActions(deviceNameStatus)
