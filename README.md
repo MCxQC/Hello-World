@@ -20,9 +20,11 @@ associated action launch
 ID(s) of device(s).
 
 For one device:
+
 MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID"})
 
 For multiple devices:
+
 MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID"})
 
 * DeviceMatchMode:
