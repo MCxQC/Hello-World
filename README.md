@@ -41,9 +41,9 @@ false = Don't Launch device's actions when the script starts.
 
 
 ### Minor differences from DeviceIDPnP 1.2.0:
-* Removed tooltips.
+* **Removed tooltips.**
 
-* Syntax changes:
+* **Syntax changes:**
 
 oMyDevices := {} 
 
