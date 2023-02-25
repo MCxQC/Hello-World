@@ -18,6 +18,8 @@ associated action launch
 * DeviceID:
 
 ID(s) of device(s).
+
+For one device:
 MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID"})
 
 For multiple devices:
