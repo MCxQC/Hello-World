@@ -1,7 +1,7 @@
-# DeviceIDPnP 2.0.0
-
-REQUIREMENT:
--AutoHotkey v2
+DeviceIDPnP 2.0.0
+===================================================
+### Requirement:
+* AutoHotkey v2
 
 NEW:
 -Support for the same actions for multiple devices and "DevicesMatchMode" option.
