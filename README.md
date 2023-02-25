@@ -1,5 +1,6 @@
 DeviceIDPnP 2.0.0
-===================================================
+AutoHotkey script to run scripts/programs when devices are connected/disconnected.
+
 ### Requirement:
 * AutoHotkey v2
 
