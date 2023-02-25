@@ -56,14 +56,14 @@ false = The device's actions are not launched when the script starts.
 
 oMyDevices := {} 
 
-Now => MyDevices := []
+  Now => MyDevices := []
 
 
 oMyDevices.Push({"DeviceName":"DeviceName", "DeviceID":"DeviceID"}) 
 
-Now => MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID"})
+  Now => MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID"})
 
 
 DevicesActions(ThisDeviceStatusHasChanged) 
 
-Now => DevicesActions(deviceNameStatus)
+  Now => DevicesActions(deviceNameStatus)
