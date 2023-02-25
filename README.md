@@ -28,11 +28,11 @@ Name of device. Use the same name to launch the associated device's actions.
 
 ID(s) of device(s).
 
-For one device:
+  - For one device:
 
         MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID"})
 
-For multiple devices: Use |&| as a separator.
+  - For multiple devices: Use |&| as a separator.
 
         MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID"})
 
@@ -44,9 +44,9 @@ For multiple devices: Use |&| as a separator.
 
 * **RunAtStartup:**
 
-true = The device's actions are launched when the script starts (default). 
+  - true = The device's actions are launched when the script starts (default). 
 
-false = The device's actions are not launched when the script starts.
+  - false = The device's actions are not launched when the script starts.
 
 
 ### Minor differences from DeviceIDPnP 1.2.0:
