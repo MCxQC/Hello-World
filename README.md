@@ -60,11 +60,6 @@ IDs for the device(s).
 
 * **Syntax changes:**
 
-      oMyDevices := {} 
-
-      Now => MyDevices := MyDevicesArray()
-
-
       oMyDevices.Push({"DeviceName":"DeviceName", "DeviceID":"DeviceID"}) 
        
       Now => MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID"})
