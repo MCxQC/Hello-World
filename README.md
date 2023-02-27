@@ -45,9 +45,9 @@ IDs for the device(s).
 
 * **ActionAtStartup:**
 
-- true = The device's actions are launched when the script starts (Default). 
+  - true = The device's actions are launched when the script starts (Default). 
 
-- false = The device's actions are not launched when the script starts.
+  - false = The device's actions are not launched when the script starts.
 
 * **Tooltip:**
 
@@ -70,6 +70,6 @@ IDs for the device(s).
       
 ### Credits:
 * **AutoHotkey:**
-- Authors: Chris Mallett and Lexikos, with portions by AutoIt Team and various AHK community members
-- License: GNU General public license
-- Info and source code at: https://autohotkey.com/
+  - Authors: Chris Mallett and Lexikos, with portions by AutoIt Team and various AHK community members
+  - License: GNU General public license
+  - Info and source code at: https://autohotkey.com/
