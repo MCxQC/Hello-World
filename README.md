@@ -28,10 +28,11 @@ Names of the device(s). Use the same name to launch the associated device's acti
 * **DeviceID:**
 
 IDs for the device(s).
+
   - For one device:
 
         MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID"})
-
+        
   - For multiple devices: Use |&| as a separator.
 
         MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID"})
@@ -67,4 +68,5 @@ IDs for the device(s).
 
       Now => DevicesActions(thisDeviceStatus)
       
-  ### Options:
+  ### Credits:
+    - Lexicos.
