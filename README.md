@@ -2,7 +2,7 @@
 AutoHotkey script to find your device's unique IDs.
 
 # DeviceIDPnP
-AutoHotkey script to launch scripts/programs/AHK commands when devices are connected/disconnected.
+AutoHotkey script to launch AHK commands/scripts/programs when devices are connected/disconnected.
 
 ### Requirement
 * AutoHotkey v2
