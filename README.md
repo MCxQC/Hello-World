@@ -69,12 +69,12 @@ IDs for the device(s).
   
 ### Credits:
 * **AutoHotkey:**
-  - Authors: Chris Mallett and Lexikos, with portions by AutoIt Team and various AHK community members
+  - Authors: Chris Mallett and Lexikos, with portions by AutoIt Team and various AHK community members.
   - License: GNU General public license
   - Info and source code at: https://autohotkey.com/
 * **jNizM:**
-  - Example 2: Detect / Monitor Plug and Play device connections and removes
-*   https://www.autohotkey.com/boards/viewtopic.php?f=83&t=105171
+  - Example 2: Detect / Monitor Plug and Play device connections and removes.
+  - https://www.autohotkey.com/boards/viewtopic.php?f=83&t=105171
 
 * **Thanks to AHK community members for the help:**
   - mikeyww, teadrinker, swagfag, FanaticGuru, sofista, boiler etc...
