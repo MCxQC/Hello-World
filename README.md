@@ -28,7 +28,6 @@ Names of the device(s). Use the same name to launch the associated device's acti
 * **DeviceID:**
 
 IDs for the device(s).
-
   - For one device:
 
         MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID"})
@@ -55,7 +54,6 @@ IDs for the device(s).
 
   - false = Don't show the tooltip in the top left corner.
 
-
 ### Minor differences from DeviceIDPnP 1.2.0:
 
 * **Syntax changes:**
@@ -68,3 +66,5 @@ IDs for the device(s).
       DevicesActions(ThisDeviceStatusHasChanged) 
 
       Now => DevicesActions(thisDeviceStatus)
+      
+  ### Options:
