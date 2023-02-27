@@ -37,7 +37,7 @@ IDs for the device(s).
 
         MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID"})
 
-* **DeviceMatchMode**
+* **DevicesMatchMode**
 
   - 1 = All the devices in "DeviceID" must be connected (Default).
 
