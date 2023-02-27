@@ -21,11 +21,11 @@ AutoHotkey script to launch scripts when devices are connected/disconnected.
 
 ### Options
 
-* **DeviceName:**
+* **DeviceName**
 
 Names of the device(s). Use the same name to launch the associated device's actions.
 
-* **DeviceID:**
+* **DeviceID**
 
 IDs for the device(s).
 
@@ -55,7 +55,7 @@ IDs for the device(s).
 
   - false = Don't show the tooltip in the top left corner.
 
-### Minor differences from DeviceIDPnP 1.2.0:
+### Minor differences from DeviceIDPnP 1.2.0
 
 * **Syntax changes**
 
@@ -70,7 +70,7 @@ IDs for the device(s).
 * **Copyright and License**
   - MIT License
 
-### Credits:
+### Credits
 * **AutoHotkey**
   - Authors: Chris Mallett and Lexikos, with portions by AutoIt Team and various AHK community members.
   - License: GNU General public license
@@ -82,4 +82,4 @@ IDs for the device(s).
 * **Thanks to AHK community members for the help**
   - mikeyww, teadrinker, swagfag, FanaticGuru, sofista, boiler etc...
 
-* **Donations (PayPal)**
+### Donations (PayPal)
