@@ -67,6 +67,9 @@ IDs for the device(s).
 
       Now => DevicesActions(thisDeviceStatus)
   
+* **Copyright and License:**
+  - MIT License
+
 ### Credits:
 * **AutoHotkey:**
   - Authors: Chris Mallett and Lexikos, with portions by AutoIt Team and various AHK community members.
@@ -78,3 +81,5 @@ IDs for the device(s).
 
 * **Thanks to AHK community members for the help:**
   - mikeyww, teadrinker, swagfag, FanaticGuru, sofista, boiler etc...
+
+* **Donations (PayPal)**
