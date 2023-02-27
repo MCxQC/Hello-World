@@ -1,7 +1,7 @@
-# DeviceIDPnP 2.0.0
+# DeviceIDPnP
 AutoHotkey script to launch scripts when devices are connected/disconnected.
 
-# DeviceIDFinder 2.0.0
+# DeviceIDFinder
 AutoHotkey script to find your device's unique IDs.
 
 ### Requirement:
@@ -42,28 +42,33 @@ ID(s) of device(s).
 
   - 2 = One device in "DeviceID" must be connected.
 
-* **RunAtStartup:**
+* **ActionAtStartup:**
 
   - true = The device's actions are launched when the script starts (Default). 
 
   - false = The device's actions are not launched when the script starts.
 
+* **Tooltip:**
+
+  - true = Show the tooltip in the top left corner. (Default). 
+
+  - false = Don't show the tooltip in the top left corner.
+
 
 ### Minor differences from DeviceIDPnP 1.2.0:
-* **Removed tooltips.**
 
 * **Syntax changes:**
 
       oMyDevices := {} 
 
-      Now => MyDevices := []
+      Now => MyDevices := MyDevicesArray()
 
 
       oMyDevices.Push({"DeviceName":"DeviceName", "DeviceID":"DeviceID"}) 
        
-      Now => MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID"})
+      Now => MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID"})
 
 
       DevicesActions(ThisDeviceStatusHasChanged) 
 
-      Now => DevicesActions(deviceNameStatus)
+      Now => DevicesActions(thisDeviceStatus)
