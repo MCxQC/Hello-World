@@ -67,7 +67,7 @@ IDs for the device(s).
 
       Now => DevicesActions(thisDeviceStatus)
   
-* **Copyright and License**
+### Copyright and License
   - MIT License
 
 ### Credits
