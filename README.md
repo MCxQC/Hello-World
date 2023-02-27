@@ -4,22 +4,22 @@ AutoHotkey script to find your device's unique IDs.
 # DeviceIDPnP
 AutoHotkey script to launch scripts when devices are connected/disconnected.
 
-### Requirement:
+### Requirement
 * AutoHotkey v2
 
-### New:
+### New
 * Updated to AutoHotkey v2.
 * Support for the same actions for multiple devices and "DevicesMatchMode" option.
 * Option to not launch the device's actions when the script starts.
 * Option to show or hide ToolTips in the top left corner.
 
-### Instructions:
+### Instructions
 
 * Run "DeviceIDFinder.ahk" to identify your devices.
 * Add your device's IDs and device's names at the top of the script (DeviceIDPnP.ahk). The device's names doesn't have to exactly match the names found with "DeviceIDFinder.ahk". You can name them whatever you want.
 * Add the device's names and the scripts that you want to launch when the devices are connected/disconnected.
 
-### Options:
+### Options
 
 * **DeviceName:**
 
@@ -37,19 +37,19 @@ IDs for the device(s).
 
         MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID"})
 
-* **DeviceMatchMode:**
+* **DeviceMatchMode**
 
   - 1 = All the devices in "DeviceID" must be connected (Default).
 
   - 2 = One device in "DeviceID" must be connected.
 
-* **ActionAtStartup:**
+* **ActionAtStartup**
 
   - true = The device's actions are launched when the script starts (Default). 
 
   - false = The device's actions are not launched when the script starts.
 
-* **Tooltip:**
+* **Tooltip**
 
   - true = Show the tooltip in the top left corner. (Default). 
 
@@ -57,7 +57,7 @@ IDs for the device(s).
 
 ### Minor differences from DeviceIDPnP 1.2.0:
 
-* **Syntax changes:**
+* **Syntax changes**
 
       oMyDevices.Push({"DeviceName":"DeviceName", "DeviceID":"DeviceID"}) 
        
@@ -67,19 +67,19 @@ IDs for the device(s).
 
       Now => DevicesActions(thisDeviceStatus)
   
-* **Copyright and License:**
+* **Copyright and License**
   - MIT License
 
 ### Credits:
-* **AutoHotkey:**
+* **AutoHotkey**
   - Authors: Chris Mallett and Lexikos, with portions by AutoIt Team and various AHK community members.
   - License: GNU General public license
   - Info and source code at: https://autohotkey.com/
-* **jNizM:**
+* **jNizM**
   - Example 2: Detect / Monitor Plug and Play device connections and removes.
   - https://www.autohotkey.com/boards/viewtopic.php?f=83&t=105171
 
-* **Thanks to AHK community members for the help:**
+* **Thanks to AHK community members for the help**
   - mikeyww, teadrinker, swagfag, FanaticGuru, sofista, boiler etc...
 
 * **Donations (PayPal)**
