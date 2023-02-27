@@ -81,7 +81,7 @@ IDs for the device(s).
   - https://www.autohotkey.com/boards/viewtopic.php?f=83&t=105171
 
 * **Thanks to AHK community members for the help**
-  - mikeyww, teadrinker, swagfag, FanaticGuru, sofista, boiler etc...
+  - mikeyww, teadrinker, swagfag, just me, FanaticGuru, sofista, boiler etc...
 
 ### Donations (PayPal)
 [If you would like to send some coin.](https://www.paypal.com/paypalme/martinchartier)
