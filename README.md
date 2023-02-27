@@ -76,8 +76,8 @@ IDs for the device(s).
   - License: GNU General public license
   - Info and source code at: https://autohotkey.com/
 * **jNizM**
-  - DeviceIDFinder is a modified version of his script.\Example 2: Detect / Monitor Plug and Play device connections and removes.
-  - https://www.autohotkey.com/boards/viewtopic.php?f=83&t=105171
+  - DeviceIDFinder is a modified version of his script. (Example 2: Detect / Monitor Plug and Play device connections and removes.)
+    https://www.autohotkey.com/boards/viewtopic.php?f=83&t=105171
 
 * **Thanks to AHK community members for the help**
   - mikeyww, teadrinker, swagfag, just me, FanaticGuru, sofista, boiler etc...
