@@ -63,7 +63,6 @@ IDs for the device(s).
        
       Now => MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID"})
 
-
       DevicesActions(ThisDeviceStatusHasChanged) 
 
       Now => DevicesActions(thisDeviceStatus)
@@ -75,7 +74,7 @@ IDs for the device(s).
   - Info and source code at: https://autohotkey.com/
 * **jNizM:**
   - Example 2: Detect / Monitor Plug and Play device connections and removes
-https://www.autohotkey.com/boards/viewtopic.php?f=83&t=105171
+*   https://www.autohotkey.com/boards/viewtopic.php?f=83&t=105171
 
 * **Thanks to AHK community members for the help:**
   - mikeyww, teadrinker, swagfag, FanaticGuru, sofista, boiler etc...
