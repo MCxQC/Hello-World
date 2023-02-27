@@ -69,4 +69,7 @@ IDs for the device(s).
       Now => DevicesActions(thisDeviceStatus)
       
 ### Credits:
-- Lexicos.
+* **AutoHotkey:**
+- Authors: Chris Mallett and Lexikos, with portions by AutoIt Team and various AHK community members
+- License: GNU General public license
+- Info and source code at: https://autohotkey.com/
