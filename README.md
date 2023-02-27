@@ -68,5 +68,5 @@ IDs for the device(s).
 
       Now => DevicesActions(thisDeviceStatus)
       
-  ### Credits:
-    - Lexicos.
+### Credits:
+- Lexicos.
