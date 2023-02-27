@@ -67,7 +67,7 @@ IDs for the device(s).
       DevicesActions(ThisDeviceStatusHasChanged) 
 
       Now => DevicesActions(thisDeviceStatus)
-      
+  
 ### Credits:
 * **AutoHotkey:**
   - Authors: Chris Mallett and Lexikos, with portions by AutoIt Team and various AHK community members
