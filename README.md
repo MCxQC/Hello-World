@@ -73,3 +73,5 @@ IDs for the device(s).
   - Authors: Chris Mallett and Lexikos, with portions by AutoIt Team and various AHK community members
   - License: GNU General public license
   - Info and source code at: https://autohotkey.com/
+
+* **AHK community members:**
