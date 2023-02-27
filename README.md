@@ -11,6 +11,7 @@ AutoHotkey script to find your device's unique IDs.
 * Updated to AutoHotkey v2.
 * Support for the same actions for multiple devices and "DevicesMatchMode" option.
 * Option to not launch the device's actions when the script starts.
+* Option to show or hide ToolTips in the top left corner.
 
 ### Instructions:
 
@@ -22,19 +23,19 @@ AutoHotkey script to find your device's unique IDs.
 
 * **DeviceName:**
 
-Name of device. Use the same name to launch the associated device's actions.
+Names of the device(s). Use the same name to launch the associated device's actions.
 
 * **DeviceID:**
 
-ID(s) of device(s).
+IDs for the device(s).
 
   - For one device:
 
-        MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID"})
+        MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID"})
 
   - For multiple devices: Use |&| as a separator.
 
-        MyDevices.Push({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID"})
+        MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID"})
 
 * **DeviceMatchMode:**
 
