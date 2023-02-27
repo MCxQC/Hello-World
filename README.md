@@ -1,8 +1,8 @@
-# DeviceIDPnP
-AutoHotkey script to launch scripts when devices are connected/disconnected.
-
 # DeviceIDFinder
 AutoHotkey script to find your device's unique IDs.
+
+# DeviceIDPnP
+AutoHotkey script to launch scripts when devices are connected/disconnected.
 
 ### Requirement:
 * AutoHotkey v2
