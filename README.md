@@ -27,7 +27,7 @@ Names of the device(s). Use the same name to launch the associated device's acti
 
 * **DeviceID**
 
-IDs for the device(s).
+* IDs for the device(s).
 
   - For one device:
 
