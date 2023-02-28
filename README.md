@@ -23,7 +23,7 @@ AutoHotkey script to launch actions when devices are connected/disconnected.
 
 * **DeviceName**
 
-Names of the device(s). Use the same name to launch the associated device's actions.
+Names of the device(s). The same name is used to launch the associated device's actions.
 
 * **DeviceID**
 
