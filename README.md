@@ -55,6 +55,9 @@ IDs for the device(s).
 
   - false = Don't show the tooltip in the top left corner.
 
+* **Options example**
+    MyDevices.Add({DeviceName:"DeviceName", DeviceID:"BDeviceID", DevicesMatchMode:2, ActionAtStartup:"false", Tooltip:"false"})
+
 ### Minor differences from DeviceIDPnP 1.2.0
 
 * **Syntax changes**
