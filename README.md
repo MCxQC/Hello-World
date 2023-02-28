@@ -57,7 +57,7 @@ IDs for the device(s).
 
 * **Options example**
     
-  MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID", DevicesMatchMode:2, ActionAtStartup:"false", Tooltip:"false"})
+      MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID", DevicesMatchMode:2, ActionAtStartup:"false", Tooltip:"false"})
 
 ### Minor differences from DeviceIDPnP 1.2.0
 
