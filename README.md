@@ -17,7 +17,7 @@ AutoHotkey script to launch actions when devices are connected/disconnected.
 
 * Run "DeviceIDFinder.ahk" to identify your devices.
 * Add your device's IDs and device's names at the top of the script (DeviceIDPnP.ahk). The device's names doesn't have to exactly match the names found with "DeviceIDFinder.ahk". You can name them whatever you want.
-* Add the device's names and the scripts/programs/AHK commands that you want to launch when the devices are connected/disconnected.
+* Add the device's names and the actions that you want to launch when the devices are connected/disconnected.
 
 ### Options
 
