@@ -76,7 +76,7 @@ IDs for the device(s).
 
 ### Credits
 * **AutoHotkey**
-  - Authors: Chris Mallett and Lexikos, with portions by AutoIt Team and various AHK community members.
+  - Authors: Chris Mallett and Steve Gray (Lexikos), with portions by AutoIt Team and various AHK community members.
   - License: GNU General public license
   - Info and source code at: https://autohotkey.com/
 * **jNizM**
