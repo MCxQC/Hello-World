@@ -59,9 +59,7 @@ IDs for the device(s).
     
       MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID", DevicesMatchMode:2, ActionAtStartup:"false", Tooltip:"false"})
 
-### Minor differences from DeviceIDPnP 1.2.0
-
-* **Syntax changes**
+### Minor Syntax differences from DeviceIDPnP 1.2.0
 
       oMyDevices.Push({"DeviceName":"DeviceName", "DeviceID":"DeviceID"}) 
        
