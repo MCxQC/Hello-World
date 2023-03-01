@@ -87,4 +87,5 @@ IDs for the device(s).
   - mikeyww, teadrinker, swagfag, just me, FanaticGuru, sofista, boiler and others.
 
 ### Donations (PayPal)
+  - If you've found this script useful and you'd like to make a donation, it would be greatly appreciated.
   - https://www.paypal.com/paypalme/martinchartier
