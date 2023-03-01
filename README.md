@@ -9,7 +9,7 @@ AutoHotkey script to launch actions when devices are connected/disconnected.
 
 ### New
 * Updated to AutoHotkey v2.
-* Support for group of devices.
+* Support for groups of devices.
 * Option to launch/not launch the device's actions when the script starts.
 * Option to show or hide tooltips in the top left corner.
 
