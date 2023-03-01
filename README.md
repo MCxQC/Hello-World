@@ -70,7 +70,7 @@ IDs for the device(s).
       Now => DevicesActions(thisDeviceStatus)
       
 ### Donations (PayPal)
-  - If you have found this script useful and would like to contribute, any donations would be greatly appreciated. Thank you! :smiley:
+  - If you have found this script useful and would like to send a donation. I would be greatly appreciated. Thank you! :smiley:
     https://www.paypal.com/paypalme/martinchartier
   
 ### Copyright and License
