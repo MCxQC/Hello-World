@@ -70,6 +70,10 @@ IDs for the device(s).
       DevicesActions(ThisDeviceStatusHasChanged) 
 
       Now => DevicesActions(thisDeviceStatus)
+      
+### Donations (PayPal)
+  - If you have found this script useful and would like to contribute, any donations would be greatly appreciated. Thank you! :smiley:
+    https://www.paypal.com/paypalme/martinchartier
   
 ### Copyright and License
   - MIT License
@@ -85,7 +89,3 @@ IDs for the device(s).
 
 * **Thanks to AHK community members for the help**
   - mikeyww, teadrinker, swagfag, just me, FanaticGuru, sofista, boiler and others.
-
-### Donations (PayPal)
-  - If you have found this script useful and would like to contribute, any donations would be greatly appreciated. Thank you! :smiley:
-    https://www.paypal.com/paypalme/martinchartier
