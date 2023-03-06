@@ -41,11 +41,11 @@ An "EventName" is automatically assign when an event only contains one category 
         if thisEventStatus = "wordpad.exe Terminated"
         ...
 
-        MyEvents.Add({Window:[{WinTitle:"New Tab - Google Chrome"}], ActionAtStartup:"false"})
+        MyEvents.Add({Window:[{WinTitle:"Disk Management"}], ActionAtStartup:"false"})
 
-        if thisEventStatus = "New Tab - Google Chrome Created"
+        if thisEventStatus = "Disk Management Created"
         ...
-        if thisEventStatus = "New Tab - Google Chrome Terminated"
+        if thisEventStatus = "Disk Management Terminated"
         ...
 
 An "EventName" is required in all other cases.
