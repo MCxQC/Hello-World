@@ -1,29 +1,38 @@
 # DeviceIDFinder
-AutoHotkey script to find your device's unique IDs.
-
-# DeviceIDPnP
-AutoHotkey script to launch actions when devices are connected/disconnected.
+This AutoHotkey script allows to find your device's unique IDs.
 
 ### Requirement
 * AutoHotkey v2
 
-### New
-* Updated to AutoHotkey v2.
-* Support for groups of devices.
-* Option to launch/not launch the device's actions when the script starts.
-* Option to show or hide tooltips in the top left corner.
+# MyEventsToMonitor
+This AutoHotkey script allows for the automatic launching of actions when devices are connected or disconnected, and when processes or windows are created or terminated.
+
+### Can monitor the following events
+* Device or groups of devices are connected or disconnected.
+* Process or a group of processes are created or terminated.
+* Window or a group windows matching multiple criterias are created or terminated.
+* Mix of process(es) and window(s)
+
+### Can't monitor
+* Mix of device(s), process(es) and window(s) in a single "Event" (It can be done by manual coding in "MyEventsActions").
+
+### Supported devices
+* USB, Bluetooth, HDMI etc...
 
 ### Instructions
 
-* Run "DeviceIDFinder.ahk" to identify your devices.
-* Add your device's IDs and device's names at the top of the script (DeviceIDPnP.ahk). The device's names doesn't have to exactly match the names found with "DeviceIDFinder.ahk". You can name them whatever you want.
-* Add the device's names and the actions that you want to launch when the devices are connected/disconnected.
+* **Device**
+* Run "DeviceIDFinder.ahk" to identify your devices.**
+* Add your device's IDs and "Eventname" at the top of the script (DeviceIDPnP.ahk). You can name them whatever you want.
+* Add the "Eventname" and the actions that you want to launch when the devices are connected or disconnected.
+
+* **Process(es) and window(s)**
 
 ### Options
 
-* **DeviceName**
+* **EventName**
 
-Names of the device(s). The same name is used to launch the associated device's actions.
+Name of the event. The same name is used to launch the associated event's actions.
 
 * **DeviceID**
 
@@ -31,13 +40,13 @@ IDs for the device(s).
 
   - For one device:
 
-        MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID"})
+        MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID"]})
         
-  - For multiple devices: Use |&| as a separator.
+  - For group of devices: Use |&| as a separator.
 
-        MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID"})
+        MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:2})
 
-* **DevicesMatchMode**
+* **DeviceIDGroupMode**
 
   - 1 = All the devices in "DeviceID" must be connected (Default).
 
@@ -45,30 +54,20 @@ IDs for the device(s).
 
 * **ActionAtStartup**
 
-  - true = The device's actions are launch when the script starts (Default). 
+  - true = The device's actions are launched when the script starts (Default). 
 
   - false = The device's actions are not launched when the script starts.
 
 * **Tooltip**
 
-  - true = Show the tooltip in the top left corner. (Default). 
+  - true = Show the tooltip in the top left corner (Default).
 
   - false = Don't show the tooltip in the top left corner.
 
 * **Options example**
     
-      MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID", DevicesMatchMode:2, ActionAtStartup:"false", Tooltip:"false"})
+      MyEvents.Add({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID", DeviceIDGroupMode:2, ActionAtStartup:"false", Tooltip:"false"})
 
-### Syntax differences from DeviceIDPnP 1.2.0
-
-      oMyDevices.Push({"DeviceName":"DeviceName", "DeviceID":"DeviceID"}) 
-       
-      Now => MyDevices.Add({DeviceName:"DeviceName", DeviceID:"DeviceID"})
-
-      DevicesActions(ThisDeviceStatusHasChanged) 
-
-      Now => DevicesActions(thisDeviceStatus)
-      
 ### Donations (PayPal)
   - If you found this script useful and would like to donate. It would be greatly appreciated. Thank you! :smiley:
     https://www.paypal.com/paypalme/martinchartier
@@ -86,4 +85,4 @@ IDs for the device(s).
     https://www.autohotkey.com/boards/viewtopic.php?f=83&t=105171
 
 * **Thanks to AHK community members for the help**
-  - mikeyww, teadrinker, swagfag, just me, FanaticGuru, sofista, boiler and others.
+  - mikeyww, teadrinker, swagfag, just me, jNizM, FanaticGuru, sofista, boiler and others.
