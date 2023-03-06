@@ -78,7 +78,7 @@ IDs for the device(s).
 
 * **Options example**
     
-      MyEvents.Add({DeviceName:"DeviceName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:2, ActionAtStartup:"false", Tooltip:"false"})
+      MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:2, ActionAtStartup:"false", Tooltip:"false"})
 
 ### Donations (PayPal)
   - If you found this script useful and would like to donate. It would be greatly appreciated. Thank you! :smiley:
