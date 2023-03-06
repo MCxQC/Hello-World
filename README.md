@@ -34,20 +34,17 @@ This AutoHotkey script allows for the automatic launching of actions when device
 
 An "EventName" is automatically assign when an event only contains one category and one "Process" or one category and one "Window" property:
 
-MyEvents.Add({Process:["wordpad.exe"], Tooltip:"false"})
+        MyEvents.Add({Process:["wordpad.exe"], Tooltip:"false"})
 To launch the associated actions:
 wordpad.exe Created
 wordpad.exe Terminated
 
-MyEvents.Add({Window:[{WinTitle:"New Tab - Google Chrome"}], ActionAtStartup:"false"})
+        MyEvents.Add({Window:[{WinTitle:"New Tab - Google Chrome"}], ActionAtStartup:"false"})
 To launch the associated actions:
 New Tab - Google Chrome Created
 New Tab - Google Chrome Terminated
 
 An "EventName" is required in all other cases.
-
-
-* **Process(es) and window(s)**
 
 ### Options
 
