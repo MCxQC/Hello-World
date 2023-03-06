@@ -36,7 +36,7 @@ This AutoHotkey script allows for the automatic launching of actions when device
 An "EventName" is automatically assign when an event only contains one category and one "Process" or one category and one "Window" property:
 
         MyEvents.Add({Process:["wordpad.exe"], Tooltip:"false"})
-
+        ...
         if thisEventStatus = "wordpad.exe Created"
         ...
         if thisEventStatus = "wordpad.exe Terminated"
