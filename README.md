@@ -38,11 +38,11 @@ Name of the event. The same name is used to launch the associated event's action
 
 IDs for the device(s).
 
-  - For one device:
+  - For one device.
 
         MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID"]})
         
-  - For group of devices: Use |&| as a separator.
+  - For group of devices.
 
         MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:2})
 
