@@ -14,7 +14,7 @@ This AutoHotkey script allows for the automatic launching of actions when device
 * Mix of process(es) and window(s)
 
 ### Can't monitor
-* Mix of device(s), process(es) and window(s) in a single "Event" (It can be done by manual coding in "MyEventsActions()").
+* Combining devices, processes, and windows in one "event" is not supported (It can be done by manual coding in "MyEventsActions()").
 * Active Window.
 
 ### Examples, automatically :
