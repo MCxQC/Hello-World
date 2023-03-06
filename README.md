@@ -30,6 +30,7 @@ This AutoHotkey script allows for the automatic launching of actions when device
 
 * Add your device's IDs, processes, windows and "Eventname" at the top of the script. You can name them whatever you want.
 * In the function "MyEventsActions()". Add the "Eventname" and the actions when the events are created or terminated.
+* DeviceID, Process and Window categories value required to be wrap in square brackets.
 
 An "EventName" is automatically assign when an event only contains one category and one "Process" or one category and one "Window" property:
 
