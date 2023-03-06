@@ -34,7 +34,7 @@ This AutoHotkey script allows for the automatic launching of actions when device
 
 Name of the event. The same name is used to launch the associated event's actions.
 
-* **DeviceID**
+**DeviceID**
 
 IDs for the device(s).
 
