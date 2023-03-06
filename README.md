@@ -106,7 +106,7 @@ IDs for the device(s).
 			EventName:"OSK/Weather notepad/mspaint",
 			Window:[{WinTitle:"On-Screen Keyboard", WinClass:"OSKMainClass"}, {WinTitle:"Weather", WinClass:"ApplicationFrameWindow"}],
 			Process:["notepad.exe", "mspaint.exe"],
-			ProcessGroupMode:1,
+			ProcessGroupMode:2,
 		})
 
 
