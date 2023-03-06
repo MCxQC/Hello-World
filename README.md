@@ -98,9 +98,17 @@ IDs for the device(s).
 
   - false = Don't show the tooltip in the top left corner.
 
-* **Options example**
+* **Example**
     
-      MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:2, ActionAtStartup:"false", Tooltip:"false"})
+	MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:2, ActionAtStartup:"false", Tooltip:"false"})
+
+	MyEvents.Add({
+		EventName:"OSK/Weather notepad/mspaint",
+		Window:[{WinTitle:"On-Screen Keyboard", WinClass:"OSKMainClass"}, {WinTitle:"Weather", WinClass:"ApplicationFrameWindow"}],
+		Process:["notepad.exe", "mspaint.exe"],
+		ProcessGroupMode:1,
+	})
+
 
 ### Donations (PayPal)
   - If you found this script useful and would like to donate. It would be greatly appreciated. Thank you! :smiley:
