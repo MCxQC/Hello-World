@@ -100,7 +100,7 @@ IDs for the device(s).
 
   - false = Don't show the tooltip in the top left corner.
 
-* **Example**
+### Examples
     
         MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:2, ActionAtStartup:"false", Tooltip:"false"})
     
