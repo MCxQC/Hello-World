@@ -100,14 +100,14 @@ IDs for the device(s).
 
 * **Example**
     
-	MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:2, ActionAtStartup:"false", Tooltip:"false"})
+		MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:2, ActionAtStartup:"false", Tooltip:"false"})
 
-	MyEvents.Add({
-		EventName:"OSK/Weather notepad/mspaint",
-		Window:[{WinTitle:"On-Screen Keyboard", WinClass:"OSKMainClass"}, {WinTitle:"Weather", WinClass:"ApplicationFrameWindow"}],
-		Process:["notepad.exe", "mspaint.exe"],
-		ProcessGroupMode:1,
-	})
+		MyEvents.Add({
+			EventName:"OSK/Weather notepad/mspaint",
+			Window:[{WinTitle:"On-Screen Keyboard", WinClass:"OSKMainClass"}, {WinTitle:"Weather", WinClass:"ApplicationFrameWindow"}],
+			Process:["notepad.exe", "mspaint.exe"],
+			ProcessGroupMode:1,
+		})
 
 
 ### Donations (PayPal)
