@@ -11,7 +11,7 @@ This AutoHotkey script allows for the automatic launching of actions when device
 * Device or groups of devices are connected or disconnected.
 * Process or a group of processes are created or terminated.
 * Window or a group of windows matching multiple criterias are created or terminated.
-* Combining of processes and windows.
+* Mix of processes and windows in one "event".
 
 ### Can't monitor
 * Combining devices, processes, and windows in one "event" is not supported (It can be done by manual coding in "MyEventsActions()").
