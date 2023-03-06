@@ -30,7 +30,22 @@ This AutoHotkey script allows for the automatic launching of actions when device
 * **Device**
 * Run "DeviceIDFinder.ahk" to identify your devices.**
 * Add your device's IDs and "Eventname" at the top of the script (DeviceIDPnP.ahk). You can name them whatever you want.
-* Add the "Eventname" and the actions that you want to launch when the devices are connected or disconnected.
+* In the function "MyEventsActions()". Add the "Eventname" and the actions that you want to launch when the devices are connected or disconnected.
+
+An "EventName" is automatically assign when an event only contains one category and one "Process" or one category and one "Window" property:
+
+MyEvents.Add({Process:["wordpad.exe"], Tooltip:"false"})
+To launch the associated actions:
+wordpad.exe Created
+wordpad.exe Terminated
+
+MyEvents.Add({Window:[{WinTitle:"New Tab - Google Chrome"}], ActionAtStartup:"false"})
+To launch the associated actions:
+New Tab - Google Chrome Created
+New Tab - Google Chrome Terminated
+
+An "EventName" is required in all other cases.
+
 
 * **Process(es) and window(s)**
 
