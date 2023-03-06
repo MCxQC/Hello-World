@@ -46,17 +46,17 @@ IDs for the device(s).
 
         MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:2})
 
-* **DeviceIDGroupMode**
+* **DeviceIDGroupMode, ProcessGroupMode, WindowGroupMode**
 
-  - 1 = All the devices in "DeviceID" must be connected (Default).
+  - 1 = All the items in the category must be created (Default).
 
-  - 2 = One device in "DeviceID" must be connected.
+  - 2 = One item in the category must be terminated.
 
 * **ActionAtStartup**
 
-  - true = The device's actions are launched when the script starts (Default). 
+  - true = The event's actions are launched when the script starts (Default). 
 
-  - false = The device's actions are not launched when the script starts.
+  - false = The event's actions are not launched when the script starts.
 
 * **Tooltip**
 
@@ -66,7 +66,7 @@ IDs for the device(s).
 
 * **Options example**
     
-      MyEvents.Add({DeviceName:"DeviceName", DeviceID:"DeviceID |&| DeviceID", DeviceIDGroupMode:2, ActionAtStartup:"false", Tooltip:"false"})
+      MyEvents.Add({DeviceName:"DeviceName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:2, ActionAtStartup:"false", Tooltip:"false"})
 
 ### Donations (PayPal)
   - If you found this script useful and would like to donate. It would be greatly appreciated. Thank you! :smiley:
