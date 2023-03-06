@@ -28,9 +28,7 @@ This AutoHotkey script allows for the automatic launching of actions when device
 
 ### Instructions
 
-* **Device**
-* Run "DeviceIDFinder.ahk" to identify your devices.**
-* Add your device's IDs and "Eventname" at the top of the script (DeviceIDPnP.ahk). You can name them whatever you want.
+* Add your device's IDs, processes, windows and "Eventname" at the top of the script. You can name them whatever you want.
 * In the function "MyEventsActions()". Add the "Eventname" and the actions that you want to launch when the devices are connected or disconnected.
 
 An "EventName" is automatically assign when an event only contains one category and one "Process" or one category and one "Window" property:
