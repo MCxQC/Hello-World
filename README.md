@@ -46,7 +46,7 @@ IDs for the device(s).
 
         MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:2})
         
-* **Window properties**
+* **Window properties options**
   - WinTitle
   - WinClass
   - WinTitleMatchMode
