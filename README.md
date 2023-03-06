@@ -45,6 +45,14 @@ IDs for the device(s).
   - For group of devices.
 
         MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:2})
+        
+* **Window properties**
+*WinTitle
+* WinClass
+*
+*
+
+
 
 * **DeviceIDGroupMode, ProcessGroupMode, WindowGroupMode**
 
