@@ -82,9 +82,9 @@ IDs for the device(s).
 
 * **DeviceIDGroupMode, ProcessGroupMode, WindowGroupMode**
 
-  - 1 = All the items in the category must be created (Default).
+  - 1 = All the items in the category must exist (Default).
 
-  - 2 = One item in the category must be created.
+  - 2 = One item in the category must exist.
 
 * **ActionAtStartup**
 
