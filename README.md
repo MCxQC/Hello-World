@@ -16,8 +16,8 @@ This AutoHotkey script allows for the automatic launching of actions when device
 ### Can't monitor
 * Mix of device(s), process(es) and window(s) in a single "Event" (It can be done by manual coding in "MyEventsActions").
 
-### Examples, Automatically :
-* Launching steam when connecting a bluetooth controller.
+### Examples, automatically :
+* Launching steam when a bluetooth controller is connected.
 * Switching audio when a device is connected or disconnected.
 * Launching or closing a program when another one is launching or closing.
 * Overclocking the GPU/CPU when a game is running. Undervolting when no game are running. (With MSI Afterburner's profiles)
