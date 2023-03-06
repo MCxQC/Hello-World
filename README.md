@@ -8,14 +8,14 @@ This AutoHotkey script allows to find your device's unique IDs.
 This AutoHotkey script allows for the automatic launching of actions when devices are connected or disconnected, and when processes or windows are created or terminated.
 
 ### Can monitor the following events
-* Device or group of devices are connected or disconnected.
+* Device or groups of devices are connected or disconnected.
 * Process or a group of processes are created or terminated.
 * Window or a group windows matching multiple criterias are created or terminated.
 * Mix of process(es) and window(s)
 
 ### Can't monitor
 * Mix of device(s), process(es) and window(s) in a single "Event" (It can be done by manual coding in "MyEventsActions()").
-* Active window
+* Active Window.
 
 ### Examples, automatically :
 * Launching steam when a bluetooth controller is connected.
@@ -30,24 +30,24 @@ This AutoHotkey script allows for the automatic launching of actions when device
 
 * **Device**
 * Run "DeviceIDFinder.ahk" to identify your devices.**
-* Add your device's IDs, process(es) window(s) and "Eventname" at the top of the script (MyEventsToMonitor.ahk). You can name them whatever you want.
+* Add your device's IDs and "Eventname" at the top of the script (DeviceIDPnP.ahk). You can name them whatever you want.
 * In the function "MyEventsActions()". Add the "Eventname" and the actions that you want to launch when the devices are connected or disconnected.
 
 An "EventName" is automatically assign when an event only contains one category and one "Process" or one category and one "Window" property:
 
-    MyEvents.Add({Process:["wordpad.exe"], Tooltip:"false"})
-    
-    if thisEventStatus = "wordpad.exe Created"
-    ...
-    if thisEventStatus = "wordpad.exe Terminated"
-    ...
-    
-    MyEvents.Add({Window:[{WinTitle:"Disk Management"}], ActionAtStartup:"false"})
-    
-    if thisEventStatus = "Disk Management Created"
-    ...
-    if thisEventStatus = "Disk Management Terminated"
-    ...
+        MyEvents.Add({Process:["wordpad.exe"], Tooltip:"false"})
+
+        if thisEventStatus = "wordpad.exe Created"
+        ...
+        if thisEventStatus = "wordpad.exe Terminated"
+        ...
+
+        MyEvents.Add({Window:[{WinTitle:"Disk Management"}], ActionAtStartup:"false"})
+
+        if thisEventStatus = "Disk Management Created"
+        ...
+        if thisEventStatus = "Disk Management Terminated"
+        ...
 
 An "EventName" is required in all other cases.
 
@@ -83,9 +83,9 @@ IDs for the device(s).
 
 * **DeviceIDGroupMode, ProcessGroupMode, WindowGroupMode**
 
-  - 1 = All the items in the category must exist (Default).
+  - 1 = All the items in the category must be created (Default).
 
-  - 2 = One item in the category must exist.
+  - 2 = One item in the category must be created.
 
 * **ActionAtStartup**
 
@@ -99,16 +99,16 @@ IDs for the device(s).
 
   - false = Don't show the tooltip in the top left corner.
 
-### Example
+* **Example**
     
-		MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:2, ActionAtStartup:"false", Tooltip:"false"})
+	MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:2, ActionAtStartup:"false", Tooltip:"false"})
 
-		MyEvents.Add({
-			EventName:"OSK/Weather notepad/mspaint",
-			Window:[{WinTitle:"On-Screen Keyboard", WinClass:"OSKMainClass"}, {WinTitle:"Weather", WinClass:"ApplicationFrameWindow"}],
-			Process:["notepad.exe", "mspaint.exe"],
-			ProcessGroupMode:2,
-		})
+	MyEvents.Add({
+		EventName:"OSK/Weather notepad/mspaint",
+		Window:[{WinTitle:"On-Screen Keyboard", WinClass:"OSKMainClass"}, {WinTitle:"Weather", WinClass:"ApplicationFrameWindow"}],
+		Process:["notepad.exe", "mspaint.exe"],
+		ProcessGroupMode:1,
+	})
 
 
 ### Donations (PayPal)
