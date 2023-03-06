@@ -57,8 +57,8 @@ IDs for the device(s).
 * RegEx = Regular expression WinTitle matching.
 
   - detectHiddenWindows
--- 1 = On:  Hidden windows are detected
--- 2 = Off: Hidden windows are not detected (Default).
+* 1 = On:  Hidden windows are detected
+* 2 = Off: Hidden windows are not detected (Default).
 
 * **DeviceIDGroupMode, ProcessGroupMode, WindowGroupMode**
 
