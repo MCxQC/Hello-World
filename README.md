@@ -62,7 +62,7 @@ IDs for the device(s).
 
   - 1 = All the items in the category must be created (Default).
 
-  - 2 = One item in the category must be terminated.
+  - 2 = One item in the category must be created.
 
 * **ActionAtStartup**
 
