@@ -8,7 +8,7 @@ This AutoHotkey script allows to find your device's unique IDs.
 This AutoHotkey script allows for the automatic launching of actions when devices are connected or disconnected, and when processes or windows are created or terminated.
 
 ### Can monitor the following events
-* Device or groups of devices are connected or disconnected.
+* Device or group of devices are connected or disconnected.
 * Process or a group of processes are created or terminated.
 * Window or a group windows matching multiple criterias are created or terminated.
 * Mix of process(es) and window(s)
