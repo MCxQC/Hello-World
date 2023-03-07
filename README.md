@@ -21,6 +21,7 @@ This AutoHotkey script allows for the automatic launching of actions when device
 * Launching steam when a bluetooth controller is connected.
 * Switching audio when a device is connected or disconnected.
 * Launching or closing a program when another one is launching or closing.
+* Switching MSI Afterburner's profiles when game is launching or closing.
 * Overclocking the GPU/CPU when a game is running. Undervolting when no game are running. (With MSI Afterburner's profiles)
 
 ### Supported devices
