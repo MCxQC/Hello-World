@@ -35,7 +35,7 @@ This AutoHotkey script allows for the automatic launching of actions when device
 * Window property value required to be wrap in curly brackets.
 * An "event" must be created or terminated for at least 1 second to trigger a "Created" or terminated event.
 
-An "EventName" is automatically assign when an event only contains one category and one "Process" or one category and one "Window" property:
+An "EventName" is automatically assign when an event only contains one category and one "Process" or one category and one "Window" property.
 
         MyEvents.Add({Process:["wordpad.exe"], Tooltip:"false"})
         MyEvents.Add({Window:[{WinTitle:"Disk Management"}], ActionAtStartup:"false"})  
