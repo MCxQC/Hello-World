@@ -28,6 +28,7 @@ This AutoHotkey script allows for the automatic launching of actions when device
 
 ### Instructions
 
+* Use devfinder to identify devices, windowspy to identify processes and windows
 * Add your device's IDs, processes, windows and "Eventname" that you want to monitor at the top of the script. You can name them whatever you want.
 * In the function "MyEventsActions()". Add the "Eventname" and the actions when the events are created or terminated.
 * DeviceID, Process and Window categories value required to be wrap in square brackets.
