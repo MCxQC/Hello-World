@@ -55,6 +55,22 @@ An "EventName" is automatically assign when an event only contains one category 
 
 An "EventName" is required in all other cases.
 
+        MyEvents.Add({EventName:"Apple iPhone", DeviceID:["USB\VID_05AC&PID_12A8&MI_00\7&3139FE40&0&0000"]})
+        MyEvents.Add({EventName:"notepad/mspaint", Process:["notepad.exe", "mspaint.exe"], ProcessGroupMode:2})
+        
+        MyEventsActions(thisEventStatus) {
+        
+                if thisEventStatus = "Apple iPhone Created"
+                        ...
+                if thisEventStatus = "Apple iPhone Terminated"
+                        ...
+                
+                if thisEventStatus = "notepad/mspaint Created"
+                        ...
+                if thisEventStatus = "notepad/mspaint Terminated"
+                        ...
+        }
+
 ### Options
 
 * **EventName**
