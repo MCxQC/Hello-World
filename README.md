@@ -14,8 +14,8 @@ This AutoHotkey script allows for the automatic launching of actions when device
 * Mix of processes and windows in one "event".
 
 ### Not supported
-* Combining devices, processes, and windows in one "event" is not supported (It can be done by manual coding in "MyEventsActions()").
-* Active Window.
+* Combining devices, processes, and windows in one "event". (It can be done by manual coding in "MyEventsActions()").
+* Monitoring active window.
 
 ### Examples, automatically :
 * Launching steam when a bluetooth controller is connected.
