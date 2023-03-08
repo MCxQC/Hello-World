@@ -5,7 +5,9 @@ This AutoHotkey script allows to find your device's unique IDs.
 * AutoHotkey v2
 
 # MyEventsToMonitor
-This AutoHotkey script allows for the automatic launching of actions when devices are connected or disconnected, and when processes or windows are created or terminated.
+This AutoHotkey script allows for the automatic launching of actions when:
+* devices are connected or disconnected
+* when processes or windows are created or terminated.
 
 ### Supported, Monitoring of:
 ### Supported, launch action when:
