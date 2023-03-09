@@ -28,6 +28,7 @@ This AutoHotkey script allows for the automatic launching of actions when:
 * Launching or closing a program when another one is launching or closing.
 * Switching MSI Afterburner's profiles when game is launching or closing.
 * Overclocking the GPU/CPU when a game is running. Undervolting when no game are running. (With MSI Afterburner's profiles)
+* Killing Windows
 
 ### Supported devices
 * USB, Bluetooth, HDMI etc...
