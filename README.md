@@ -98,12 +98,13 @@ IDs for the device(s).
         
 * **Window properties options**
   - WinTitle
-  - WinClass
   - WinTitleMatchMode
     - 1 = A window's title must start with the specified WinTitle to be a match.
     - 2 = A window's title can contain WinTitle anywhere inside it to be a match.
     - 3 = A window's title must exactly match WinTitle to be a match. (Default)
     - RegEx = Regular expression WinTitle matching.
+  - WinClass
+  - Process
   - DetectHiddenWindows
     - 1 or True = Hidden windows are detected.
     - 0 or False = Hidden windows are not detected (Default).
