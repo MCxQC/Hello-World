@@ -103,8 +103,8 @@ IDs for the device(s).
     - 2 = A window's title can contain WinTitle anywhere inside it to be a match.
     - 3 = A window's title must exactly match WinTitle to be a match. (Default)
     - RegEx = Regular expression WinTitle matching.
-  - WinClass
-  - Process
+  - WinClass = To identify a window by its window class.
+  - Process = The process that owns the specified window.
   - DetectHiddenWindows
     - 1 or True = Hidden windows are detected.
     - 0 or False = Hidden windows are not detected (Default).
