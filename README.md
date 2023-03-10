@@ -21,7 +21,7 @@ This AutoHotkey script allows for the automatic launching of actions when:
 
 ### Not supported, Monitoring of:
 * Combining devices, processes, and windows in one "event". (It can be done by manual coding in "MyEventsActions()").
-
+* Multiple instance
 ### Examples, automatically :
 * Launching steam when a bluetooth controller is connected.
 * Switching audio when a device is connected or disconnected.
