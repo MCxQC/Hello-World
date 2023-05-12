@@ -1,3 +1,8 @@
+## Process/Window option
+
+- **Multi:** Monitor multiple instances of the same process/window.
+- **Parameters:** 1 or 0
+
 # DeviceIDFinder
 This AutoHotkey script allows to find your device's unique IDs.
 
