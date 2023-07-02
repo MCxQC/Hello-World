@@ -136,7 +136,7 @@ Returns an array containing objects with all existing processes that match the s
 
 * **ProcessPath**
   > Type: String    
-    
+
 ### WindowFinder
 Returns an array containing objects with all existing windows that match the specified parameters. If there is no matching window, an empty array is returned.
         
