@@ -116,7 +116,7 @@ For example:
 
 For example:
 
-        !2::Events.SetEvent(1, "Notepad")
+        !2::Events.SetEvent(1, "Notepad_ProcessClose")
 
 ### ProcessFinder
 Returns an array containing objects with all existing processes that match the specified parameters. If there is no matching process, an empty array is returned.
