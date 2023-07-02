@@ -1,3 +1,5 @@
+# Methods
+
 ## AddProcess
 Adds a process event to monitor that match the specified parameters.
         
@@ -91,8 +93,6 @@ For example:
 
 ## Examples
 
-## Methods
-
 ## SetProfile
 
         SetProfile(Profile Name)
@@ -103,7 +103,7 @@ For example:
 
         !1::Events.SetProfile("Disable All Events")
 
-### SetEvent
+## SetEvent
 
         SetEvent(State, Event Name)
 * **State**
@@ -118,7 +118,7 @@ For example:
 
         !2::Events.SetEvent(1, "Notepad_ProcessClose")
 
-### ProcessFinder
+## ProcessFinder
 Returns an array containing objects with all existing processes that match the specified parameters. If there is no matching process, an empty array is returned.
         
 	ProcessFinder(ProcessName, ProcessPath) 
@@ -129,7 +129,7 @@ Returns an array containing objects with all existing processes that match the s
 * **ProcessPath**
   > Type: String    
 
-### WindowFinder
+## WindowFinder
 Returns an array containing objects with all existing windows that match the specified parameters. If there is no matching window, an empty array is returned.
         
 	WindowFinder(WinTitle, WinClass, ProcessName, ProcessPath, WinTitleMatchMode, WinActive, DetectHiddenWindows)
@@ -163,7 +163,7 @@ Returns an array containing objects with all existing windows that match the spe
   > - **0:** Hidden windows are not detected. (Default)
   > - **1:** Hidden windows are detected
 
-### DisplayObj
+## DisplayObj
 Display the information that can be retrieved when an Event is created or terminated
 
 	DisplayObj(Object)
@@ -174,7 +174,7 @@ Display the information that can be retrieved when an Event is created or termin
 11 icons
 "Main", "Exit", "Reload", "About", "Settings", "Edit Script", "Open Script Folder", "Select Profile", "Select", "Events", "Checkmark"
 	
-## Themes
+### Themes
 Create a new folder in the "Themes" directory and put 11 icons named "On", "Off", "Events", "Select", "Checkmark", "Settings", "Exit", "Reload", "Edit Script", "Select Profile", "Open Script Folder" into the folder. To apply, select it from the dropdown menu in the GUI settings and press the "Save and Exit" or "Save" button.
 	
 ## Tips
