@@ -163,7 +163,7 @@ Returns an array containing objects with all existing windows that match the spe
   > - **1:** Hidden windows are detected
 
 ## DisplayObj
-Converts an object to a strin.
+Converts an object to a string.
 
 	DisplayObj(Object)
 
