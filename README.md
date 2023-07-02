@@ -8,7 +8,6 @@
 
   > Type: Object
   >
-  > Properties:
   > - ProcessName
   > - ProcessPath
 
