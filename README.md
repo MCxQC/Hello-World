@@ -1,5 +1,5 @@
 ## AddProcess
-Detects when the procees matching the "Event" criteria is created/terminated.
+Adds a process matching the "Event" criteria is created/terminated. Adds a process to monitor.
         
 	Events.AddProcess(Process Properties, Function, Event Name [, Instance Mode])
 
@@ -40,6 +40,7 @@ For example:
 
 
 ## AddWindow
+Adds a window to monitor.
 
         Events.AddWindow(Window Properties, Function, Event Name [, Instance Mode, Created Mode, Terminated Mode, Delay])
 
