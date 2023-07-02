@@ -164,7 +164,7 @@ Returns an array containing objects with all existing windows that match the spe
   > - **1:** Hidden windows are detected
 
 ## DisplayObj
-Display the information that can be retrieved when an Event is created or terminated
+Converts an object to a strin.
 
 	DisplayObj(Object)
 
