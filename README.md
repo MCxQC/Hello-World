@@ -31,7 +31,7 @@ Adds a process event to monitor.
 
 For example:
 
-        Events.AddProcess({ProcessName:"notepad.exe"}, "Notepad_ProcessClose", "Notepad_ProcessClose", 2)
+        Events.AddProcess({ProcessName:"notepad.exe"}, "Notepad_ProcessClose", "Notepad_ProcessClose")
         Notepad_ProcessClose_Created(obj) => ProcessClose(obj.PID)
 
 
