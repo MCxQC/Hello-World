@@ -100,55 +100,85 @@ For example:
 
 
 
-* **Examples**
+## Examples
 
-  
-* **Methods**
 
-  - SetProfile("Profile Name")
-    Profile Name. Type: string
-	!1::Events.SetProfile("Disable All Events")
-  
-  - SetEvent(State, "Event Name")
-    State. Parameters: 1 or 0
-    Event Name. Type: string
-	!2::Events.SetEvent(1, "Notepad")
+## Methods
 
-  - ProcessFinder(ProcessName, ProcessPath) 
-    Return an array of 1 object containing the process information if the process is detected.
+### SetProfile
+
+        SetProfile(Profile Name)
+* **Profile Name**	
+  > Type: String
   
-  - WindowFinder(WinTitle, WinClass, ProcessName, ProcessPath, WinTitleMatchMode, WinActive, DetectHiddenWindows)
+For example:
+
+        !1::Events.SetProfile("Disable All Events")
+
+### SetEvent
+
+        SetEvent(State, Event Name)
+* **State**
+  > Type: Integer
+  > - **0:** Disable
+  > - **1:** Enable
+
+* **Event Name**
+  > Type: String
+
+For example:
+
+        !2::Events.SetEvent(1, "Notepad")
+
+### ProcessFinder
+Return an array of 1 object containing the process information if the process is detected.
+        
+	ProcessFinder(ProcessName, ProcessPath) 
+
+* **ProcessName**
+  > Type: String
+
+* **ProcessPath**
+  > Type: String    
+    
+
+
+### WindowFinder
+  
+        WindowFinder(WinTitle, WinClass, ProcessName, ProcessPath, WinTitleMatchMode, WinActive, DetectHiddenWindows)
     Return an array of object(s) with the window(s) information when detected.
 
-  - DisplayObj()
+### DisplayObj
+
+        DisplayObj()
 	Display the information that can be retrieved when an Event is created or terminated. see Example #.	
 	
 11 icons
 "Main", "Exit", "Reload", "About", "Settings", "Edit Script", "Open Script Folder", "Select Profile", "Select", "Events", "Checkmark"
 	
-### Themes
+## Themes
 Create a new folder in the "Themes" directory and put 11 icons named "On", "Off", "Events", "Select", "Checkmark", "Settings", "Exit", "Reload", "Edit Script", "Select Profile", "Open Script Folder" into the folder. To apply, select it from the dropdown menu in the GUI settings and press the "Save and Exit" or "Save" button.
 	
-### Tips
+## Tips
   - Adding a detection delay of about 1000ms can help avoid detection failures caused by the detection message triggering before the window is fully created.
   - If you have the choice, monitoring the window uses slightly fewer resources than monitoring the process.
   - ??? apres test p-e pas finalement. Avoid using Sleep, WinWait, ProcessWait etc... commands in events functions and opt for detection delays/Timers instead.
 
-### Common mistakes
+## Common mistakes
   - Event Function name not matching with associated function.
   - Error: Invalid property name in object literal. A comma is required at the end of each line when there are multiple line events.
   
   
-### Known Issues
+## Known Issues
   
-### Copyright and License
+## Copyright and License
   - MIT License
   
-### Donation (PayPal)
+## Donation (PayPal)
   - If you found this script useful and would like to donate. It would be greatly appreciated. Thank you! :smiley:
     https://www.paypal.com/paypalme/martinchartier  
 
-### Credits
+## Credits
 * **AutoHotkey**
   - Authors: Chris Mallett and Steve Gray (Lexikos), with portions by AutoIt Team and various AHK community members.
   - License: GNU General public license
