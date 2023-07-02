@@ -93,7 +93,7 @@ For example:
 
 ## Methods
 
-### SetProfile
+## SetProfile
 
         SetProfile(Profile Name)
 * **Profile Name**	
