@@ -1,163 +1,154 @@
-## Process/Window option
+## AddProcess
 
-- **Multi:** Monitor multiple instances of the same process/window.
-- **Parameters:** 1 or 0
+        Events.AddProcess(Process Properties, Function, Event Name [, Instance Mode])
 
-# DeviceIDFinder
-This AutoHotkey script allows to find your device's unique IDs.
+### Parameters
 
-### Requirement
-* AutoHotkey v2
+* **Process Properties**
 
-# MyEventsToMonitor
-This AutoHotkey script allows for the automatic launching of actions when:
-* Device or groups of devices are connected or disconnected.
-* Process or a group of processes are created or terminated.
-* Window or a group of windows matching multiple criterias are created or terminated.
-* Mix of processes and windows are created or terminated.
-* Window is activated or desactivated.
+  > Type: Object
+  >
+  > Properties:
+  > - ProcessName
+  > - ProcessPath
 
-### Supported, Monitoring of:
-### Supported, launch action when:
-* Device or groups of devices are connected or disconnected.
-* Process or a group of processes are created or terminated.
-* Window or a group of windows matching multiple criterias are created or terminated.
-* Mix of processes and windows in one "event".
 
-### Not supported, Monitoring of:
-* Combining devices, processes, and windows in one "event". (It can be done by manual coding in "MyEventsActions()").
-* Multiple instance
-### Examples, automatically :
-* Launching steam when a bluetooth controller is connected.
-* Switching audio when a device is connected or disconnected.
-* Launching or closing a program when another one is launching or closing.
-* Switching MSI Afterburner's profiles when game is launching or closing.
-* Overclocking the GPU/CPU when a game is running. Undervolting when no game are running. (With MSI Afterburner's profiles)
-* Killing Windows
 
-### Supported devices
-* USB, Bluetooth, HDMI etc...
 
-### Instructions
 
-* Use devfinder to identify devices, windowspy to identify processes and windows
-* Add your device's IDs, processes, windows and "Eventname" that you want to monitor at the top of the script. You can name them whatever you want.
-* In the function "MyEventsActions()". Add the "Eventname" and the actions when the events are created or terminated.
-* DeviceID, Process and Window categories value required to be wrap in square brackets.
-* Window property value required to be wrap in curly brackets.
-* An "event" must be created or terminated for at least 1 second to trigger a "Created" or terminated event.
+* **Function**
 
-An "EventName" is automatically assign when an event only contains one category and one "Process" or one category and one "Window" property.
+  > Type: String
+  >
+  > The name of the function to call when the event is created/terminated.
 
-        MyEvents.Add({Process:["wordpad.exe"], Tooltip:"false"})
-        MyEvents.Add({Window:[{WinTitle:"Disk Management"}], ActionAtStartup:"false"})  
-        
-        MyEventsActions(thisEventStatus) {
-        
-                if thisEventStatus = "wordpad.exe Created"
-                        ...
-                if thisEventStatus = "wordpad.exe Terminated"
-                        ...
-                
-                if thisEventStatus = "Disk Management Created"
-                        ...
-                if thisEventStatus = "Disk Management Terminated"
-                        ...
-        }
+follow by "_Created"
 
-An "EventName" is required in all other cases.
+follow by _Terminated
 
-        MyEvents.Add({EventName:"Apple iPhone", DeviceID:["USB\VID_05AC&PID_12A8&MI_00\7&3139FE40&0&0000"]})
-        MyEvents.Add({EventName:"notepad/mspaint", Process:["notepad.exe", "mspaint.exe"], ProcessGroupMode:2})
-        
-        MyEventsActions(thisEventStatus) {
-        
-                if thisEventStatus = "Apple iPhone Created"
-                        ...
-                if thisEventStatus = "Apple iPhone Terminated"
-                        ...
-                
-                if thisEventStatus = "notepad/mspaint Created"
-                        ...
-                if thisEventStatus = "notepad/mspaint Terminated"
-                        ...
-        }
 
-### Options
+* **Event Name**
+Type: String
+Name of the Event.
 
-* **EventName**
+* **Instance Mode**
+    - 1 = Call the "Function_Created" and "Function_Terminated" for every instance of the process. (Default)
+    - 2 = Call the "_Created" function only for the initial,   creation of the event the process,   . Call the "_Terminated" when the last instance of the process is terminated.
 
-Name of the event. The same name is used to launch the associated event's actions. Do not use quotation marks in the "EventName".
+For example:
+        Events.AddProcess({ProcessName:"notepad.exe"}, "Notepad_ProcessClose", "Notepad_ProcessClose", 2)
 
-* **DeviceID**
 
-IDs for the device(s).
+## AddWindow
 
-  - For one device.
+        Events.AddWindow(Window Properties, Function, Event Name [, Instance Mode, Created Mode, Terminated Mode, Delay])
 
-        MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID"]})
-        
-  - For group of devices.
+### Parameters
 
-        MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:"2"})
-        
-* **Window properties options**
+* **Window Properties**
+Type: Object
   - WinTitle
   - WinTitleMatchMode
     - 1 = A window's title must start with the specified WinTitle to be a match.
     - 2 = A window's title can contain WinTitle anywhere inside it to be a match. (Default)
     - 3 = A window's title must exactly match WinTitle to be a match.
     - RegEx = Regular expression WinTitle matching.
-  - WinClass = To identify a window by its window class.
-  - Process = The process that owns the specified window.
+	
+  - WinClass
+  - ProcessName
+  - ProcessPath
+	
   - DetectHiddenWindows
-    - 1 or True = Hidden windows are detected.
-    - 0 or False = Hidden windows are not detected (Default).
+    - 1 = Hidden windows are detected
+    - 0 = Hidden windows are not detected. (Default)
 
-* **DeviceIDGroupMode, ProcessGroupMode, WindowGroupMode**
 
-  - 1 = All the items in the category must be created (Default).
+* **Function**
+Type: String
+The name of the function to call when the event is created/terminated.
 
-  - 2 = One item in the category must be created.
 
-* **ActionAtStartup**
+For example:	
+        Events.AddWindow({WinTitle:"Calculator", WinClass:"ApplicationFrameWindow", ProcessName:"ApplicationFrameHost.exe"}, "Calculator_WinMove", "Calculator_WinMove")	
+	
+* **Instance Mode**
+- 1 = Call "Function_Created" and "Function_Terminated" for every instance of the window matching the criteria. (Default)
+- 2 = Call "Function_Created" only for the initial instance of the window matching the criteria. Call the "Function_Terminated" when the last instance of the window matching the criteria is terminated.	
+- 3 = Call "Function_Created" and "Function_Terminated" when the window matching the criteria is activated/deactivated.
 
-  - true = The event's actions are launched when the script starts (Default). 
+* **Created Mode**
+- 1 = Call "Function_Created" when the window matching the window criteria is detected. (Default)
+- 2 = Call "Function_Created" only when a new window handle(ID) is detected.
+- 2 = Call "Function_Created" 
 
-  - false = The event's actions are not launched when the script starts.
+* **Terminated Mode**
+- 1 = Call "Function_Terminated" when the window is not found anymore, the window handle(ID) can still exists. (Default)
+- 2 = Call "Function_Terminated" only when the window handle(ID) is terminated.
+- 3 = Call "Function_Terminated" when the window is not found anymore or the window handle(ID) is terminated.
 
-* **Tooltip**
 
-  - true = Show the tooltip in the top left corner (Default).
+* **Examples**
 
-  - false = Don't show the tooltip in the top left corner.
+  
+* **Methods**
 
-### Examples
-    
-        MyEvents.Add({EventName:"EventName", DeviceID:["DeviceID", "DeviceID"], DeviceIDGroupMode:"2", ActionAtStartup:"false", Tooltip:"false"})
-    
-        MyEvents.Add({
-            EventName:"OSK/Weather notepad/mspaint",
-            Window:[{WinTitle:"On-Screen Keyboard", WinClass:"OSKMainClass"}, {WinTitle:"Weather", WinClass:"ApplicationFrameWindow"}],
-            Process:["notepad.exe", "mspaint.exe"],
-            ProcessGroupMode:"1",
-        })
+  - SetProfile("Profile Name")
+    Profile Name. Type: string
+	!1::Events.SetProfile("Disable All Events")
+  
+  - SetEvent(State, "Event Name")
+    State. Parameters: 1 or 0
+    Event Name. Type: string
+	!2::Events.SetEvent(1, "Notepad")
 
-### Donations (PayPal)
-  - If you found this script useful and would like to donate. It would be greatly appreciated. Thank you! :smiley:
-    https://www.paypal.com/paypalme/martinchartier
+  - ProcessFinder(ProcessName, ProcessPath) 
+    Return an array of 1 object containing the process information if the process is detected.
+  
+  - WindowFinder(WinTitle, WinClass, ProcessName, ProcessPath, WinTitleMatchMode, WinActive, DetectHiddenWindows)
+    Return an array of object(s) with the window(s) information when detected.
+
+  - DisplayObj()
+	Display the information that can be retrieved when an Event is created or terminated. see Example #.	
+	
+11 icons
+"Main", "Exit", "Reload", "About", "Settings", "Edit Script", "Open Script Folder", "Select Profile", "Select", "Events", "Checkmark"
+	
+### Themes
+Create a new folder in the "Themes" directory and put 11 icons named "On", "Off", "Events", "Select", "Checkmark", "Settings", "Exit", "Reload", "Edit Script", "Select Profile", "Open Script Folder" into the folder. To apply, select it from the dropdown menu in the GUI settings and press the "Save and Exit" or "Save" button.
+	
+### Tips
+  - Adding a detection delay of about 1000ms can help avoid detection failures caused by the detection message triggering before the window is fully created.
+  - If you have the choice, monitoring the window uses slightly fewer resources than monitoring the process.
+  - ??? apres test p-e pas finalement. Avoid using Sleep, WinWait, ProcessWait etc... commands in events functions and opt for detection delays/Timers instead.
+
+### Common mistakes
+  - Event Function name not matching with associated function.
+  - Error: Invalid property name in object literal. A comma is required at the end of each line when there are multiple line events.
+  
+  
+### Known Issues
   
 ### Copyright and License
   - MIT License
+  
+### Donation (PayPal)
+  - If you found this script useful and would like to donate. It would be greatly appreciated. Thank you! :smiley:
+    https://www.paypal.com/paypalme/martinchartier  
 
 ### Credits
 * **AutoHotkey**
   - Authors: Chris Mallett and Steve Gray (Lexikos), with portions by AutoIt Team and various AHK community members.
   - License: GNU General public license
   - Info and source code at: https://autohotkey.com/
-* **jNizM**
-  - DeviceIDFinder is a modified version of his script. (Example 2: Detect / Monitor Plug and Play device connections and removes)
-    https://www.autohotkey.com/boards/viewtopic.php?f=83&t=105171
-
-* **Thanks to AHK community members for the help**
-  - mikeyww, teadrinker, swagfag, just me, jNizM, FanaticGuru, sofista, boiler and others.
+  
+* **GetCommandLine by teadrinker. (Based on Sean and SKAN v1 code)**
+    https://www.autohotkey.com/boards/viewtopic.php?p=526409#p526409
+  
+* **Base64PNG_to_HICON by SKAN.**
+    https://www.autohotkey.com/boards/viewtopic.php?p=168658#p168658
+  
+* **DisplayObj by FanaticGuru. (inspired by tidbit and Lexikos v1 code)**
+    https://www.autohotkey.com/boards/viewtopic.php?p=507896#p507896
+ 
+* **HasVal by jNizM.**
+    https://www.autohotkey.com/boards/viewtopic.php?p=109617#p109617
