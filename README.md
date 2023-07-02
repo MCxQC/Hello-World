@@ -18,11 +18,6 @@ Adds a process event to monitor.
   >
   > The name of the function to call when the event is created/terminated.
 
-follow by "_Created"
-
-follow by _Terminated
-
-
 * **Event Name**
   > Type: String
   > 
