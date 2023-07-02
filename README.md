@@ -1,3 +1,23 @@
+# WinExeCommander	
+WinExeCommander makes it easier to call functions when processes/windows are created/terminated. The script is using Windows Management Instrumentation (WMI) to monitor process creation/deletion and the SetWinEventHook function to monitor windows events.
+
+## Requirement
+* AutoHotkey v2
+
+## Features
+* Call functions when processes/windows are created/terminated.
+* Select from various criteria, including WinTitle, WinClass, WinTitleMatchMode, ProcessName, ProcessPath, Hidden Window, Active Window, and additional parameters.
+* Enable or disable the monitoring of each "Event" using the tray menu, GUI, or method call.
+* Save monitoring profiles and switch between them using the tray menu, GUI, or method call.
+* Select different themes.
+
+## How to use it?
+* Install AutoHotKey v2.
+* Include the processes and/or windows to be monitored, along with their corresponding functions. Specify the commands to be executed when the Events are created or terminated.
+* Process and window properties required to be wrapped in curly brackets. (Object)
+* To retrieve informations when an "Event" is created, use the variables: "obj.ID", "obj.PID", "obj.WinGetTitle", "obj.WinGetClass", "obj.ProcessGetName", "obj.ProcessGetPath" etc...
+* To prevent any issues, do not include the standalone script in another script using #include and keep "MyEvents := EventsMonitoring()" unaltered. ???
+
 # Methods
 
 ## AddProcess
