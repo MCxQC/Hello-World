@@ -13,7 +13,7 @@ WinExeCommander makes it easier to call functions when processes/windows are cre
 
 ## How to use it?
 * Install AutoHotKey v2.
-* Include the processes and/or windows to be monitored, along with their corresponding functions. Specify the commands to be executed when the Events are created or terminated.
+* Include the processes and/or windows to be monitored, along with their corresponding functions. Specify the commands to be executed when the "Events" are created or terminated.
 * Process and window properties required to be wrapped in curly brackets. (Object)
 * To retrieve informations when an "Event" is created, use the variables: "obj.ID", "obj.PID", "obj.WinGetTitle", "obj.WinGetClass", "obj.ProcessGetName", "obj.ProcessGetPath" etc...
 * To prevent any issues, do not include the standalone script in another script using #include and keep "MyEvents := EventsMonitoring()" unaltered. ???
