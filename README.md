@@ -37,6 +37,9 @@ For example:
         Notepad_ProcessClose_Created(obj) => ProcessClose(obj.PID)
 
 
+include examples
+
+
 ## AddWindow
 Adds a window event to monitor that match the specified parameters..
 
@@ -88,10 +91,6 @@ Adds a window event to monitor that match the specified parameters..
 For example:
 
         Events.AddWindow({WinTitle:"Calculator", WinClass:"ApplicationFrameWindow", ProcessName:"ApplicationFrameHost.exe"}, "Calculator_WinMove", "Calculator_WinMove")	
-
-
-
-## Examples
 
 ## SetProfile
 
