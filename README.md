@@ -1,5 +1,5 @@
 ## AddProcess
-Adds a process matching the event criteria is created/terminated. Adds a process event to monitor.
+Adds a process event to monitor.
         
 	Events.AddProcess(Process Properties, Function, Event Name [, Instance Mode])
 
