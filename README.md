@@ -12,10 +12,6 @@
   > - ProcessName
   > - ProcessPath
 
-
-
-
-
 * **Function**
 
   > Type: String
@@ -28,14 +24,18 @@ follow by _Terminated
 
 
 * **Event Name**
-Type: String
-Name of the Event.
+  > Type: String
+  > 
+  > Name of the Event.
 
 * **Instance Mode**
-    - 1 = Call the "Function_Created" and "Function_Terminated" for every instance of the process. (Default)
-    - 2 = Call the "_Created" function only for the initial,   creation of the event the process,   . Call the "_Terminated" when the last instance of the process is terminated.
+  >  Type: Integer
+  > 
+  >  - 1 = Call the "Function_Created" and "Function_Terminated" for every instance of the process. (Default)
+  >  - 2 = Call the "_Created" function only for the initial,   creation of the event the process,   . Call the "_Terminated" when the last instance of the process is terminated.
 
 For example:
+
         Events.AddProcess({ProcessName:"notepad.exe"}, "Notepad_ProcessClose", "Notepad_ProcessClose", 2)
 
 
@@ -46,45 +46,58 @@ For example:
 ### Parameters
 
 * **Window Properties**
-Type: Object
-  - WinTitle
-  - WinTitleMatchMode
-    - 1 = A window's title must start with the specified WinTitle to be a match.
-    - 2 = A window's title can contain WinTitle anywhere inside it to be a match. (Default)
-    - 3 = A window's title must exactly match WinTitle to be a match.
-    - RegEx = Regular expression WinTitle matching.
-	
-  - WinClass
-  - ProcessName
-  - ProcessPath
-	
-  - DetectHiddenWindows
-    - 1 = Hidden windows are detected
-    - 0 = Hidden windows are not detected. (Default)
+  > Type: Object
+  >
+  > - WinTitle
+  > 
+  > - WinTitleMatchMode   
+  >
+  >    - **1:** A window's title must start with the specified WinTitle to be a match.
+  >
+  >    - **2**: A window's title can contain WinTitle anywhere inside it to be a match. (Default)
+  >
+  >    - **3:** A window's title must exactly match WinTitle to be a match.
+  >
+  >    - **RegEx:** Regular expression WinTitle matching.
+  >	
+  > - WinClass
+  >
+  > - ProcessName
+  >   
+  > - ProcessPath
+  >	
+  > - DetectHiddenWindows
+  >    - **1:** Hidden windows are detected
+  >    - **0:** Hidden windows are not detected. (Default)
 
 
 * **Function**
-Type: String
-The name of the function to call when the event is created/terminated.
+  > Type: String
+  > 
+  > The name of the function to call when the event is created/terminated.
 
 
-For example:	
+For example:
+
         Events.AddWindow({WinTitle:"Calculator", WinClass:"ApplicationFrameWindow", ProcessName:"ApplicationFrameHost.exe"}, "Calculator_WinMove", "Calculator_WinMove")	
 	
 * **Instance Mode**
-- 1 = Call "Function_Created" and "Function_Terminated" for every instance of the window matching the criteria. (Default)
-- 2 = Call "Function_Created" only for the initial instance of the window matching the criteria. Call the "Function_Terminated" when the last instance of the window matching the criteria is terminated.	
-- 3 = Call "Function_Created" and "Function_Terminated" when the window matching the criteria is activated/deactivated.
+  > Type: Integer
+  >    - **1:** Call "Function_Created" and "Function_Terminated" for every instance of the window matching the criteria. (Default)
+  >    - **2:** Call "Function_Created" only for the initial instance of the window matching the criteria. Call the "Function_Terminated" when the last instance of the window matching the criteria is terminated.	
+  >    - **3:** Call "Function_Created" and "Function_Terminated" when the window matching the criteria is activated/deactivated.
 
 * **Created Mode**
-- 1 = Call "Function_Created" when the window matching the window criteria is detected. (Default)
-- 2 = Call "Function_Created" only when a new window handle(ID) is detected.
-- 2 = Call "Function_Created" 
+  > Type: Integer
+  >    - **1:** Call "Function_Created" when the window matching the window criteria is detected. (Default)
+  >    - **2:** Call "Function_Created" only when a new window handle(ID) is detected.
+  >    - **3:** Call "Function_Created" 
 
 * **Terminated Mode**
-- 1 = Call "Function_Terminated" when the window is not found anymore, the window handle(ID) can still exists. (Default)
-- 2 = Call "Function_Terminated" only when the window handle(ID) is terminated.
-- 3 = Call "Function_Terminated" when the window is not found anymore or the window handle(ID) is terminated.
+  > Type: Integer
+  >    - **1:** Call "Function_Terminated" when the window is not found anymore, the window handle(ID) can still exists. (Default)
+  >    - **2:** Call "Function_Terminated" only when the window handle(ID) is terminated.
+  >    - **3:** Call "Function_Terminated" when the window is not found anymore or the window handle(ID) is terminated.
 
 
 * **Examples**
