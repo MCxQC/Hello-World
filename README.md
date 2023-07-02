@@ -1,6 +1,7 @@
 ## AddProcess
-
-        Events.AddProcess(Process Properties, Function, Event Name [, Instance Mode])
+Detects when the procees matching the "Event" criteria is created/terminated.
+        
+	Events.AddProcess(Process Properties, Function, Event Name [, Instance Mode])
 
 ### Parameters
 
