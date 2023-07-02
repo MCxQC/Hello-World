@@ -76,11 +76,6 @@ For example:
   > 
   > The name of the function to call when the event is created/terminated.
 
-
-For example:
-
-        Events.AddWindow({WinTitle:"Calculator", WinClass:"ApplicationFrameWindow", ProcessName:"ApplicationFrameHost.exe"}, "Calculator_WinMove", "Calculator_WinMove")	
-	
 * **Instance Mode**
   > Type: Integer
   >    - **1:** Call "Function_Created" and "Function_Terminated" for every instance of the window matching the criteria. (Default)
@@ -98,6 +93,11 @@ For example:
   >    - **1:** Call "Function_Terminated" when the window is not found anymore, the window handle(ID) can still exists. (Default)
   >    - **2:** Call "Function_Terminated" only when the window handle(ID) is terminated.
   >    - **3:** Call "Function_Terminated" when the window is not found anymore or the window handle(ID) is terminated.
+
+For example:
+
+        Events.AddWindow({WinTitle:"Calculator", WinClass:"ApplicationFrameWindow", ProcessName:"ApplicationFrameHost.exe"}, "Calculator_WinMove", "Calculator_WinMove")	
+
 
 
 * **Examples**
