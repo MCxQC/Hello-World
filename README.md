@@ -99,7 +99,6 @@ For example:
 
 ## Examples
 
-
 ## Methods
 
 ### SetProfile
@@ -160,7 +159,7 @@ Returns an array containing objects with all existing windows that match the spe
   > - **1:** A window's title must start with the specified WinTitle to be a match.
   > - **2**: A window's title can contain WinTitle anywhere inside it to be a match. (Default)
   > - **3:** A window's title must exactly match WinTitle to be a match.
-  >   **RegEx:** Regular expression WinTitle matching.
+  > - **RegEx:** Regular expression WinTitle matching.
 
 * **WinActive**
   > Type: String
@@ -171,10 +170,13 @@ Returns an array containing objects with all existing windows that match the spe
   > - **0:** Hidden windows are not detected. (Default)
 
 ### DisplayObj
+Display the information that can be retrieved when an Event is created or terminated
 
-        DisplayObj()
-	Display the information that can be retrieved when an Event is created or terminated. see Example #.	
-	
+	DisplayObj(Object)
+
+* **Object** 
+  > Type: Object	
+
 11 icons
 "Main", "Exit", "Reload", "About", "Settings", "Edit Script", "Open Script Folder", "Select Profile", "Select", "Events", "Checkmark"
 	
