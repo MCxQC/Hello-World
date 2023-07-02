@@ -58,14 +58,13 @@ For example:
   >    - **RegEx:** Regular expression WinTitle matching.
   >	
   > - WinClass
-  >
   > - ProcessName
   >   
   > - ProcessPath
   >	
   > - DetectHiddenWindows
-  >    - **1:** Hidden windows are detected
   >    - **0:** Hidden windows are not detected. (Default)
+  >    - **1:** Hidden windows are detected
 
 
 * **Function**
@@ -163,12 +162,13 @@ Returns an array containing objects with all existing windows that match the spe
 
 * **WinActive**
   > Type: Integer
-  > - **0:**
-  > - **1:**
+  > - **0**
+  > - **1**
+
 * **DetectHiddenWindows**
   > Type: String
-  > - **1:** Hidden windows are detected
   > - **0:** Hidden windows are not detected. (Default)
+  > - **1:** Hidden windows are detected
 
 ### DisplayObj
 Display the information that can be retrieved when an Event is created or terminated
