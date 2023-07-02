@@ -53,11 +53,8 @@ For example:
   > - WinTitleMatchMode   
   >
   >    - **1:** A window's title must start with the specified WinTitle to be a match.
-  >
   >    - **2**: A window's title can contain WinTitle anywhere inside it to be a match. (Default)
-  >
   >    - **3:** A window's title must exactly match WinTitle to be a match.
-  >
   >    - **RegEx:** Regular expression WinTitle matching.
   >	
   > - WinClass
@@ -84,15 +81,15 @@ For example:
 
 * **Created Mode**
   > Type: Integer
-  >    - **1:** Call "Function_Created" when the window matching the window criteria is detected. (Default)
-  >    - **2:** Call "Function_Created" only when a new window handle(ID) is detected.
-  >    - **3:** Call "Function_Created" 
+  > - **1:** Call "Function_Created" when the window matching the window criteria is detected. (Default)
+  > - **2:** Call "Function_Created" only when a new window handle(ID) is detected.
+  > - **3:** Call "Function_Created" 
 
 * **Terminated Mode**
   > Type: Integer
-  >    - **1:** Call "Function_Terminated" when the window is not found anymore, the window handle(ID) can still exists. (Default)
-  >    - **2:** Call "Function_Terminated" only when the window handle(ID) is terminated.
-  >    - **3:** Call "Function_Terminated" when the window is not found anymore or the window handle(ID) is terminated.
+  > - **1:** Call "Function_Terminated" when the window is not found anymore, the window handle(ID) can still exists. (Default)
+  > - **2:** Call "Function_Terminated" only when the window handle(ID) is terminated.
+  > - **3:** Call "Function_Terminated" when the window is not found anymore or the window handle(ID) is terminated.
 
 For example:
 
@@ -131,7 +128,7 @@ For example:
         !2::Events.SetEvent(1, "Notepad")
 
 ### ProcessFinder
-Return an array of 1 object containing the process information if the process is detected.
+Returns an array containing objects with all existing processes that match the specified parameters. If there is no matching process, an empty array is returned.
         
 	ProcessFinder(ProcessName, ProcessPath) 
 
@@ -141,12 +138,37 @@ Return an array of 1 object containing the process information if the process is
 * **ProcessPath**
   > Type: String    
     
-
-
 ### WindowFinder
+Returns an array containing objects with all existing windows that match the specified parameters. If there is no matching window, an empty array is returned.
+        
+	WindowFinder(WinTitle, WinClass, ProcessName, ProcessPath, WinTitleMatchMode, WinActive, DetectHiddenWindows)
+
+* **WinTitle**
+  > Type: String
   
-        WindowFinder(WinTitle, WinClass, ProcessName, ProcessPath, WinTitleMatchMode, WinActive, DetectHiddenWindows)
-    Return an array of object(s) with the window(s) information when detected.
+* **WinClass**
+  > Type: String
+
+* **ProcessName**
+  > Type: String
+
+* **ProcessPath**
+  > Type: String
+
+* **WinTitleMatchMode**
+  > Type: Integer, String
+  > - **1:** A window's title must start with the specified WinTitle to be a match.
+  > - **2**: A window's title can contain WinTitle anywhere inside it to be a match. (Default)
+  > - **3:** A window's title must exactly match WinTitle to be a match.
+  >   **RegEx:** Regular expression WinTitle matching.
+
+* **WinActive**
+  > Type: String
+
+* **DetectHiddenWindows**
+  > Type: String
+  > - **1:** Hidden windows are detected
+  > - **0:** Hidden windows are not detected. (Default)
 
 ### DisplayObj
 
