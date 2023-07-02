@@ -158,7 +158,7 @@ Returns an array containing objects with all existing windows that match the spe
   > - **1**
 
 * **DetectHiddenWindows**
-  > Type: String
+  > Type: Integer
   > - **0:** Hidden windows are not detected. (Default)
   > - **1:** Hidden windows are detected
 
