@@ -1,5 +1,5 @@
 ## AddProcess
-Adds a process event to monitor.
+Adds a process event to monitor that match the specified parameters.
         
 	Events.AddProcess(Process Properties, Function, Event Name [, Instance Mode])
 
@@ -36,7 +36,7 @@ For example:
 
 
 ## AddWindow
-Adds a window event to monitor.
+Adds a window event to monitor that match the specified parameters..
 
         Events.AddWindow(Window Properties, Function, Event Name [, Instance Mode, Created Mode, Terminated Mode, Delay])
 
