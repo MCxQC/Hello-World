@@ -27,7 +27,7 @@ Adds a process event to monitor.
   >  Type: Integer
   > 
   >  - 1 = Call the "Function_Created" and "Function_Terminated" for every instance of the process. (Default)
-  >  - 2 = Call the "_Created" function only for the initial,   creation of the event the process,   . Call the "_Terminated" when the last instance of the process is terminated.
+  >  - 2 = Call the "_Created" function only for the initial creation of the process. Call the "_Terminated" when the last instance of the process is terminated.
 
 For example:
 
