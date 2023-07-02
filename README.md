@@ -162,8 +162,9 @@ Returns an array containing objects with all existing windows that match the spe
   > - **RegEx:** Regular expression WinTitle matching.
 
 * **WinActive**
-  > Type: String
-
+  > Type: Integer
+  > - **0:**
+  > - **1:**
 * **DetectHiddenWindows**
   > Type: String
   > - **1:** Hidden windows are detected
