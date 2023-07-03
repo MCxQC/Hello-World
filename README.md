@@ -60,7 +60,6 @@ Adds a process event to monitor.
 		Events.AddProcess({ProcessName:"notepad.exe"}, "notepad", "notepad")
 		notepad_Created(obj) {
 
-			object_list(obj, "obj")
 			Tooltip(   
 				"ID: "          obj.PID "`n"
 				"WinTitle: "    obj.PPID "`n"
@@ -71,7 +70,6 @@ Adds a process event to monitor.
 
 		notepad_Terminated(obj) {
 
-			object_list(obj, "obj")
 			Tooltip(   
 				"ID: "          obj.PID "`n"
 				"WinTitle: "    obj.PPID "`n"
