@@ -196,10 +196,11 @@ Returns an array containing objects with all existing processes that match the s
 
 For example:
 
-	^8:: {
-                aObjProcessFinder := Events.ProcessFinder("notepad.exe") 
-                Tooltip(Events.Displayobj(aObjProcessFinder), 0, 0), SetTimer(ToolTip, -8000)
-        }
+	^8:: 
+	{
+		aObjProcessFinder := Events.ProcessFinder("notepad.exe") 
+		Tooltip(Events.Displayobj(aObjProcessFinder), 0, 0), SetTimer(ToolTip, -8000)
+	}
 
 ## WindowFinder
 Returns an array containing objects with all existing windows that match the specified parameters. If there is no matching window, an empty array is returned.
@@ -237,10 +238,11 @@ Returns an array containing objects with all existing windows that match the spe
 
 For example:
         
-	^9:: {
+	^9:: 
+	{
 		aObjWindowFinder := Events.WindowFinder(, "Chrome_WidgetWin_1", "chrome.exe") 
 		Tooltip(Events.Displayobj(aObjWindowFinder), 0, 0), SetTimer(ToolTip, -8000)
-        }
+	}
 	
 ## Themes
 Create a folder named "Themes" in the root directory. Within that folder, create another folder and place 11 icons named "Main", "Exit", "Reload", "About", "Settings", "Edit Script", "Open Script Folder", "Select Profile", "Select", "Events", "Checkmark"To apply, select it from the dropdown menu in the GUI settings and press the "Save and Exit" or "Save" button.
