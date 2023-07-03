@@ -5,23 +5,21 @@ WinExeCommander makes it easier to call functions when processes/windows are cre
 * AutoHotkey v2
 
 ## Features
-* Call functions when processes/windows are created/terminated.
 * Select from various criteria, including WinTitle, WinClass, WinTitleMatchMode, ProcessName, ProcessPath, Hidden Window, Active Window, and additional parameters.
-* Enable or disable the monitoring of each "Event" using the tray menu, GUI, or method call.
+* Enable or disable the monitoring of each event using the tray menu, GUI, or method call.
 * Save monitoring profiles and switch between them using the tray menu, GUI, or method call.
-* Select different themes.
+* Select themes.
 
 ## How to use it?
 * Install AutoHotKey v2.
-* Include the processes and/or windows to be monitored, along with their corresponding functions. Specify the commands to be executed when the "Events" are created or terminated.
+* Include the processes and/or windows to be monitored, along with their corresponding functions.
 * Process and window properties required to be wrapped in curly brackets. (Object)
-* To retrieve informations when an "Event" is created, use the variables: "obj.ID", "obj.PID", "obj.WinGetTitle", "obj.WinGetClass", "obj.ProcessGetName", "obj.ProcessGetPath" etc...
-* To prevent any issues, do not include the standalone script in another script using #include and keep "MyEvents := EventsMonitoring()" unaltered. ???
+* To call a function when the event is created/terminated, append "_Created", "_Terminated" to the function name.
 
 # Methods
 
 ## AddProcess
-Adds a process event to monitor that match the specified parameters.
+Adds a process event to monitor.
         
 	Events.AddProcess(Process Properties, Function, Event Name [, Instance Mode])
 
@@ -51,17 +49,39 @@ Adds a process event to monitor that match the specified parameters.
   >  - 1 = Call "Function_Created" and "Function_Terminated" for every instance of the process. (Default)
   >  - 2 = Call "Function_Created" only for the initial creation of the process. Call the "_Terminated" when the last instance of the process is terminated.
 
-For example:
+### Examples
+#1: Change the priority level of "mspaint.exe" to "BelowNormal" when the process is created.
+        
+        Events.AddProcess({ProcessName:"mspaint.exe"}, "mspaint_ProcessSetPriority", "mspaint_ProcessSetPriority")
+        mspaint_ProcessSetPriority_Created(obj) => ProcessSetPriority("BelowNormal", obj.PID)
 
-        Events.AddProcess({ProcessName:"notepad.exe"}, "Notepad_ProcessClose", "Notepad_ProcessClose")
-        Notepad_ProcessClose_Created(obj) => ProcessClose(obj.PID)
+#2: When the Notepad process is created, show a tooltip containing relevant process information.
 
+		Events.AddProcess({ProcessName:"notepad.exe"}, "notepad", "notepad")
+		notepad_Created(obj) {
 
-include examples
+			object_list(obj, "obj")
+			Tooltip(   
+				"ID: "          obj.PID "`n"
+				"WinTitle: "    obj.PPID "`n"
+				"WinClass: "    obj.ProcessName "`n"
+				"Status: "      obj.Status
+				,0,0), SetTimer(ToolTip, -8000)
+		}
 
+		notepad_Terminated(obj) {
+
+			object_list(obj, "obj")
+			Tooltip(   
+				"ID: "          obj.PID "`n"
+				"WinTitle: "    obj.PPID "`n"
+				"WinClass: "    obj.ProcessName "`n"
+				"Status: "      obj.Status
+				,0,0), SetTimer(ToolTip, -8000)
+		}
 
 ## AddWindow
-Adds a window event to monitor that match the specified parameters..
+Adds a window event to monitor.
 
         Events.AddWindow(Window Properties, Function, Event Name [, Instance Mode, Created Mode, Terminated Mode, Delay])
 
@@ -98,8 +118,8 @@ Adds a window event to monitor that match the specified parameters..
 
 * **Created Mode**
   > Type: Integer
-  > - **1:** Call "Function_Created" when the window matching the window criteria is detected. (Default)
-  > - **2:** Call "Function_Created" only when a new window handle(ID) is detected.
+  > - **1:** Call "Function_Created" when a window matching the window criteria is created. (Default)
+  > - **2:** Call "Function_Created" only when a new window handle(ID) is created.
   > - **3:** Call "Function_Created" 
 
 * **Terminated Mode**
@@ -108,10 +128,38 @@ Adds a window event to monitor that match the specified parameters..
   > - **2:** Call "Function_Terminated" only when the window handle(ID) is terminated.
   > - **3:** Call "Function_Terminated" when the window is not found anymore or the window handle(ID) is terminated.
 
-For example:
+### Examples
+#1: Set WordPad to always be on top when the window is created.
+        
+	Events.AddWindow({ProcessName:"wordpad.exe"}, "WordPad_WinSetAlwaysOnTop", "WordPad_WinSetAlwaysOnTop")
+	WordPad_WinSetAlwaysOnTop_Created(obj) => WinSetAlwaysOnTop(1, obj.ID)	
+		
+		
+#2: Show a tooltip containing relevant window information every time the Google Chrome window is activated/deactivated.
 
-        Events.AddWindow({WinTitle:"Calculator", WinClass:"ApplicationFrameWindow", ProcessName:"ApplicationFrameHost.exe"}, "Calculator_WinMove", "Calculator_WinMove")	
+	Events.AddWindow({ProcessName:"chrome.exe", WinClass:"Chrome_WidgetWin_1"}, "Google_Chrome_Active", "Google_Chrome_Active", 3)
+	Google_Chrome_Active_Created(obj) {
 
+		Tooltip(   
+			"ID: "          obj.ID "`n"
+			"WinTitle: "    obj.WinTitle "`n"
+			"WinClass: "    obj.WinClass "`n"
+			"ProcessPath: " obj.ProcessPath "`n"
+			"Status: "      obj.Status
+			,0,0), SetTimer(ToolTip, -8000)
+	}
+
+	Google_Chrome_Active_Terminated(obj) {
+
+		Tooltip(   
+			"ID: "          obj.ID "`n"
+			"WinTitle: "    obj.WinTitle "`n"
+			"WinClass: "    obj.WinClass "`n"
+			"ProcessPath: " obj.ProcessPath "`n"
+			"Status: "      obj.Status
+			,0,0), SetTimer(ToolTip, -8000)
+	}		
+		
 ## SetProfile
 
         SetProfile(Profile Name)
@@ -135,7 +183,7 @@ For example:
 
 For example:
 
-        !2::Events.SetEvent(1, "Notepad_ProcessClose")
+        !2::Events.SetEvent(1, "mspaint_ProcessSetPriority")
 
 ## ProcessFinder
 Returns an array containing objects with all existing processes that match the specified parameters. If there is no matching process, an empty array is returned.
@@ -147,6 +195,12 @@ Returns an array containing objects with all existing processes that match the s
 
 * **ProcessPath**
   > Type: String    
+
+For example:
+        ^8:: {
+			aObjProcessFinder := Events.ProcessFinder("notepad.exe") 
+			Tooltip(Events.Displayobj(aObjProcessFinder), 0, 0), SetTimer(ToolTip, -8000)
+		}
 
 ## WindowFinder
 Returns an array containing objects with all existing windows that match the specified parameters. If there is no matching window, an empty array is returned.
@@ -182,37 +236,20 @@ Returns an array containing objects with all existing windows that match the spe
   > - **0:** Hidden windows are not detected. (Default)
   > - **1:** Hidden windows are detected
 
-## DisplayObj
-Converts an object to a string.
-
-	DisplayObj(Object)
-
-* **Object** 
-  > Type: Object	
-
-11 icons
-"Main", "Exit", "Reload", "About", "Settings", "Edit Script", "Open Script Folder", "Select Profile", "Select", "Events", "Checkmark"
+For example:
+        ^9:: {
+			aObjWindowFinder := Events.WindowFinder(, "Chrome_WidgetWin_1", "chrome.exe") 
+			Tooltip(Events.Displayobj(aObjWindowFinder), 0, 0), SetTimer(ToolTip, -8000)
+        }
 	
 ## Themes
-Create a new folder in the "Themes" directory and put 11 icons named "On", "Off", "Events", "Select", "Checkmark", "Settings", "Exit", "Reload", "Edit Script", "Select Profile", "Open Script Folder" into the folder. To apply, select it from the dropdown menu in the GUI settings and press the "Save and Exit" or "Save" button.
-	
-## Tips
-  - Adding a detection delay of about 1000ms can help avoid detection failures caused by the detection message triggering before the window is fully created.
-  - If you have the choice, monitoring the window uses slightly fewer resources than monitoring the process.
-  - ??? apres test p-e pas finalement. Avoid using Sleep, WinWait, ProcessWait etc... commands in events functions and opt for detection delays/Timers instead.
+Create a folder named "Themes" in the root directory. Within that folder, create another folder and place 11 icons named "Main", "Exit", "Reload", "About", "Settings", "Edit Script", "Open Script Folder", "Select Profile", "Select", "Events", "Checkmark"To apply, select it from the dropdown menu in the GUI settings and press the "Save and Exit" or "Save" button.
 
-## Common mistakes
-  - Event Function name not matching with associated function.
-  - Error: Invalid property name in object literal. A comma is required at the end of each line when there are multiple line events.
-  
-  
-## Known Issues
-  
 ## Copyright and License
   - MIT License
   
 ## Donation (PayPal)
-  - If you found this script useful and would like to donate. It would be greatly appreciated. Thank you! :smiley:
+  - If you found this script useful and would like to donate. It would be greatly appreciated. Thank you!
     https://www.paypal.com/paypalme/martinchartier  
 
 ## Credits
