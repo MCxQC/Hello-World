@@ -197,10 +197,11 @@ Returns an array containing objects with all existing processes that match the s
   > Type: String    
 
 For example:
-        ^8:: {
-			aObjProcessFinder := Events.ProcessFinder("notepad.exe") 
-			Tooltip(Events.Displayobj(aObjProcessFinder), 0, 0), SetTimer(ToolTip, -8000)
-		}
+
+	^8:: {
+                aObjProcessFinder := Events.ProcessFinder("notepad.exe") 
+                Tooltip(Events.Displayobj(aObjProcessFinder), 0, 0), SetTimer(ToolTip, -8000)
+        }
 
 ## WindowFinder
 Returns an array containing objects with all existing windows that match the specified parameters. If there is no matching window, an empty array is returned.
@@ -237,9 +238,10 @@ Returns an array containing objects with all existing windows that match the spe
   > - **1:** Hidden windows are detected
 
 For example:
-        ^9:: {
-			aObjWindowFinder := Events.WindowFinder(, "Chrome_WidgetWin_1", "chrome.exe") 
-			Tooltip(Events.Displayobj(aObjWindowFinder), 0, 0), SetTimer(ToolTip, -8000)
+        
+	^9:: {
+		aObjWindowFinder := Events.WindowFinder(, "Chrome_WidgetWin_1", "chrome.exe") 
+		Tooltip(Events.Displayobj(aObjWindowFinder), 0, 0), SetTimer(ToolTip, -8000)
         }
 	
 ## Themes
