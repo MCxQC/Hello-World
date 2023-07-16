@@ -271,3 +271,14 @@ Create a folder named "Themes" in the root directory. Within that folder, create
  
 * **HasVal by jNizM.**
     https://www.autohotkey.com/boards/viewtopic.php?p=109617#p109617
+
+* **Instance Mode**
+  >  Type: Integer
+  > 
+  >  - **1:** Call "Function_Created" and "Function_Terminated" for every instance of the process. (Default)
+  >  - **2:** Call "Function_Created" only for the initial creation of the process. Call the "_Terminated" when the last instance of the process is terminated.
+
+* **Created Mode**
+  > Type: Integer
+  > - **1:** Call "Function_Created" for every created instance of the process. (Default)
+  > - **2:** Call "Function_Created" only for the initial creation of the process.
