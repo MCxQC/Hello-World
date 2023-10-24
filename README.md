@@ -1,3 +1,6 @@
+[Markdown - Style Text](#[Link](https://github.com/fefong/markdown_readme#anchor-links))
+
+
 # WinExeCommander	
 WinExeCommander is an AutoHotkey script to simplify the calling of functions when windows/processes are created/terminated. Devices are connected/disconnected.
 
