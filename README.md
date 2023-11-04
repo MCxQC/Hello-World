@@ -1,6 +1,3 @@
-[Markdown - Style Text](#[Link](https://github.com/fefong/markdown_readme#anchor-links))
-
-
 # WinExeCommander	
 WinExeCommander is an AutoHotkey script to simplify the calling of functions when windows/processes are created/terminated. Devices are connected/disconnected.
 
@@ -8,34 +5,71 @@ WinExeCommander is an AutoHotkey script to simplify the calling of functions whe
 * AutoHotkey v2
 
 ## Features
-* Select from various criteria, including WinTitle, WinClass, WinTitleMatchMode, ProcessName, ProcessPath, Active/Maximize/Hidden Window and additional parameters.
-* Enable or disable the monitoring of individual events using the tray menu, GUI, or method call.
-* Save monitoring profiles and switch between them using the tray menu, GUI, or method call.
-* Select themes.
+* Select from various criteria, including WinTitle, WinClass, WinTitleMatchMode, Process Name, Process Path, Active/Maximize/Hidden Window and additional parameters.
+* Enable or disable the monitoring of individual events using the tray menu, user interface (GUI), or method call.
+* Save profiles and load them via the tray menu, user interface (GUI), or method call.
+* Themes Customization.
+
+# Supported devices
+USB, Bluetooth, HDMI etc...
 
 ## How to use it?
 
-* Create an Event
-  - Double click on the tray icon or right-click on the icon, click "Event Manager" and click on the button "Add Event".
-  - Select window, process or device from the top dropdownlist.
+* Add an Event
+  - Double-click the tray icon or right-click on it and choose "Event Manager".
+  - Click the "Add Event" button.
+  - Choose Window, Process, or Device from the top dropdown list.
   - To fill the edit fields, you can manually enter data, double-click on a listview item, or right-click on an item and select "Fill Edit Fields with Row Content.
 
-* Create function associated with the Event
-  - Append "_Created" and/or "_Terminated" to the event function name. (see examples)
+* Edit an Event
+  - Either double-click on it in the list or right-click and choose "Edit Event."
+
+* Write a function associated with the Event.
+  - Write a function to call when the Event is created and/or terminated. Append "_Created" or "_Terminated" to the event function name.
+
+For example:
+ 
+Function name:
+Notepad
+ 
+	Notepad_Created(obj)
+	{
+		<Insert code here>
+	}
+	
+* Start with Windows
+
+* To identify a device
+  - Open the "Event Manager"
+  - Click "Add Event"
+  - In the device section, check if the device is listed.
+  - Alternatively, run "DeviceInfoFinder.ahk", which is accessible from the "Tools" tray menu item.
+  
+* Loading Profiles
+The profile contains Events, Period WMI and Windows Events. By default, when loading a profile, the existing events will remain the same, and only the event states are loaded. In the settings, you can choose whether to load the Period WMI and Windows Events or not. Enabling "Replace All Events" will replace all existing events with those from the profile.
+
+	
+	
+	 
+# Modes
+Tooltip debug masure sure function is not trigere twive
 
 
-to be called when an Event is created and/or Terminated. 
-
-Device
-Check if see device in the list when connected altenatively getinfofinder from tray menu tools
-
+	
+	
+	
+# Themes
+  - Create a folder named 'Themes' in the root directory if it has not already been created.
+  - Within that folder, create another folder and place 14 icons named: 'Main', 'Loading', 'Exit', 'Reload', 'About', 'Settings', 'Tools', 'Edit Script', 'Open Script Folder', 'Select Profile', 'Select', 'Events', 'Checkmark' and 'Plus'.
+  - To apply, select it from the dropdown menu in the settings.  
+  
 ## Event Parameters
   > - **Event Name**
-  >    - Name of the Event.
   >
   > - **Function**
   >    - The name of the function to call when the Event is created/terminated. To call the function, append "_Created" and/or "_Terminated" to the function name.
   >
+
 ### Window Parameters
   > - **WinTitle**
   > - **WinClass**
@@ -54,7 +88,7 @@ Check if see device in the list when connected altenatively getinfofinder from t
   > 
   > - **WinActive**   
   >    - **0** Not monitoring if the window is active or not. (Default)
-  >    - **1** Call "Function_Created" when the window becomes active. Call "Function_Terminated" when the window stops being active.
+  >    - **1** Call "Function_Created" on window activation. Call "Function_Terminated" when it deactivates. Setting WinActive to 1 automatically sets the mode to 4, and vice versa.
   > 
   > - **WinMinMax** 
   >    - **Null:** Not monitoring WinMinMax
@@ -63,43 +97,186 @@ Check if see device in the list when connected altenatively getinfofinder from t
   >    - **-1:** The window is minimized.
   >   
   > - **Monitoring** 
+  >    - **WinEvent** (Default)
+  >        - SetWinEventHook. Sets an event hook function for a range of Windows Events.
   >    - **Timer**
   >        - Check for the existence of the window at a specified time interval.
-  >    - **WinEvent**
-  >        - SetWinEventHook. Sets an event hook function for a range of Windows Events, which means the script doesn't have to waste resources by constantly checking for the existence of the window.
   >
   > - **Mode** 			
   >    - **1:** Call "Function_Created" when a new window handle (ID) is detected. Call "Function_Terminated" for every window handle (ID) terminated. (Default)
   >    - **2:** Call "Function_Created" only for the initial window handle (ID) detected. Call "Function_Terminated" only when the last window handle (ID) is terminated.	
   >    - **3:** Call "Function_Created" when a new window handle (ID) detected. Call "Function_Terminated" only when the last window handle (ID) is terminated.		
-  >    - **4:** Call "Function_Created" when the window is activated. Call "Function_Terminated" when the window is desactivated. Vice versa
-  >    - **5:** Call "Function_Created" for every window detected. Call "Function_Terminated" for every window that is not detected anymore.
-  >    - **6:** Call "Function_Created" only for the initial window detected. Call "Function_Terminated" only when the last window is not detected anymore.
-  >    - **7:** Call "Function_Created" for every window detected. Call "Function_Terminated" only when the last window is not detected anymore.
+  >    - **4:** Call "Function_Created" for every window detected. Call "Function_Terminated" for every window that is not detected anymore.
+  >    - **5:** Call "Function_Created" only for the initial window detected. Call "Function_Terminated" only when the last window is not detected anymore.
+  >    - **6:** Call "Function_Created" for every window detected. Call "Function_Terminated" only when the last window is not detected anymore.
   >   
   > - **Period/Delay**
-  >    - Period: The interval, in milliseconds, for checking the existence of the event.
-  >    - Delay (WinEvent, DeviceChange): The maximum delay, in milliseconds, for checking the existence of the event.
+  >    - Period: The interval (in milliseconds) to check for the window's existence.
+  >    - Delay (WinEvent): The maximum delay (in milliseconds) to check for the window's existence.
+  
+  
+  remove
+    >    - **4:** Call "Function_Created" on window activation. Call "Function_Terminated" when it deactivates. Setting the mode to 4 automatically sets WinActive to 1, and vice versa.
+  
+  
+  Function obj param
+  
+<obj> = <Object>
+.<DetectHiddenWindows> = 0
+.<Elevated> = No
+.<EventName> = DebugVars_WinMove
+.<EventType> = Window
+.<Function> = DebugVars_WinMove
+.<ID> = 4930446
+.<Mode> = 3
+.<Monitoring> = WinEvent
+.<Period> = 25
+.<PID> = 13520
+.<ProcessName> = Radial menu.exe
+.<ProcessPath> = C:\Programmes\Radial menu v4\Radial menu.exe
+.<Status> = Created
+.<WinActive> = 0
+.<WinClass> = AutoHotkeyGUI
+.<WinMinMax> = 
+.<WinTitle> = Variables
+.<WinTitleMatchMode> = 2
+  
+  
 
 ### Process Parameters
   > - **Process Name**
   > - **Process Path**
   >
   > - **Monitoring** 
+  >    - **WMI** (Default)
+  >    		- Check for the existence of the process at a specified time interval using WMI Provider Host process.
   >    - **Timer**
-  >        - Check for the existence of the event at a specified time interval using Autohotkey SetTimer function.
-  >    - **WMI**
-  >        - Check for the existence of the event at a specified time interval using WMI Provider Host process.
+  >        - Check for the existence of the process at a specified time interval using Autohotkey SetTimer function.
   >
   > - **Period**
-  >    - Polling Interval, in milliseconds, at which WMI checks for the presence of the process.
+  >    - Period: The interval (in milliseconds) to check for the presence of the process.
   >
   > - **Mode**
   >    - **1:** Call "Function_Created" when a new process ID (PID) is created. Call "Function_Terminated" for every process ID (PID) terminated. (Default)
   >    - **2:** Call "Function_Created" only for the initial process ID (PID) created. Call "Function_Terminated" only when the last process ID (PID) is terminated.
   >    - **3:** Call "Function_Created" for every process ID (PID) created. Call "Function_Terminated" only when the last process ID (PID) is terminated.
 
+
+
+<obj> = <Object>
+.<CmdLine> = "C:\Windows\System32\notepad.exe" 
+.<Elevated> = No
+.<EventName> = Notepad
+.<EventType> = Process
+.<Function> = Notepad
+.<Mode> = 3
+.<Monitoring> = WMI
+.<Period> = 1500
+.<PID> = 8132
+.<PPID> = 3900
+.<ProcessName> = notepad.exe
+.<ProcessPath> = C:\Windows\System32\notepad.exe
+.<Status> = Terminated
+
+
+
+
+### Device Parameters
+  > - **DeviceName**
+  >    - Names of the device.
+  >
+  > - **DeviceID**
+  >    - ID of the device.
+  >
+  > - **Monitoring** 
+  >    - **DeviceChange** (Default)
+  >        - Send message notifications when there is a change to the hardware configuration of a device or the computer.
+  >    - **Timer**
+  >        - Check for the existence of the window at a specified time interval.
+  > 
+  > - **Period/Delay**
+  >    - Period: The interval (in milliseconds) to check for the device's existence.
+  >    - Delay (DeviceChange): The maximum delay (in milliseconds) to check for the device's existence.
+  
+  
+  
+<obj> = <Object>
+.<DeviceID> = SWD\MMDEVAPI\{0.0.0.00000000}.{3278E776-26F1-4931-AFFB-06D6C653C12E}
+.<DeviceName> = A90 Pro (A90 Pro Stereo)
+.<EventName> = Bluetooth_Earbuds
+.<EventType> = Device
+.<Function> = Bluetooth_Earbuds
+.<Monitoring> = DeviceChange
+.<Period> = 1250
+.<Status> = Terminated
+  
+  
+
 # Methods
+
+## SetProfile
+
+	SetProfile(Profile Name)
+  
+  > - **Profile Name**	
+  >    - Type: String
+  
+For example:
+
+	!1::WinExeCmd.SetProfile("Disable All Events")
+
+## SetEvent
+	SetEvent(State, Event Name)
+
+  > - **State**
+  >    - Type: Integer
+  >    - **0:** Disable
+  >    - **1:** Enable
+  >
+  > - **Event Name**
+  >    - Type: String
+
+For example:
+
+	!2::WinExeCmd.SetEvent(1, "Calculator_WinSetAlwaysOnTop")	
+	
+## SetEventMonitoring
+	SetEventMonitoring(EventName, Monitoring, Period)
+
+  > - **EventName**
+  >    - Type: String
+  >    - Name of the Event.
+  >
+  > - **Monitoring**
+  >    - Type: String
+  >    - Method for Monitoring event. Process (Timer or WMI), Window (Timer or WinEvent) and Device (Timer or DeviceChange)
+  >  
+  > - **Period**
+  >    - Type: Integer
+  >    - Period: The interval (in milliseconds) to check for the event's existence.
+
+only for
+process, windows device  timers
+
+and process wmi
+
+DeviceChange, ignore period set to default.
+
+
+
+  > - **Period/Delay**
+  >    - Type: Integer
+  >    - Period: The interval (in milliseconds) to check for the event's existence.
+  >    - Delay (WinEvent, DeviceChange): The maximum delay (in milliseconds) to check for the event's existence.
+
+
+
+## SetWMIperiodInterval
+	SetWMIperiodInterval(Period)
+
+  > - **Period**
+  >    - Type: Integer
+
 
 ## ProcessFinder
 Returns an array containing objects with all existing processes that match the specified parameters. If there are no matching processes, an empty array is returned.
@@ -169,154 +346,77 @@ For example:
 	}
 
 ## DeviceFinder
-Returns an array containing objects with the device matching the specified parameters. If there are no matching device, an empty array is Returned.
+Returns an array containing objects with the device matching the specified parameters. If there are no matching device, an empty array is returned.
 
-	DeviceFinder(DeviceID, DeviceName)
+	DeviceFinder(DeviceName, DeviceID)
   
-  > - **DeviceID**
-  >    - ID of the device
-  >
   > - **DeviceName**
-  >    - Names of the device. The same name is used to launch the associated device's actions.
+  >    - Names of the device.
   >
+  > - **DeviceID**
+  >    - ID of the device.
 
 For example:
 
  	^0::
 	{
-		aObjDeviceFinder := WinExeCmd.DeviceFinder('USBSTOR\DISK&VEN_KINGSTON&PROD_DATATRAVELER_3.0&REV_\E0D55EA573DCF450E97C104C&0')
+		aObjDeviceFinder := WinExeCmd.DeviceFinder(,'USBSTOR\DISK&VEN_KINGSTON&PROD_DATATRAVELER_3.0&REV_\E0D55EA573DCF450E97C104C&0')
 		Tooltip(WinExeCmd.Displayobj(aObjDeviceFinder), 0, 0), SetTimer(ToolTip, -8000)
 	}
-
-## SetProfile
-
-	SetProfile(Profile Name)
   
-  > - **Profile Name**	
-  >    - Type: String
   
-For example:
-
-	!1::WinExeCmd.SetProfile("Disable All Events")
-
-## SetEvent
-	SetEvent(State, Event Name)
-
-  > - **State**
+ ## DisplayObj(Obj)
+ Display contents of objects
+ 
+  > - **Obj**
+  >    - Type: Object
+  
+ ## IsProcessElevated(PID)
+ Check if a process is elevated.
+  
+  > - **PID**
   >    - Type: Integer
-  >    - **0:** Disable
-  >    - **1:** Enable
-  >
-  > - **Event Name**
-  >    - Type: String
-
-For example:
-
-	!2::WinExeCmd.SetEvent(1, "Calculator_WinSetAlwaysOnTop")	
-	
-## SetEventMonitoring
-	SetEventMonitoring(EventName, Monitoring, Period)
-
-  > - **EventName**
-  >    - Type: String
-  >    - Name of the Event.
-  >
-  > - **Monitoring**
-  >    - Type: String
-  >    - Method for Monitoring event. Process (Timer or WMI), Window (Timer or WinEvent) and Device (Timer or DeviceChange)
-  >  
-  > - **Period/Delay**
+  
+  For example:
+  
+	MsgBox IsProcessElevated(25884)
+  
+ ## GetCommandLine(PID)
+ Retrieves a start-up command-line of an application
+  
+  > - **PID**
   >    - Type: Integer
-  >    - Period: The interval, in milliseconds, for checking the existence of the event.
-  >    - Delay (WinEvent, DeviceChange): The maximum delay, in milliseconds, for checking the existence of the event.
+  
+ For example:
+  
+	MsgBox IsProcessElevated(25884)
+  
+ 
+# Additional Notes
 
-## Profiles
-By default
-enabling profileLoadEvents will remove all currents events and replce and load all event in the profiles
-	
-	
-	
-## Themes
-Create a folder named "Themes" in the root directory. Within that folder, create another folder and place 12 icons named "Main", "Exit", "Reload", "About", "Settings", "Tools", "Edit Script", "Open Script Folder", "Select Profile", "Select", "Events" and "Checkmark". To apply, select it from the dropdown menu in the GUI settings and press the "Save and Exit" or "Save" button.
+- How do I work around problems caused by User Account Control (UAC)?
+By default, User Account Control (UAC) protects "elevated" programs (that is, programs which are running as admin) from being automated by non-elevated programs, since that would allow them to bypass security restrictions. Common workarounds can be found here:
 
+Frequently Asked Questions (FAQ)
+https://www.autohotkey.com/docs/v2/FAQ.htm
 
+## Device
+- The device ID of certain devices might change, so it could be better to select only the device name. I'm not sure which device is affected or the reason behind it. I tested about a dozen devices, and the issue only occurred with a TV connected via HDMI.
 
-## Additional Notes
+# Known Issue:
+If the script closes abruptly, the script's WMI event registrations might not unregister properly. 
+This can cause "WMI Provider Host" (WmiPrvSE.exe) to continue consuming CPU usage even if the script is no longer running. You can monitor it 
+by checking the CPU usage of "WMI Provider Host" in Task Manager. To restore "WMI Provider Host" to its normal behavior, you can either restart the 
+Windows Management Instrumentation service or restart the computer.
 
-Notes
-Single instance
+Restart wmi button
 
-;==============================================
+Press the Windows Key + R, type in services.msc and press Enter. Locate the Service    Windows Management Instrumentation to WMI Performance Adapter (Windows changes the wmi service name ?)
 
-Elevated issue:
-Run with UI acces ?
-UI acces is returning command line
-wmi elevated process not returning command line
-timer elevated process not returning command line and PPID
-WMI Limitation:
-When monitoring a process with Administrator rights (elevated), selecting the process path will not work. 
-Instead, only select the process name or monitor the process with a timer.
-This limitation does not apply when using a timer
-WMI Limitation:
-When monitoring a process with Administrator rights (elevated). Can't retrieve the command line
+Command to restart the Windows Management Instrumentation service:
+RunWait('*RunAs Powershell.exe -Command "Restart-Service -Name winmgmt -Force"',, 'Hide')
 
-Limitation- Process timer. program run as admin are not detected.
-New mode for Process timer admin ? timer mode 4
-
-wmi doesnt work with elevated 
-TileIconifier.exe wmi doesnt work ?
-elevated  exe doesn't get process path. fixed
-
-Elevated Process and Window ?
-The script to also run elevated
-Run scripts as administrator
-Administrator rights (elevated)
-
-By default, User Account Control (UAC) protects "elevated" programs (that is, programs which are running as admin) from being automated by non-elevated programs, since that would allow them to bypass security restrictions.
-Recommended: Launch another script as admin to interact with the "elevated" program.
-
-;==============================================
-
-test sending object to another script. mod doc accordingly
-
-
-Window
-
-window events not sending message game fullscreen tester.
-
-  > - Known issues and limitations
-  > - WinMinMax - Universal Windows Platform (UWP) apps encounter an issue, as it fails to send window events messages when clicking the Maximize/Restore Down button, resulting in the function not being called.
-
-Process
-
-
-WMI Limitation:
-When monitoring a process with Administrator rights (elevated), selecting the process path will not work. 
-
-Instead, only select the process name or monitor the process with a timer.
-This limitation does not apply when using a timer
-
-
-
-Device
-
-The device ID of certain devices might change, so it could be better to select only the device name. I'm not sure which device is affected or the reason behind it. I tested about a dozen devices, and the issue only occurred with TVs connected via HDMI.
-
-
-Ressouce usage
-
-* Monitoring processes use a higher amount of resources (WMI Provider Host process), consuming approximately 0.5/1% of CPU usage on a budget CPU. To minimize resource usage, always consider monitoring the window instead of the process when possible.
-
-If you have the choice, monitoring the window uses slightly fewer resources than monitoring the process.
-
-SetWinEventHook. Sets an event hook function for a range of Windows Events, which means the script doesn't have to waste resources by constantly checking for the existence of the window.
-
-tips/tkings to know
-intended to run as a standalone script.
-avoid. msgbox/dialog box. 
-multithreads limitation. more complex function. dont hesitate launch anothet script.
-
-
+Fix with window update ?
 
 ## Donation (PayPal)
   - If you found this script useful and would like to donate. It would be greatly appreciated. Thank you!
