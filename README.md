@@ -10,7 +10,7 @@ WinExeCommander is an AutoHotkey script to simplify the execution of functions u
   - Window creation/termination.
   - Device connection/disconnection.
 
-* Select from various criteria, including WinTitle, WinClass, WinTitleMatchMode, Process Name, Process Path, active/maximize/hidden window and additional parameters.
+* Select from various criteria, including wintitle, winclass, process name, process path, active/maximize/hidden window and additional parameters.
 * Enable or disable the monitoring of individual events using the tray menu, user interface (GUI), or method call.
 * Save profiles and load them via the tray menu, user interface (GUI), or method call.
 * Themes Customization.
@@ -21,16 +21,16 @@ USB, Bluetooth, HDMI etc...
 ## How to use it?
 
 * Add an Event
-  - Double-click the tray icon or right-click on it and choose 'Event Manager'.
+  - Double-click the tray icon or right-click on it and choose "Event Manager".
   - Click the "Add Event" button.
   - Choose Window, Process, or Device from the top dropdown list.
-  - To fill the edit fields, you can manually enter data, double-click on a listview item, or right-click on an item and select 'Fill Edit Fields with Row Content'.
+  - To fill the edit fields, you can manually enter data, double-click on a listview item, or right-click on an item and select "Copy Row Data to Edit Fields".
 
 * Edit an Event
-  - Either double-click on it in the list or right-click and choose 'Edit Event'.
-
-* Write a function associated with the Event.
-  - Write a function to call when the Event is created and/or terminated. Append '_Created' or '_Terminated' to the event function name.
+  - Either double-click on it in the list or right-click and choose "Edit Event".
+  
+* Write a function associated with the event.
+  - In the file WinExeCommander.ahk, create a function to be called when the event is created or terminated. Append "_Created" or "_Terminated" to the event function name.
 
 For example:
  
@@ -42,31 +42,38 @@ Notepad
 		<Insert code here>
 	}
 	
+	Notepad_Terminated(mEvent)
+	{
+		<Insert code here>
+	}	
+	
 * Reload the script.	
 
 * To identify a device
-  - Open the 'Event Manager'
-  - Click 'Add Event'
+  - Open the "Event Manager"
+  - Click "Add Event"
   - In the device section, check if the device is listed.
-  - Alternatively, run 'DeviceInfoFinder.ahk', which is accessible from the 'Tools' tray menu item.
+  - Alternatively, run "DeviceInfoFinder.ahk", found in the "Tools" tray menu, menubar, and the device section.
   
 * Loading Profiles
-  - The profile contains Events, Period WMI and the Windows Events. By default, when loading a profile, the existing events will remain the same, and only the event states are loaded. In the settings, you can choose whether to load the Period WMI and Windows Events or not. Enabling 'Replace All Events' will replace all existing events with those from the profile.
+  - The profile contains events, period WMI and the windows events. By default, when loading a profile, the existing events will remain the same, and only the event states are loaded. In the settings, you can choose whether to load the period WMI and windows events or not. Enabling "Replace All Events" will replace all existing events with those from the profile.
 
-* Themes cretation
-  - Create a folder named 'Themes' in the root directory if it has not already been created.
-  - Within that folder, create another folder and place 14 icons named: 'about', 'checkmark', 'edit', 'events', 'exit', 'folder', 'loading', 'main', 'plus', 'profile', 'reload', 'select', 'settings', 'tools'.
+* Applying Changes
+  - To apply modifications, make sure to click the "Apply" button after creating or modifying an event, changing the WMI period, loading a profile from the event manager GUI etc...
+
+* Themes creation
+  - Create a folder named "Themes" in the root directory if it has not already been created.
+  - Within that folder, create another folder and place 14 icons named: "about", "checkmark", "edit", "events", "exit", "folder", "loading", "main", "plus", "profile", "reload", "select", "settings", "tools".
   - To apply, select it from the dropdown menu in the settings.  
   
 * Start with Windows
-
-To automatically run this script on startup, add its shortcut to the Startup folder.  
+  - To automatically run this script on startup, add its shortcut to the Startup folder.  
   
 ## Event Parameters
   > - **Event Name**
   >
   > - **Function**
-  >    - The name of the function to call when the Event is created/terminated. To call the function, append '_Created' and/or '_Terminated' to the function name.
+  >    - The name of the function to call when the event is created/terminated. To call the function, append "_Created" and/or "_Terminated" to the function name.
   >
 
 ### Window Parameters
@@ -86,8 +93,8 @@ To automatically run this script on startup, add its shortcut to the Startup fol
   >    - **1:** Hidden windows are detected.
   > 
   > - **WinActive**   
-  >    - **0** Not monitoring if the window is active or not. (Default)
-  >    - **1** Call "Function_Created" on window activation. Call 'Function_Terminated' when it deactivates. Setting WinActive to 1 automatically sets the mode to 4, and vice versa.
+  >    - **0:** Not monitoring if the window is active or not. (Default)
+  >    - **1:** Call "Function_Created" on window activation. Call "Function_Terminated" when it deactivates. Setting WinActive to 1 automatically sets the mode to 4, and vice versa.
   > 
   > - **WinMinMax** 
   >    - **Null:** Not monitoring WinMinMax
@@ -103,12 +110,14 @@ To automatically run this script on startup, add its shortcut to the Startup fol
   >        - Check for the existence of the window at a specified time interval.
   >
   > - **Mode** 			
-  >    - **1:** Call 'Function_Created' when a new window handle is created. Call 'Function_Terminated' for every window handle terminated. (Default)
-  >    - **2:** Call 'Function_Created' only for the initial window handle created. Call 'Function_Terminated' only when the last window handle is terminated.	
-  >    - **3:** Call 'Function_Created' when a new window handle created. Call 'Function_Terminated' only when the last window handle is terminated.		
-  >    - **4:** Call 'Function_Created' for every window created. Call 'Function_Terminated' for every window terminated.
-  >    - **5:** Call 'Function_Created' only for the initial window created. Call 'Function_Terminated' only when the last window is terminated.
-  >    - **6:** Call 'Function_Created' for every window created. Call 'Function_Terminated' only when the last window is terminated.
+  >    - **1:** Call "Function_Created" for every window ID created. Call "Function_Terminated" for every window ID terminated.
+  >    - **2:** Call "Function_Created" only for the initial window ID created. Call "Function_Terminated" only when the last window ID is terminated. (Default)	
+  >    - **3:** Call "Function_Created" for every window ID created. Call "Function_Terminated" only when the last window ID is terminated.		
+  >    - **4:** Call "Function_Created" for every window created. Call "Function_Terminated" for every window terminated.
+  >    - **5:** Call "Function_Created" only for the initial window created. Call "Function_Terminated" only when the last window is terminated.
+  >    - **6:** Call "Function_Created" for every window created. Call "Function_Terminated" only when the last window is terminated.
+  >    
+  >    *Some programs generate various windows, some of which can be visible or hidden. This has the potential to cause confusion when the mode is set to 1, as the event function will execute multiple times. To eliminate this potential confusion, the default mode is set to 2. 
   >   
   > - **Period/Delay**
   >    - Period: The interval (in milliseconds) to check for the window's existence.
@@ -124,7 +133,7 @@ To automatically run this script on startup, add its shortcut to the Startup fol
 		[eventType] => window
 		[function] => Explorer_Columns_Fit
 		[id] => 7341506
-		[logToFile] => 1
+		[log] => 1
 		[mode] => 4
 		[monitoring] => WinEvent
 		[period] => 125
@@ -153,9 +162,9 @@ To automatically run this script on startup, add its shortcut to the Startup fol
   >    - Period: The interval (in milliseconds) to check for the presence of the process.
   >
   > - **Mode**
-  >    - **1:** Call 'Function_Created' when a new process ID (PID) is created. Call 'Function_Terminated' for every process ID (PID) terminated. (Default)
-  >    - **2:** Call 'Function_Created only for the initial process ID (PID) created. Call 'Function_Terminated' only when the last process ID (PID) is terminated.
-  >    - **3:** Call 'Function_Created' for every process ID (PID) created. Call 'Function_Terminated' only when the last process ID (PID) is terminated.
+  >    - **1:** Call "Function_Created" for every process ID created. Call "Function_Terminated" for every process ID terminated. (Default)
+  >    - **2:** Call "Function_Created" only for the initial process ID created. Call "Function_Terminated" only when the last process ID is terminated.
+  >    - **3:** Call "Function_Created" for every process ID created. Call "Function_Terminated" only when the last process ID is terminated.
 
 
 * Process Event Information:
@@ -166,7 +175,7 @@ To automatically run this script on startup, add its shortcut to the Startup fol
 		[eventName] => Chrome_exe
 		[eventType] => process
 		[function] => Chrome_exe
-		[logToFile] => 1
+		[log] => 1
 		[mode] => 1
 		[monitoring] => WMI
 		[period] => 1500
@@ -194,9 +203,9 @@ To automatically run this script on startup, add its shortcut to the Startup fol
   >    - Delay (DeviceChange): The maximum delay (in milliseconds) to check for the device's existence.
   >  
   > - **Mode**
-  >    - **1:** Call 'Function_Created' when a device is connected. Call 'Function_Terminated' for every device matching the evnt criterions is disconnected. (Default)
-  >    - **2:** Call 'Function_Created' only for the initial device is connected. Call 'Function_Terminated' only when the last device is disconnected.
-  >    - **3:** Call 'Function_Created' when a device is connected. Call 'Function_Terminated' only when the last device is disconnected.
+  >    - **1:** Call "Function_Created" for every device connected. Call "Function_Terminated" for every device disconnected. (Default)
+  >    - **2:** Call "Function_Created" only for the initial device connected. Call "Function_Terminated" only when the last device is disconnected.
+  >    - **3:** Call "Function_Created" for every device connected. Call "Function_Terminated" only when the last device is disconnected.
   
  
 * Device Event Information:
@@ -264,15 +273,15 @@ For example:
 	^o:: WinExeCmd.SetEventMonitoring('Notepad, 'WinEvent', 1500)
 
 
-## SetWMIperiodInterval
-	SetWMIperiodInterval(Period)
+## SetPeriodWMI
+	SetPeriodWMI(Period)
 
   > - **Period**
   >    - Integer or String
   
  For example:
   
-	!o:: WinExeCmd.SetWMIperiodInterval(2000)
+	!o:: WinExeCmd.SetPeriodWMI(2000)
 
 
 ## ProcessFinder
@@ -365,13 +374,10 @@ For example:
 		Tooltip(WinExeCmd.Displayobj(aObjDeviceFinder), 0, 0), SetTimer(ToolTip, -8000)
 	}
   
-  
-  
- ## DisplayObj(Obj)
- Display contents of objects
- 
-  > - **Obj**
-  >    - Type: Object
+Check if device is connected:  
+ 	
+	if DeviceFinder(,'SCSI\DISK&VEN_WDC&PROD_WD15EARX-22PASB0\5&25248246&0&000000').Length
+ 	 	MsgBox('The device is connected')
   
   
  ## IsProcessElevated(PID)
@@ -393,18 +399,10 @@ For example:
   
  For example:
   
-	MsgBox IsProcessElevated(25884)
+	MsgBox GetCommandLine(25884)
   
  
-# Additional Notes
-
-- Since AHK is not multithreaded It is strongly reccomended lauch another script when event function execute
-The script is constanly checking/looping through all the events
-
-# Modes
-Tooltip debug masure sure function is not trigere twive
-
-
+# Known Issue, Limitation, Additional Notes
 
 - How do I work around problems caused by User Account Control (UAC)?
 By default, User Account Control (UAC) protects "elevated" programs (that is, programs which are running as admin) from being automated by non-elevated programs, since that would allow them to bypass security restrictions. Common workarounds can be found here:
@@ -412,10 +410,28 @@ By default, User Account Control (UAC) protects "elevated" programs (that is, pr
 Frequently Asked Questions (FAQ)
 https://www.autohotkey.com/docs/v2/FAQ.htm
 
-## Device
-- The device ID of certain devices might change, so it could be better to select only the device name. I'm not sure which device is affected or the reason behind it. I tested about a dozen devices, and the issue only occurred with a TV connected via HDMI.
 
-# Known Issue:
+
+
+- Since AHK is not multithreaded It is strongly reccomended lauch another script when event function execute
+The script is constanly checking/looping through all the events
+
+AHK Single threaded
+
+Priority is assigned to critical monitoring methods, which may result in GUIs freezing briefly and not resizing properly.
+
+
+
+
+## Window
+- WinEvent, When Universal Windows Platform (UWP) apps are maximized or unmaximized, WinMinMax monitoring fails to function correctly. This is the result of the SetWinEventHook function not sending messages thus the function not being called.
+
+## Device
+- The device ID of certain devices might change. I'm not sure which device ID is affected or the reason behind it. I tested about a dozen devices, and the issue only occurred with a TV connected via HDMI.
+
+
+
+## Process
 If the script closes abruptly, the script's WMI event registrations might not unregister properly. 
 This can cause "WMI Provider Host" (WmiPrvSE.exe) to continue consuming CPU usage even if the script is no longer running. You can monitor it 
 by checking the CPU usage of "WMI Provider Host" in Task Manager. To restore "WMI Provider Host" to its normal behavior, you can either restart the 
@@ -430,6 +446,8 @@ RunWait('*RunAs Powershell.exe -Command "Restart-Service -Name winmgmt -Force"',
 
 Fix with window update ?
 
+
+
 ## Donation (PayPal)
   - If you found this script useful and would like to donate. It would be greatly appreciated. Thank you!
     https://www.paypal.com/paypalme/martinchartier  
@@ -443,6 +461,9 @@ Fix with window update ?
 * **JSON.ahk by thqby, HotKeyIt.**
   - https://github.com/thqby/ahk2_lib/blob/master/JSON.ahk
   - https://github.com/HotKeyIt/Yaml
+  
+ * **NotifyV2 by the-Automator.com**
+  - https://www.the-automator.com/downloads/maestrith-notify-class-v2/ 
   
 * **EnumDeviceInfo by teadrinker. (based on JEE_DeviceList by jeeswg)**
   - https://www.autohotkey.com/boards/viewtopic.php?t=121125&p=537515  
