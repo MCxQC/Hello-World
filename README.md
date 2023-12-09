@@ -1,6 +1,15 @@
 # WinExeCommander	
 WinExeCommander is an AutoHotkey script to simplify the execution of functions upon process/window creation/termination and device connection/disconnection.
 
+- [Requirement](#requirement)
+- [Features](#features)
+- [Supported devices](#supported-devices)
+- [How to use it?](#how-to-use-it)
+- [Event Parameters](#event-parameters)
+	- [Window Parameters](#window-parameters)
+  	- [Process Parameters](#process-parameters)
+  	- [Device Parameters](#device-parameters)
+
 ## Requirement
 * AutoHotkey v2
 
@@ -25,6 +34,7 @@ USB, Bluetooth, HDMI etc...
   - Click the "Add Event" button.
   - Choose Window, Process, or Device from the top dropdown list.
   - To fill the edit fields, you can manually enter data, double-click on a listview item, or right-click on an item and select "Copy Row Data to Edit Fields".
+  - Some programs generate various windows and processes, some of which can be visible or hidden and may share the same name. This has the potential to cause confusion when the mode is set to 1, as the event function may execute multiple times. To eliminate this potential confusion, the default mode is set to 2.
 
 * Edit an Event
   - Either double-click on it in the list or right-click and choose "Edit Event".
@@ -61,20 +71,37 @@ Notepad
 * Applying Changes
   - To apply modifications, make sure to click the "Apply" button after creating or modifying an event, changing the WMI period, loading a profile from the event manager GUI etc...
 
-* Themes creation
-  - Create a folder named "Themes" in the root directory if it has not already been created.
+* Themes Creation
+  - If not already present, create a "Themes" folder in the root directory.
   - Within that folder, create another folder and place 14 icons named: "about", "checkmark", "edit", "events", "exit", "folder", "loading", "main", "plus", "profile", "reload", "select", "settings", "tools".
-  - To apply, select it from the dropdown menu in the settings.  
-  
+  - To apply, select it from the dropdown menu in the settings. 
+
+* Notification Sounds
+ - If not already present, create a "Sounds" folder in the root directory. 
+ - Place WAV files within that folder.
+ 
 * Start with Windows
   - To automatically run this script on startup, add its shortcut to the Startup folder.  
+  
   
 ## Event Parameters
   > - **Event Name**
   >
   > - **Function**
-  >    - The name of the function to call when the event is created/terminated. To call the function, append "_Created" and/or "_Terminated" to the function name.
+  >    - The name of the function to call upon event creation or termination. To call the function, append "_Created" or "_Terminated" to the function name.
   >
+  > - **Tooltip**
+  >    - Display a tooltip in the top-left corner containing event information upon event creation or termination.
+  >  
+  > - **Notify**
+  >    - Display a notification GUI in the bottom-right corner upon event creation or termination.
+  >  
+  > - **Log**
+  >    - Write the event information to 'EventsLog.txt' upon event creation or termination.
+  >   
+  > - **Sound**
+  >    - Notification Sounds upon event creation or termination.
+
 
 ### Window Parameters
   > - **WinTitle**
@@ -101,7 +128,7 @@ Notepad
   >    - **0:** The window is neither minimized nor maximized.
   >    - **1:** The window is maximized.
   >    - **-1:** The window is minimized.
-  >    - **Limitation:** only 1 window can be monitored. ?
+  >    - **Limitation:** Only one window can be monitored.
   >   
   > - **Monitoring** 
   >    - **WinEvent** (Default)
@@ -121,8 +148,8 @@ Notepad
   >   
   > - **Period/Delay**
   >    - Period: The interval (in milliseconds) to check for the window's existence.
-  >    - Delay (WinEvent): The maximum delay (in milliseconds) to check for the window's existence.
-  >  
+  >    - Delay (WinEvent): The approximate delay (in milliseconds) for checking the existence of the window after a window event message is fired by the SetWinEventHook function.
+
 
 * Window Event Information
   - An example of window event information that can be retrieved when a window event is created or terminated.
@@ -148,6 +175,7 @@ Notepad
 		[winTitle] => Exes
 		[winTitleMatchMode] => 2
   
+
 ### Process Parameters
   > - **Process Name**
   > - **Process Path**
@@ -162,11 +190,12 @@ Notepad
   >    - Period: The interval (in milliseconds) to check for the presence of the process.
   >
   > - **Mode**
-  >    - **1:** Call "Function_Created" for every process ID created. Call "Function_Terminated" for every process ID terminated. (Default)
-  >    - **2:** Call "Function_Created" only for the initial process ID created. Call "Function_Terminated" only when the last process ID is terminated.
+  >    - **1:** Call "Function_Created" for every process ID created. Call "Function_Terminated" for every process ID terminated.
+  >    - **2:** Call "Function_Created" only for the initial process ID created. Call "Function_Terminated" only when the last process ID is terminated. (Default)
   >    - **3:** Call "Function_Created" for every process ID created. Call "Function_Terminated" only when the last process ID is terminated.
-
-
+  > 
+  >    * Some programs generate various processes with the same name. This has the potential to cause confusion when the mode is set to 1, as the event function will execute multiple times. To eliminate this potential confusion, the default mode is set to 2.
+  
 * Process Event Information:
   - An example of process event information that can be retrieved when a process event is created or terminated.
 
@@ -185,6 +214,7 @@ Notepad
 		[status] => terminated
 		[tooltip] => 0
 
+
 ### Device Parameters
   > - **DeviceName**
   >    - Names of the device.
@@ -200,7 +230,7 @@ Notepad
   > 
   > - **Period/Delay**
   >    - Period: The interval (in milliseconds) to check for the device's existence.
-  >    - Delay (DeviceChange): The maximum delay (in milliseconds) to check for the device's existence.
+  >    - Delay (DeviceChange): The approximate delay (in milliseconds) for checking the existence of the device after a device event message is fired by the DeviceChange function.
   >  
   > - **Mode**
   >    - **1:** Call "Function_Created" for every device connected. Call "Function_Terminated" for every device disconnected. (Default)
@@ -223,18 +253,22 @@ Notepad
 		[status] => created
 		[tooltip] => 1
   
+  
+  
 # Methods
+
 
 ## SetProfile
 
 	SetProfile(Profile Name)
   
   > - **Profile Name**	
-  >    - Type: String, Case-sensitive
+  >    - Type: String
   
 For example:
 
 	!1::WinExeCmd.SetProfile('Disable All Events')
+
 
 ## SetEvent
 	SetEvent(State, Event Name)
@@ -245,7 +279,7 @@ For example:
   >    - **1:** Enable
   >
   > - **Event Name**
-  >    - Type: String, Case-sensitive
+  >    - Type: String
 
 For example:
 
@@ -256,17 +290,17 @@ For example:
 	SetEventMonitoring(EventName, Monitoring, Period)
 
   > - **EventName**
-  >    - Type: String, Case-sensitive
+  >    - Type: String
   >    - Name of the Event.
   >
   > - **Monitoring**
-  >    - Type: String
+  >    - Type: String, Case-sensitive
   >    - Method for Monitoring event. Process (Timer or WMI), Window (Timer or WinEvent) and Device (Timer or DeviceChange)
   >  
   > - **Period/Delay**
   >    - Type: Integer or String
   >    - Period: The interval (in milliseconds) to check for the event's existence.
-  >    - Delay (WinEvent, DeviceChange): The maximum delay (in milliseconds) to check for the event's existence.
+  >    - Delay (WinEvent, DeviceChange): The approximate delay (in milliseconds) to check for the event's existence.
 
 For example:
 	
@@ -402,6 +436,7 @@ Check if device is connected:
 	MsgBox GetCommandLine(25884)
   
  
+ 
 # Known Issue, Limitation, Additional Notes
 
 - How do I work around problems caused by User Account Control (UAC)?
@@ -432,6 +467,9 @@ Priority is assigned to critical monitoring methods, which may result in GUIs fr
 
 
 ## Process
+
+Caveat: It's absolutely essential that Sink.Cancel is called. If the script terminates unexpectedly, WMI will continue to poll in the background, and restarting the WMI service is the only way to get rid of the polling loop.
+
 If the script closes abruptly, the script's WMI event registrations might not unregister properly. 
 This can cause "WMI Provider Host" (WmiPrvSE.exe) to continue consuming CPU usage even if the script is no longer running. You can monitor it 
 by checking the CPU usage of "WMI Provider Host" in Task Manager. To restore "WMI Provider Host" to its normal behavior, you can either restart the 
@@ -445,6 +483,12 @@ Command to restart the Windows Management Instrumentation service:
 RunWait('*RunAs Powershell.exe -Command "Restart-Service -Name winmgmt -Force"',, 'Hide')
 
 Fix with window update ?
+
+These window updates below seem to have fix this issue of duplicate WMI event registrations mentionned above.
+orphaned WMI events
+
+November 14, 2023—KB5032189 (OS Builds 19044.3693 and 19045.3693)
+November 14, 2023-KB5032339 Cumulative Update for .NET Framework 3.5, 4.8 and 4.8.1 for Windows 10 Version 22H2
 
 
 
@@ -461,9 +505,6 @@ Fix with window update ?
 * **JSON.ahk by thqby, HotKeyIt.**
   - https://github.com/thqby/ahk2_lib/blob/master/JSON.ahk
   - https://github.com/HotKeyIt/Yaml
-  
- * **NotifyV2 by the-Automator.com**
-  - https://www.the-automator.com/downloads/maestrith-notify-class-v2/ 
   
 * **EnumDeviceInfo by teadrinker. (based on JEE_DeviceList by jeeswg)**
   - https://www.autohotkey.com/boards/viewtopic.php?t=121125&p=537515  
@@ -489,3 +530,6 @@ Fix with window update ?
 
 * **MoveControls by Descolada. (from UIATreeInspector.ahk)**
   - https://github.com/Descolada/UIA-v2
+  
+* **Code snippets taken from NotifyV2 by the-Automator.com**
+  - https://www.the-automator.com/downloads/maestrith-notify-class-v2/ 
