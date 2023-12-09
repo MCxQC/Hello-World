@@ -5,13 +5,22 @@ WinExeCommander is an AutoHotkey script to simplify the execution of functions u
 - [Features](#features)
 - [Supported devices](#supported-devices)
 - [How to use it?](#how-to-use-it)
-	- [Add an Event](#add-an-event)
-  	- [Edit an Event](#edit-an-event)
-  	- [Write a function associated with the event.](#write-a-function-associate-with-thr-event)
 - [Event Parameters](#event-parameters)
 	- [Window Parameters](#window-parameters)
   	- [Process Parameters](#process-parameters)
   	- [Device Parameters](#device-parameters)
+- [Methods](#methods)
+	- [SetProfile](#setprofile)
+  	- [SetEvent](#setevent)
+  	- [SetPeriodWMI](#setperiodwmi)
+	- [ProcessFinder](#processfinder)
+	- [WindowFinder](#windowfinder)
+	- [DeviceFinder](#devicefinder)
+	- [IsProcessElevated](#isprocesselevated)
+	- [GetCommandLine](#getcommandline)
+- [Known Issues](#knownissues)
+- [Donation](#donation)
+- [Credits](#credits)
 
 ## Requirement
 * AutoHotkey v2
@@ -417,8 +426,10 @@ Check if device is connected:
  	 	MsgBox('The device is connected')
   
   
- ## IsProcessElevated(PID)
+ ## IsProcessElevated
  Check if a process is elevated.
+ 
+	IsProcessElevated(PID)
   
   > - **PID**
   >    - Type: Integer
@@ -428,8 +439,10 @@ Check if device is connected:
 	MsgBox IsProcessElevated(25884)
   
   
- ## GetCommandLine(PID)
+ ## GetCommandLine
  Retrieves a start-up command-line of an application
+ 
+	GetCommandLine(PID)  
   
   > - **PID**
   >    - Type: Integer
@@ -495,7 +508,7 @@ November 14, 2023-KB5032339 Cumulative Update for .NET Framework 3.5, 4.8 and 4.
 
 
 
-## Donation (PayPal)
+## Donation
   - If you found this script useful and would like to donate. It would be greatly appreciated. Thank you!
     https://www.paypal.com/paypalme/martinchartier  
 
