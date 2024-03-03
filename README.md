@@ -507,7 +507,7 @@ Display Custom GUI.
 
 For example:
 
-	!d:: WinExeCmd.CustomGUI('The script file failed to open.', 'Error', WinExeCmd.mIcons['gX'],,,,,, {1: {name:'*OK', callback:'this.gCustomGUI_Destroy'}})
+	!d:: WinExeCmd.CustomGUI('The script file failed to open.', 'Error', A_WinDir '\system32\user32.dll|Icon4',,,,,, {1: {name:'*OK', callback:'this.gCustomGUI_Destroy'}})
 
 
 ## Donation
