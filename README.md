@@ -136,7 +136,8 @@ Function Name: MSPaint_ProcessSetPriority
 
 
 ### Window Parameters
-  > - **WinTitle**: Window titles are case-sensitive, except when using the i) modifier in a RegEx pattern.
+  > - **WinTitle**:
+  >    - Case-sensitive, except when using the i) modifier in a RegEx pattern.
   > - **WinClass**
   > - **Process Name**
   > - **Process Path**
@@ -354,8 +355,8 @@ For example:
 
  	^0::
 	{
-  	aObjDeviceFinder := WinExeCmd.DeviceFinder('Kingston DataTraveler 3.0 USB Device')
-  	WinExeCmd.Notify(, WinExeCmd.Displayobj(aObjDeviceFinder),,, 'topCenter')
+  		aObjDeviceFinder := WinExeCmd.DeviceFinder('Kingston DataTraveler 3.0 USB Device')
+  		WinExeCmd.Notify(, WinExeCmd.Displayobj(aObjDeviceFinder),,, 'topCenter')
 	}
   
 
@@ -363,8 +364,8 @@ Check if device is connected:
  	
  	^1::
 	{
-    if WinExeCmd.DeviceFinder(,'USBSTOR\DISK&VEN_KINGSTON&PROD_DATATRAVELER_3.0&REV_\E0D55EA573DCF450E97C104C&0').Length
-        WinExeCmd.CustomGui('The device is connected',, 'iconi')
+	    if WinExeCmd.DeviceFinder(,'USBSTOR\DISK&VEN_KINGSTON&PROD_DATATRAVELER_3.0&REV_\E0D55EA573DCF450E97C104C&0').Length
+        	WinExeCmd.CustomGui('The device is connected',, 'iconi')
 	}
   
 
