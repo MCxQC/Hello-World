@@ -385,6 +385,7 @@ Display Notifications.
 > - **icon**
 >    - Type: String
 >    - Picture controls -https://www.autohotkey.com/docs/v2/lib/GuiControls.htm#Picture
+>    - "icon!" , "icon?", "iconx", "iconi"
 >    - Icon from dll: A_WinDir '\system32\user32.dll|Icon4'
 >    - Loads picture from file: 'HICON:*' LoadPicture(A_WinDir '\System32\imageres.dll', 'Icon4 w48', &imageType)     
 >  
@@ -460,6 +461,7 @@ Display Custom GUI.
 > - **icon**
 >    - Type: String
 >    - Picture controls -https://www.autohotkey.com/docs/v2/lib/GuiControls.htm#Picture
+>    - "icon!" , "icon?", "iconx", "iconi"
 >    - Icon from dll: A_WinDir '\system32\user32.dll|Icon4'
 >    - Loads picture from file: 'HICON:*' LoadPicture(A_WinDir '\System32\imageres.dll', 'Icon4 w48', &imageType)     
 >                
@@ -503,11 +505,25 @@ Display Custom GUI.
 > 
 > - **btnHeight**
 >    - Type: Integer
->    -
 
 For example:
 
 	!d:: WinExeCmd.CustomGUI('The script file failed to open.', 'Error', A_WinDir '\system32\user32.dll|Icon4',,,,,, {1: {name:'*OK', callback:'this.gCustomGUI_Destroy'}})
+
+
+## Sound
+Plays a sound.
+
+	Sound(sound)
+
+> - **sound**
+>    - Type: String
+>    - SoundPlay. -https://www.autohotkey.com/docs/v2/lib/SoundPlay.htm
+>    - "soundx" , "soundi"
+
+For example:
+
+	!q:: WinExeCmd.Sound('soundx')
 
 
 ## Donation
