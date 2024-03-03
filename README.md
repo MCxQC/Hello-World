@@ -398,7 +398,7 @@ Display notifications GUI.
 >    - Type: String
 >    - The path of the .wav file to be played. -https://www.autohotkey.com/docs/v2/lib/SoundPlay.htm
 >    - WinExeCmd.mSounds['Windows Ding'], WinExeCmd.mSounds['tada'] etc...
->    - WAV files located in the "Sounds" folder at the root directory. WinExeCmd.mSounds['<Insert filename>']
+>    - WAV files located in the "Sounds" folder at the root directory. WinExeCmd.mSounds['Insert filename']
 >
 > - **iconSize**
 >    - Type: Integer. Default: 32
@@ -476,7 +476,7 @@ Display a Custom GUI.
 >    - The path of the .wav file to be played. -https://www.autohotkey.com/docs/v2/lib/SoundPlay.htm
 >    - "soundx" , "soundi"
 >    - WinExeCmd.mSounds['Windows Ding'], WinExeCmd.mSounds['tada'] etc...
->    - WAV files located in the "Sounds" folder at the root directory. WinExeCmd.mSounds['<Insert filename>']
+>    - WAV files located in the "Sounds" folder at the root directory. WinExeCmd.mSounds['Insert filename']
 >
 > - **objBtn**
 >    - Type: Object. Default: {1:{name:'*OK', callback:'this.CustomGUI_Destroy'}}
@@ -527,7 +527,7 @@ Plays a sound.
 >    - SoundPlay. -https://www.autohotkey.com/docs/v2/lib/SoundPlay.htm
 >    - "soundx" , "soundi"
 >    - WinExeCmd.mSounds['Windows Ding'], WinExeCmd.mSounds['tada'] etc... see Example 2.
->    - WAV files located in the "Sounds" folder at the root directory. WinExeCmd.mSounds['<Insert filename>']
+>    - WAV files located in the "Sounds" folder at the root directory. WinExeCmd.mSounds['Insert filename']
 
 Example 1:
 
