@@ -18,6 +18,7 @@ WinExeCommander is an AutoHotkey script to simplify the execution of functions u
 	- [DeviceFinder](#devicefinder)
 	- [Notify](#notify)
 	- [CustomGUI](#customgui)
+	- [Sound](#sound)
 - [Donation](#donation)
 - [Credits](#credits)
 
