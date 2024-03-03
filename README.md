@@ -509,7 +509,15 @@ Display Custom GUI.
 
 For example:
 
-	!d:: WinExeCmd.CustomGUI('The script file failed to open.', 'Error', A_WinDir '\system32\user32.dll|Icon4',,,,,, {1: {name:'*OK', callback:'this.gCustomGUI_Destroy'}})
+  WinExeCmd.CustomGUI('Are you sure you want to delete all selected items?',, "icon?",,,,,,
+  {1: {name: '*Yes', callback: 'Btn_Yes_Click'}, 
+   2: {name: 'Cancel', callback: 'this.gCustomGUI_Destroy'}})
+   
+  Btn_Yes_Click(gindex:='', owner:='', *) {
+
+      WinExeCmd.Notify('CustomGUI', 'You clicked the Yes Button.', 'iconi')
+      WinExeCmd.gCustomGUI_Destroy(gindex, owner)
+  }
 
 
 ## Sound
