@@ -396,7 +396,7 @@ Display Notifications.
 >
 > - **position**
 >    - Type: String
->    - "bottomRight" or "bottomCenter" or "bottomLeft" or "topLeft" or "topCenter" or "topRight". Default: "bottomRight"
+>    - "bottomRight", "bottomCenter", "bottomLeft", "topLeft", "topCenter", "topRight". Default: "bottomRight"
 >
 > - **duration**
 >    - Type: Integer
