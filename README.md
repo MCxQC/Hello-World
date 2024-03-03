@@ -105,7 +105,7 @@ Function Name: MSPaint_ProcessSetPriority
   - Within that folder, create another folder and place 13 icons named: "about", "checkmark", "edit", "events", "exit", "folder", "loading", "main", "profile", "reload", "select", "settings", "tools".
   - To apply, select it from the dropdown menu in the settings. 
 
-* Notification Sounds
+* Adding notification sounds
  - Create a "Sounds" folder in the root directory and place WAV files within that folder.
  
 * Start with Windows
@@ -369,7 +369,7 @@ Check if device is connected:
 ## Notify
 Display Notifications
         
-Notify(hdTxt, bdTxt, Icon, options, position, duration, callback, sound, iconSize, hdFontSize, hdFontColor, hdFont, bdtxtWidth, bdFontSize, bdFontColor, bdFont, bgColor, style)
+	Notify(hdTxt, bdTxt, Icon, options, position, duration, callback, sound, iconSize, hdFontSize, hdFontColor, hdFont, bdtxtWidth, bdFontSize, bdFontColor, bdFont, bgColor, style)
 
 > - **hdTxt**
 >    - Type: String
@@ -444,7 +444,7 @@ For example:
 ## CustomGUI
 Display Custom GUI
 
-CustomGUI(text, title, icon, options, owner, winSetAoT, posXY, sound, objBtn, iconSize, fontSize, textWidth, textHeight, btnWidth, btnHeight)
+	CustomGUI(text, title, icon, options, owner, winSetAoT, posXY, sound, objBtn, iconSize, fontSize, textWidth, textHeight, btnWidth, btnHeight)
 
 > - **text**
 >    - Type: String
