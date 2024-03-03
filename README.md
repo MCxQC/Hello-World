@@ -43,46 +43,50 @@ USB, Bluetooth, HDMI etc...
   - Click the "Add Event" button.
   - Choose Window, Process, or Device from the top dropdown list.
   - To fill the edit fields, you can manually enter data, double-click on a listview item, or right-click on an item and select "Copy Row Data to Edit Fields".
-  - Some programs generate various windows and processes, some of which can be visible or hidden and may share the same name. This has the potential to cause confusion when the mode is set to 1, as the event function may execute multiple times. To eliminate this potential confusion, the default mode is set to 2.
 
 * Edit an Event
-  - Either double-click on it in the list or right-click and choose "Edit Event".
+  - Click the "Edit" button, double-click on it in the list or right-click and choose "Edit Event".
   
 * Write a function associated with the event.
   - In the file "WinExeCommander.ahk", create a function to be called when the event is created or terminated. Append "_Created" or "_Terminated" to the event function name.
 
 For example:
  
-; When the Calculator app is opened, set the window to be always on top.
-Calculator_AlwaysOnTop_Created(mEvent) {
-    
-    if WinExist('ahk_id ' mEvent['id'])
-        WinSetAlwaysOnTop(1, 'ahk_id ' mEvent['id'])
-    else
-        WinExeCmd.Notify('WinExeCommander', 'Calculator does not exist.', A_WinDir '\system32\user32.dll|Icon4')    
-}
+When the Calculator app is opened, set the window to be always on top.
 
-;==============================================
+Function Name: Calculator_AlwaysOnTop
 
-; When the Notepad app is opened, changes the position and/or size of Notepad.
-Notepad_Created(mEvent) {
-    
-    if WinExist('ahk_id ' mEvent['id'])
-	    WinMove(900, 200, 500, 500, 'ahk_id ' mEvent['id'])
-    else
-        WinExeCmd.CustomGui('Notepad does not exist.',, A_WinDir '\system32\user32.dll|Icon4')
-}
+ 	Calculator_AlwaysOnTop_Created(mEvent) {
+	    
+	    if WinExist('ahk_id ' mEvent['id'])
+	        WinSetAlwaysOnTop(1, 'ahk_id ' mEvent['id'])
+	    else
+	        WinExeCmd.Notify('WinExeCommander', 'Calculator does not exist.', A_WinDir '\system32\user32.dll|Icon4')    
+	}
 
-;==============================================
+When the Notepad app is opened, changes the position and/or size of Notepad.
 
-; When the 'mspaint.exe' process is created, change its priority level to 'High'.
-MSPaint_ProcessSetPriority_Created(mEvent) {
+Function Name: Notepad
 
-    if ProcessExist(mEvent['pid'])
-        ProcessSetPriority('High', mEvent['pid'])
-    else
-        WinExeCmd.CustomGui('mspaint.exe does not exist.',, A_WinDir '\system32\user32.dll|Icon4')
-}
+	Notepad_Created(mEvent) {
+	    
+	    if WinExist('ahk_id ' mEvent['id'])
+		    WinMove(900, 200, 500, 500, 'ahk_id ' mEvent['id'])
+	    else
+	        WinExeCmd.CustomGui('Notepad does not exist.',, A_WinDir '\system32\user32.dll|Icon4')
+	}
+
+When the 'mspaint.exe' process is created, change its priority level to 'High'.
+
+Function Name: MSPaint_ProcessSetPriority
+	
+ 	MSPaint_ProcessSetPriority_Created(mEvent) {
+	
+	    if ProcessExist(mEvent['pid'])
+	        ProcessSetPriority('High', mEvent['pid'])
+	    else
+	        WinExeCmd.CustomGui('mspaint.exe does not exist.',, A_WinDir '\system32\user32.dll|Icon4')
+	}
 
 * To identify a device
   - Open the "Event Manager"
@@ -91,14 +95,14 @@ MSPaint_ProcessSetPriority_Created(mEvent) {
   - Alternatively, run "DeviceInfoFinder.ahk", found in the "Tools" tray menu, menubar, and the device section.
   
 * Loading Profiles
-  - The profile contains events, period WMI and the windows events. By default, when loading a profile, the existing events will remain the same, and only the event states are loaded. In the settings, you can choose whether to load the period WMI and windows events or not. Enabling "Replace All Events" will replace all existing events with those from the profile.
+  - The profile contains events, period WMI and the windows events. By default, when loading a profile, the existing events will remain the same, and only the event states are loaded. In the Profile Manager, you can choose whether to load the period WMI and windows events or not. Enabling "Replace All Events" will replace all existing events with those from the profile.
 
 * Applying Changes
-  - To apply modifications, make sure to click the "Apply" button after creating or modifying an event, changing the WMI period, loading a profile from the event manager GUI etc...
+  - To apply modifications, make sure to click the "Apply" button after creating or modifying an event, changing the WMI period, loading a profile etc...
 
 * Themes Creation
-  - If not already present, create a "Themes" folder in the root directory.
-  - Within that folder, create another folder and place 14 icons named: "about", "checkmark", "edit", "events", "exit", "folder", "loading", "main", "plus", "profile", "reload", "select", "settings", "tools".
+  - Create a "Themes" folder in the root directory.
+  - Within that folder, create another folder and place 13 icons named: "about", "checkmark", "edit", "events", "exit", "folder", "loading", "main", "profile", "reload", "select", "settings", "tools".
   - To apply, select it from the dropdown menu in the settings. 
 
 * Notification Sounds
