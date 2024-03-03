@@ -97,7 +97,7 @@ Function Name: MSPaint_ProcessSetPriority
   - Alternatively, run "DeviceInfoFinder.ahk", found in the "Tools" tray menu, menubar, and the device section.
   
 * Loading Profiles
-  - The profile contains events, period WMI and the windows events. By default, when loading a profile, the existing events will remain the same, and only the event states are loaded. In the Profile Manager, you can choose whether to load the period WMI and windows events or not. Enabling "Replace All Events" will replace all existing events with those from the profile.
+  - The profile contains the Events information, period WMI and the windows events. By default, when loading a profile, the existing events will remain the same, and only the event states are loaded. In the Profile Manager, you can choose whether to load the period WMI and windows events or not. Enabling "Replace All Events" will replace all existing events with those from the profile.
 
 * Applying Changes
   - To apply modifications, make sure to click the "Apply" button after creating or modifying an event, changing the WMI period, loading a profile etc...
@@ -120,7 +120,7 @@ Function Name: MSPaint_ProcessSetPriority
   >    - The name of the function to call upon event creation or termination. To call the function, append "_Created" or "_Terminated" to the function name.
   >
   > - **Critical**
-  >    - The function thread is critical/not critical.
+  >    - The function's thread is critical or not critical.
   >
   > - **Status**
   >    - Display GUI with the Event status in the bottom right corner.
@@ -369,7 +369,7 @@ Check if device is connected:
   
 
 ## Notify
-Display Notifications
+Display Notifications.
         
 	Notify(hdTxt, bdTxt, Icon, options, position, duration, callback, sound, iconSize, hdFontSize, hdFontColor, hdFont, bdtxtWidth, bdFontSize, bdFontColor, bdFont, bgColor, style)
 
@@ -444,7 +444,7 @@ For example:
 
 
 ## CustomGUI
-Display Custom GUI
+Display Custom GUI.
 
 	CustomGUI(text, title, icon, options, owner, winSetAoT, posXY, sound, objBtn, iconSize, fontSize, textWidth, textHeight, btnWidth, btnHeight)
 
