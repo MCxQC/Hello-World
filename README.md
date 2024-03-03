@@ -7,18 +7,15 @@ WinExeCommander is an AutoHotkey script to simplify the execution of functions u
 - [How to use it?](#how-to-use-it)
 - [Event Parameters](#event-parameters)
 	- [Window Parameters](#window-parameters)
-  	- [Process Parameters](#process-parameters)
-  	- [Device Parameters](#device-parameters)
+  - [Process Parameters](#process-parameters)
+  - [Device Parameters](#device-parameters)
 - [Methods](#methods)
 	- [SetProfile](#setprofile)
-  	- [SetEvent](#setevent)
+	- [SetEvent](#setevent)
   	- [SetPeriodWMI](#setperiodwmi)
 	- [ProcessFinder](#processfinder)
 	- [WindowFinder](#windowfinder)
 	- [DeviceFinder](#devicefinder)
-	- [IsProcessElevated](#isprocesselevated)
-	- [GetCommandLine](#getcommandline)
-- [Known Issues](#knownissues)
 - [Donation](#donation)
 - [Credits](#credits)
 
@@ -52,24 +49,40 @@ USB, Bluetooth, HDMI etc...
   - Either double-click on it in the list or right-click and choose "Edit Event".
   
 * Write a function associated with the event.
-  - In the file WinExeCommander.ahk, create a function to be called when the event is created or terminated. Append "_Created" or "_Terminated" to the event function name.
+  - In the file "WinExeCommander.ahk", create a function to be called when the event is created or terminated. Append "_Created" or "_Terminated" to the event function name.
 
 For example:
  
-Function name:
-Notepad
- 
-	Notepad_Created(mEvent)
-	{
-		<Insert code here>
-	}
-	
-	Notepad_Terminated(mEvent)
-	{
-		<Insert code here>
-	}	
-	
-* Reload the script.	
+; When the Calculator app is opened, set the window to be always on top.
+Calculator_AlwaysOnTop_Created(mEvent) {
+    
+    if WinExist('ahk_id ' mEvent['id'])
+        WinSetAlwaysOnTop(1, 'ahk_id ' mEvent['id'])
+    else
+        WinExeCmd.Notify('WinExeCommander', 'Calculator does not exist.', A_WinDir '\system32\user32.dll|Icon4')    
+}
+
+;==============================================
+
+; When the Notepad app is opened, changes the position and/or size of Notepad.
+Notepad_Created(mEvent) {
+    
+    if WinExist('ahk_id ' mEvent['id'])
+	    WinMove(900, 200, 500, 500, 'ahk_id ' mEvent['id'])
+    else
+        WinExeCmd.CustomGui('Notepad does not exist.',, A_WinDir '\system32\user32.dll|Icon4')
+}
+
+;==============================================
+
+; When the 'mspaint.exe' process is created, change its priority level to 'High'.
+MSPaint_ProcessSetPriority_Created(mEvent) {
+
+    if ProcessExist(mEvent['pid'])
+        ProcessSetPriority('High', mEvent['pid'])
+    else
+        WinExeCmd.CustomGui('mspaint.exe does not exist.',, A_WinDir '\system32\user32.dll|Icon4')
+}
 
 * To identify a device
   - Open the "Event Manager"
@@ -89,34 +102,35 @@ Notepad
   - To apply, select it from the dropdown menu in the settings. 
 
 * Notification Sounds
- - If not already present, create a "Sounds" folder in the root directory. 
- - Place WAV files within that folder.
+ - Create a "Sounds" folder in the root directory and place WAV files within that folder.
  
 * Start with Windows
   - To automatically run this script on startup, add its shortcut to the Startup folder.  
-  
-  
+ 
 ## Event Parameters
   > - **Event Name**
   >
   > - **Function**
   >    - The name of the function to call upon event creation or termination. To call the function, append "_Created" or "_Terminated" to the function name.
   >
-  > - **Tooltip**
-  >    - Display a tooltip in the top-left corner containing event information upon event creation or termination.
+  > - **Critical**
+  >    - The function thread is critical/not critical.
+  >
+  > - **Status**
+  >    - Display GUI with the Event status in the bottom right corner.
   >  
-  > - **Notify**
-  >    - Display a notification GUI in the bottom-right corner upon event creation or termination.
+  > - **Info**
+  >    - Display GUI with the Event information in the top left corner.
   >  
-  > - **Log**
-  >    - Write the event information to 'EventsLog.txt' upon event creation or termination.
+  > - **Log Info**
+  >    - Log Event information to "EventsLog.txt"
   >   
   > - **Sound**
-  >    - Notification Sounds upon event creation or termination.
+  >    - Notification Sounds.
 
 
 ### Window Parameters
-  > - **WinTitle**
+  > - **WinTitle**: Window titles are case-sensitive, except when using the i) modifier in a RegEx pattern.
   > - **WinClass**
   > - **Process Name**
   > - **Process Path**
@@ -128,23 +142,23 @@ Notepad
   >    - **RegEx:** Regular expression WinTitle matching.
   >	
   > - **DetectHiddenWindows** 
-  >    - **0:** Hidden windows are not detected. (Default)
-  >    - **1:** Hidden windows are detected.
+  >    - **Uncheck:** Hidden windows are not detected. (Default)
+  >    - **Check:** Hidden windows are detected.
   > 
   > - **WinActive**   
-  >    - **0:** Not monitoring if the window is active or not. (Default)
-  >    - **1:** Call "Function_Created" on window activation. Call "Function_Terminated" when it deactivates. Setting WinActive to 1 automatically sets the mode to 4, and vice versa.
+  >    - **Uncheck:** Not monitoring for active window. (Default)
+  >    - **Check:** Monitoring for active window.
   > 
   > - **WinMinMax** 
   >    - **Null:** Not monitoring WinMinMax
   >    - **0:** The window is neither minimized nor maximized.
   >    - **1:** The window is maximized.
   >    - **-1:** The window is minimized.
-  >    - **Limitation:** Only one window can be monitored.
+  >    - **Limitation:** Only one window per Event can be monitored.
   >   
   > - **Monitoring** 
-  >    - **WinEvent** (Default)
-  >        - SetWinEventHook. Sets an event hook function for a range of Windows Events.
+  >    - **WinEvent**
+  >        - SetWinEventHook. Sets an event hook function for a range of Windows Events. (Default)
   >    - **Timer**
   >        - Check for the existence of the window at a specified time interval.
   >
@@ -156,47 +170,22 @@ Notepad
   >    - **5:** Call "Function_Created" only for the initial window created. Call "Function_Terminated" only when the last window is terminated.
   >    - **6:** Call "Function_Created" for every window created. Call "Function_Terminated" only when the last window is terminated.
   >    
-  >    *Some programs generate various windows, some of which can be visible or hidden. This has the potential to cause confusion when the mode is set to 1, as the event function will execute multiple times. To eliminate this potential confusion, the default mode is set to 2. 
+  >    *Some programs generate various windows, some of which can be visible or hidden. This has the potential to cause confusion when the mode is set to 1, as the event function will execute multiple times. The default mode is 2 to eliminate this potential confusion. 
   >   
   > - **Period/Delay**
   >    - Period: The interval (in milliseconds) to check for the window's existence.
   >    - Delay (WinEvent): The approximate delay (in milliseconds) for checking the existence of the window after a window event message is fired by the SetWinEventHook function.
 
 
-* Window Event Information
-  - An example of window event information that can be retrieved when a window event is created or terminated.
-		
-  		[detectHiddenWindows] => 0
-		[elevated] => 0
-		[eventName] => Explorer_Columns_Fit
-		[eventType] => window
-		[function] => Explorer_Columns_Fit
-		[id] => 7341506
-		[log] => 1
-		[mode] => 4
-		[monitoring] => WinEvent
-		[period] => 125
-		[pid] => 1168
-		[processName] => explorer.exe
-		[processPath] => C:\Windows\explorer.exe
-		[status] => terminated
-		[tooltip] => 0
-		[winActive] => 1
-		[winClass] => CabinetWClass
-		[winMinMax] => 
-		[winTitle] => Exes
-		[winTitleMatchMode] => 2
-  
-
 ### Process Parameters
   > - **Process Name**
   > - **Process Path**
   >
   > - **Monitoring** 
-  >    - **WMI** (Default)
-  >    		- Check for the existence of the process at a specified time interval using WMI Provider Host process.
+  >    - **WMI**
+  >    		- Check for the existence of the process at a specified time interval using WMI Provider Host process. (Default)
   >    - **Timer**
-  >        - Check for the existence of the process at a specified time interval using Autohotkey SetTimer function.
+  >        - Check for the existence of the process at a specified time interval.
   >
   > - **Period**
   >    - Period: The interval (in milliseconds) to check for the presence of the process.
@@ -206,27 +195,8 @@ Notepad
   >    - **2:** Call "Function_Created" only for the initial process ID created. Call "Function_Terminated" only when the last process ID is terminated. (Default)
   >    - **3:** Call "Function_Created" for every process ID created. Call "Function_Terminated" only when the last process ID is terminated.
   > 
-  >    * Some programs generate various processes with the same name. This has the potential to cause confusion when the mode is set to 1, as the event function will execute multiple times. To eliminate this potential confusion, the default mode is set to 2.
+  >    * Some programs generate various processes with the same name. This has the potential to cause confusion when the mode is set to 1, as the event function will execute multiple times. The default mode is 2 to eliminate this potential confusion.
   
-* Process Event Information:
-  - An example of process event information that can be retrieved when a process event is created or terminated.
-
-		[cmdLine] => "C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --extension-process
-		[elevated] => 0
-		[eventName] => Chrome_exe
-		[eventType] => process
-		[function] => Chrome_exe
-		[log] => 1
-		[mode] => 1
-		[monitoring] => WMI
-		[period] => 1500
-		[pid] => 15244
-		[processName] => chrome.exe
-		[processPath] => C:\Program Files\Google\Chrome\Application\chrome.exe
-		[status] => terminated
-		[tooltip] => 0
-
-
 ### Device Parameters
   > - **DeviceName**
   >    - Names of the device.
@@ -238,7 +208,7 @@ Notepad
   >    - **DeviceChange** (Default)
   >        - Send message notifications when there is a change to the hardware configuration of a device or the computer.
   >    - **Timer**
-  >        - Check for the existence of the window at a specified time interval.
+  >        - Check for the existence of the device at a specified time interval.
   > 
   > - **Period/Delay**
   >    - Period: The interval (in milliseconds) to check for the device's existence.
@@ -249,24 +219,7 @@ Notepad
   >    - **2:** Call "Function_Created" only for the initial device connected. Call "Function_Terminated" only when the last device is disconnected.
   >    - **3:** Call "Function_Created" for every device connected. Call "Function_Terminated" only when the last device is disconnected.
   
- 
-* Device Event Information:
-  - An example of device event information that can be retrieved when a device event is created or terminated.
- 
-		[deviceId] => SWD\MMDEVAPI\{0.0.0.00000000}.{3278E776-26F1-4931-AFFB-06D6C653C12E}
-		[deviceName] => A90 Pro (A90 Pro Stereo)
-		[eventName] => Bluetooth_Earbuds
-		[eventType] => device
-		[function] => Bluetooth_Earbuds
-		[logToFile] => 1
-		[mode] => 1
-		[monitoring] => DeviceChange
-		[period] => 1250
-		[status] => created
-		[tooltip] => 1
-  
-  
-  
+
 # Methods
 
 
@@ -279,7 +232,7 @@ Notepad
   
 For example:
 
-	!1::WinExeCmd.SetProfile('Disable All Events')
+	^7::WinExeCmd.SetProfile('All Events Disable')
 
 
 ## SetEvent
@@ -296,27 +249,6 @@ For example:
 For example:
 
 	!2::WinExeCmd.SetEvent(1, 'Calculator_WinSetAlwaysOnTop')	
-	
-	
-## SetEventMonitoring
-	SetEventMonitoring(EventName, Monitoring, Period)
-
-  > - **EventName**
-  >    - Type: String
-  >    - Name of the Event.
-  >
-  > - **Monitoring**
-  >    - Type: String, Case-sensitive
-  >    - Method for Monitoring event. Process (Timer or WMI), Window (Timer or WinEvent) and Device (Timer or DeviceChange)
-  >  
-  > - **Period/Delay**
-  >    - Type: Integer or String
-  >    - Period: The interval (in milliseconds) to check for the event's existence.
-  >    - Delay (WinEvent, DeviceChange): The approximate delay (in milliseconds) to check for the event's existence.
-
-For example:
-	
-	^o:: WinExeCmd.SetEventMonitoring('Notepad, 'WinEvent', 1500)
 
 
 ## SetPeriodWMI
@@ -327,7 +259,7 @@ For example:
   
  For example:
   
-	!o:: WinExeCmd.SetPeriodWMI(2000)
+	^6::WinExeCmd.SetPeriodWMI(3000)
 
 
 ## ProcessFinder
@@ -345,8 +277,8 @@ For example:
 
 	^8:: 
 	{
-		aObjProcessFinder := WinExeCmd.ProcessFinder("notepad.exe") 
-		Tooltip(WinExeCmd.Displayobj(aObjProcessFinder), 0, 0), SetTimer(ToolTip, -8000)
+    aObjProcessFinder := WinExeCmd.ProcessFinder('notepad.exe') 
+    WinExeCmd.Notify(, WinExeCmd.Displayobj(aObjProcessFinder),,, 'topCenter')
 	}
 
 
@@ -394,8 +326,8 @@ For example:
         
 	^9:: 
 	{
-		aObjWindowFinder := WinExeCmd.WindowFinder(, 'Chrome_WidgetWin_1', 'chrome.exe') 
-		Tooltip(WinExeCmd.Displayobj(aObjWindowFinder), 0, 0), SetTimer(ToolTip, -8000)
+    aObjWindowFinder := WinExeCmd.WindowFinder(, 'WordPadClass', 'wordpad.exe')
+    WinExeCmd.Notify(, WinExeCmd.Displayobj(aObjWindowFinder),,, 'topCenter')
 	}
 
 
@@ -416,101 +348,165 @@ For example:
 
  	^0::
 	{
-		aObjDeviceFinder := WinExeCmd.DeviceFinder(,'USBSTOR\DISK&VEN_KINGSTON&PROD_DATATRAVELER_3.0&REV_\E0D55EA573DCF450E97C104C&0')
-		Tooltip(WinExeCmd.Displayobj(aObjDeviceFinder), 0, 0), SetTimer(ToolTip, -8000)
+  	aObjDeviceFinder := WinExeCmd.DeviceFinder('Kingston DataTraveler 3.0 USB Device')
+  	WinExeCmd.Notify(, WinExeCmd.Displayobj(aObjDeviceFinder),,, 'topCenter')
 	}
   
+
 Check if device is connected:  
  	
-	if DeviceFinder(,'SCSI\DISK&VEN_WDC&PROD_WD15EARX-22PASB0\5&25248246&0&000000').Length
- 	 	MsgBox('The device is connected')
+ 	^1::
+	{
+    if WinExeCmd.DeviceFinder(,'USBSTOR\DISK&VEN_KINGSTON&PROD_DATATRAVELER_3.0&REV_\E0D55EA573DCF450E97C104C&0').Length
+        WinExeCmd.CustomGui('The device is connected',, 'iconi')
+	}
   
-  
- ## IsProcessElevated
- Check if a process is elevated.
- 
-	IsProcessElevated(PID)
-  
-  > - **PID**
-  >    - Type: Integer
-  
-  For example:
-  
-	MsgBox IsProcessElevated(25884)
-  
-  
- ## GetCommandLine
- Retrieves a start-up command-line of an application
- 
-	GetCommandLine(PID)  
-  
-  > - **PID**
-  >    - Type: Integer
-  
- For example:
-  
-	MsgBox GetCommandLine(25884)
-  
- 
- 
-# Known Issue, Limitation, Additional Notes
 
-- How do I work around problems caused by User Account Control (UAC)?
-By default, User Account Control (UAC) protects "elevated" programs (that is, programs which are running as admin) from being automated by non-elevated programs, since that would allow them to bypass security restrictions. Common workarounds can be found here:
+## Notify
+Display Notifications
+        
+Notify(hdTxt, bdTxt, Icon, options, position, duration, callback, sound, iconSize, hdFontSize, hdFontColor, hdFont, bdtxtWidth, bdFontSize, bdFontColor, bdFont, bgColor, style)
 
-Frequently Asked Questions (FAQ)
-https://www.autohotkey.com/docs/v2/FAQ.htm
+> - **hdTxt**
+>    - Type: String
+>    - Header text
+>
+> - **bdTxt**
+>    - Type: String
+>    - Body text
+>
+> - **icon**
+>    - Type: String
+>    - Picture controls -https://www.autohotkey.com/docs/v2/lib/GuiControls.htm#Picture
+>    - Icon from dll: A_WinDir '\system32\user32.dll|Icon4'
+>    - Loads picture from file: 'HICON:*' LoadPicture(A_WinDir '\System32\imageres.dll', 'Icon4 w48', &imageType)     
+>  
+> - **options**
+>    - Type: String
+>    - Default: "+Owner -Caption +AlwaysOnTop"
+>
+> - **position**
+>    - Type: String
+>    - "bottomRight" or "bottomCenter" or "bottomLeft" or "topLeft" or "topCenter" or "topRight". Default: "bottomRight"
+>
+> - **duration**
+>    - Type: Integer
+>    - The display duration (in milliseconds) for the notification before it disappears. Set it to 0 to keep it on the screen until left-clicking on the GUI. Default: "6000" ms
+>
+> - **callback**
+>    - Type: Function Object
+>    - A function object to call when left-clicking on the GUI.
+>
+> - **sound**
+>    - Type: String
+>    - The path of the .wav file to be played. -https://www.autohotkey.com/docs/v2/lib/SoundPlay.htm
+>
+> - **iconSize**
+>    - Type: Integer
+>
+> - **hdFontSize**
+>    - Type: Integer
+>
+> - **hdFontColor**
+>    - Type: String
+>
+> - **hdFont**
+>    - Type: String
+>
+> - **bdtxtWidth**
+>    - Type: Integer
+>
+> - **bdFontSize**
+>    - Type: Integer
+>
+> - **bdFontColor**
+>    - Type: String
+>
+> - **bdFont**
+>    - Type: String
+>
+> - **bgColor**
+>    - Type: String
+>
+> - **style**
+>    - Type: String
+>    - "round" or "square". Default: "round"
+
+For example:
+
+	^l:: WinExeCmd.Notify('The header text', 'The body text', A_WinDir '\system32\user32.dll|Icon4')
 
 
+## CustomGUI
+Display Custom GUI
 
+CustomGUI(text, title, icon, options, owner, winSetAoT, posXY, sound, objBtn, iconSize, fontSize, textWidth, textHeight, btnWidth, btnHeight)
 
-- Since AHK is not multithreaded It is strongly reccomended lauch another script when event function execute
-The script is constanly checking/looping through all the events
+> - **text**
+>    - Type: String
+>    - The text to display inside the GUI.
+>
+> - **title**
+>    - Type: String
+>    - The title of the GUI. Default: A_ScriptName
+>
+> - **icon**
+>    - Type: String
+>    - Picture controls -https://www.autohotkey.com/docs/v2/lib/GuiControls.htm#Picture
+>    - Icon from dll: A_WinDir '\system32\user32.dll|Icon4'
+>    - Loads picture from file: 'HICON:*' LoadPicture(A_WinDir '\System32\imageres.dll', 'Icon4 w48', &imageType)     
+>                
+> - **options**
+>    - Type: String
+>    - Sets various options and styles for the appearance and behavior of the window. Default: "-MinimizeBox -MaximizeBox" -https://www.autohotkey.com/docs/v2/lib/Gui.htm#Opt
+>
+> - **owner**
+>    - Type: GUI object
+>    - To make the window owned by another.
+>
+> - **winSetAoT**
+>    - Type: Integer
+>    - WinSetAlwaysOnTop. 0 or 1. Default: 0
+>
+> - **posXY**
+>    - Type: String
+>
+> - **sound**
+>    - Type: String
+>    - The path of the .wav file to be played. -https://www.autohotkey.com/docs/v2/lib/SoundPlay.htm
+>
+> - **objBtn**
+>    - Type: Object
+>    - The button(s) of the GUI. Default: {1:{name:'*OK', callback:'this.CustomGUI_Destroy'}}
+>
+> - **iconSize**
+>    - Type: Integer
+> 
+> - **fontSize**
+>    - Type: Integer
+> 
+> - **textWidth**
+>    - Type: Integer
+> 
+> - **textHeight**
+>    - Type: Integer
+> 
+> - **btnWidth**
+>    - Type: Integer
+> 
+> - **btnHeight**
+>    - Type: Integer
+>    -
 
-AHK Single threaded
+For example:
 
-Priority is assigned to critical monitoring methods, which may result in GUIs freezing briefly and not resizing properly.
-
-
-
-
-## Window
-- WinEvent, When Universal Windows Platform (UWP) apps are maximized or unmaximized, WinMinMax monitoring fails to function correctly. This is the result of the SetWinEventHook function not sending messages thus the function not being called.
-
-## Device
-- The device ID of certain devices might change. I'm not sure which device ID is affected or the reason behind it. I tested about a dozen devices, and the issue only occurred with a TV connected via HDMI.
-
-
-
-## Process
-
-Caveat: It's absolutely essential that Sink.Cancel is called. If the script terminates unexpectedly, WMI will continue to poll in the background, and restarting the WMI service is the only way to get rid of the polling loop.
-
-If the script closes abruptly, the script's WMI event registrations might not unregister properly. 
-This can cause "WMI Provider Host" (WmiPrvSE.exe) to continue consuming CPU usage even if the script is no longer running. You can monitor it 
-by checking the CPU usage of "WMI Provider Host" in Task Manager. To restore "WMI Provider Host" to its normal behavior, you can either restart the 
-Windows Management Instrumentation service or restart the computer.
-
-Restart wmi button
-
-Press the Windows Key + R, type in services.msc and press Enter. Locate the Service    Windows Management Instrumentation to WMI Performance Adapter (Windows changes the wmi service name ?)
-
-Command to restart the Windows Management Instrumentation service:
-RunWait('*RunAs Powershell.exe -Command "Restart-Service -Name winmgmt -Force"',, 'Hide')
-
-Fix with window update ?
-
-These window updates below seem to have fix this issue of duplicate WMI event registrations mentionned above.
-orphaned WMI events
-
-November 14, 2023—KB5032189 (OS Builds 19044.3693 and 19045.3693)
-November 14, 2023-KB5032339 Cumulative Update for .NET Framework 3.5, 4.8 and 4.8.1 for Windows 10 Version 22H2
-
+	!d:: WinExeCmd.CustomGUI('The script file failed to open.', 'Error', WinExeCmd.mIcons['gX'],,,,,, {1: {name:'*OK', callback:'this.gCustomGUI_Destroy'}})
 
 
 ## Donation
   - If you found this script useful and would like to donate. It would be greatly appreciated. Thank you!
     https://www.paypal.com/paypalme/martinchartier  
+
 
 ## Credits
 * **AutoHotkey**
@@ -540,12 +536,15 @@ November 14, 2023-KB5032339 Cumulative Update for .NET Framework 3.5, 4.8 and 4.
  
 * **IsProcessElevated by jNizM**    
   - https://github.com/jNizM/ahk-scripts-v2/blob/main/src/ProcessThreadModule/IsProcessElevated.ahk
- 
-* **HasVal by jNizM.**
-  - https://www.autohotkey.com/boards/viewtopic.php?p=109617#p109617
+
+* **GuiCtrlTips by just me.**
+  - https://github.com/AHK-just-me/AHKv2_GuiCtrlTips
 
 * **MoveControls by Descolada. (from UIATreeInspector.ahk)**
   - https://github.com/Descolada/UIA-v2
-  
-* **Code snippets taken from NotifyV2 by the-Automator.com**
+
+* **FrameShadow by Klark92**
+  - https://www.autohotkey.com/boards/viewtopic.php?f=6&t=29117&hilit=FrameShadow
+
+* **Notify is inspired by NotifyV2 (from the-Automator.com)**
   - https://www.the-automator.com/downloads/maestrith-notify-class-v2/ 
