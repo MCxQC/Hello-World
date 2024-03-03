@@ -28,13 +28,13 @@ WinExeCommander is an AutoHotkey script to simplify the execution of functions u
 ## Features
 * Execute fonctions upon:
   - Process creation/termination.
-  - Window creation/termination.
+  - Window creation/termination, activated/deactivated.
   - Device connection/disconnection.
 
 * Select from various criteria, including wintitle, winclass, process name, process path, active/maximize/hidden window and additional parameters.
 * Enable or disable the monitoring of individual events using the tray menu, user interface (GUI), or method call.
 * Save profiles and load them via the tray menu, user interface (GUI), or method call.
-* Themes Customization.
+* Themes customization.
 
 ## Supported devices
 USB, Bluetooth, HDMI etc...
@@ -121,7 +121,7 @@ Function Name: MSPaint_ProcessSetPriority
   >    - The name of the function to call upon event creation or termination. To call the function, append "_Created" or "_Terminated" to the function name.
   >
   > - **Critical**
-  >    - The function's thread is critical or not critical.
+  >    - Set the function's thread to critical.
   >
   > - **Status**
   >    - Display GUI with the Event status in the bottom right corner.
@@ -240,7 +240,7 @@ Function Name: MSPaint_ProcessSetPriority
   
 For example:
 
-	^7::WinExeCmd.SetProfile('All Events Disable')
+	WinExeCmd.SetProfile('All Events Disable')
 
 
 ## SetEvent
@@ -256,7 +256,7 @@ For example:
 
 For example:
 
-	!2::WinExeCmd.SetEvent(1, 'Calculator_WinSetAlwaysOnTop')	
+	WinExeCmd.SetEvent(1, 'Calculator_WinSetAlwaysOnTop')	
 
 
 ## SetPeriodWMI
@@ -267,7 +267,7 @@ For example:
   
  For example:
   
-	^6::WinExeCmd.SetPeriodWMI(3000)
+	WinExeCmd.SetPeriodWMI(3000)
 
 
 ## ProcessFinder
@@ -283,11 +283,7 @@ Returns an array containing objects with all existing processes that match the s
 
 For example:
 
-	^8:: 
-	{
-    aObjProcessFinder := WinExeCmd.ProcessFinder('notepad.exe') 
-    WinExeCmd.Notify(, WinExeCmd.Displayobj(aObjProcessFinder),,, 'topCenter')
-	}
+  aObjProcessFinder := WinExeCmd.ProcessFinder('notepad.exe')
 
 
 ## WindowFinder
@@ -332,11 +328,7 @@ Returns an array containing objects with all existing windows that match the spe
   
 For example:
         
-	^9:: 
-	{
-    aObjWindowFinder := WinExeCmd.WindowFinder(, 'WordPadClass', 'wordpad.exe')
-    WinExeCmd.Notify(, WinExeCmd.Displayobj(aObjWindowFinder),,, 'topCenter')
-	}
+  aObjWindowFinder := WinExeCmd.WindowFinder(, 'WordPadClass', 'wordpad.exe')
 
 
 ## DeviceFinder
@@ -363,15 +355,12 @@ For example:
 
 Check if device is connected:  
  	
- 	^1::
-	{
-	    if WinExeCmd.DeviceFinder(,'USBSTOR\DISK&VEN_KINGSTON&PROD_DATATRAVELER_3.0&REV_\E0D55EA573DCF450E97C104C&0').Length
-        	WinExeCmd.CustomGui('The device is connected',, 'iconi')
-	}
+	if WinExeCmd.DeviceFinder(,'USBSTOR\DISK&VEN_KINGSTON&PROD_DATATRAVELER_3.0&REV_\E0D55EA573DCF450E97C104C&0').Length
+    WinExeCmd.CustomGui('The device is connected',, 'iconi')
   
 
 ## Notify
-Display Notifications.
+Display notifications GUI.
         
 	Notify(hdTxt, bdTxt, Icon, options, position, duration, callback, sound, iconSize, hdFontSize, hdFontColor, hdFont, bdtxtWidth, bdFontSize, bdFontColor, bdFont, bgColor, style)
 
@@ -391,16 +380,15 @@ Display Notifications.
 >    - Loads picture from file: 'HICON:*' LoadPicture(A_WinDir '\System32\imageres.dll', 'Icon4 w48', &imageType)     
 >  
 > - **options**
->    - Type: String
->    - Default: "+Owner -Caption +AlwaysOnTop"
+>    - Type: String. Default: "+Owner -Caption +AlwaysOnTop"
 >
 > - **position**
 >    - Type: String
 >    - "bottomRight", "bottomCenter", "bottomLeft", "topLeft", "topCenter", "topRight". Default: "bottomRight"
 >
 > - **duration**
->    - Type: Integer
->    - The display duration (in milliseconds) for the notification before it disappears. Set it to 0 to keep it on the screen until left-clicking on the GUI. Default: "6000" ms
+>    - Type: Integer. Default: "8000"
+>    - The display duration (in milliseconds) for the notification before it disappears. Set it to 0 to keep it on the screen until left-clicking on the GUI.
 >
 > - **callback**
 >    - Type: Function Object
@@ -409,45 +397,47 @@ Display Notifications.
 > - **sound**
 >    - Type: String
 >    - The path of the .wav file to be played. -https://www.autohotkey.com/docs/v2/lib/SoundPlay.htm
+>    - WinExeCmd.mSounds['Windows Ding'], WinExeCmd.mSounds['tada'] etc...
+>    - WAV files located in the "Sounds" folder at the root directory. WinExeCmd.mSounds['<Insert filename>']
 >
 > - **iconSize**
->    - Type: Integer
+>    - Type: Integer. Default: 32
 >
 > - **hdFontSize**
->    - Type: Integer
+>    - Type: Integer. Default: 15
 >
 > - **hdFontColor**
->    - Type: String
+>    - Type: String. Default: 'white'
 >
 > - **hdFont**
->    - Type: String
+>    - Type: String. Default: 'Segoe UI bold'
 >
 > - **bdtxtWidth**
 >    - Type: Integer
 >
 > - **bdFontSize**
->    - Type: Integer
+>    - Type: Integer. Default: 12
 >
 > - **bdFontColor**
->    - Type: String
+>    - Type: String. Default: 'white'
 >
 > - **bdFont**
->    - Type: String
+>    - Type: String. Default: 'Segoe UI'
 >
 > - **bgColor**
->    - Type: String
+>    - Type: String. Default: '1F1F1F'
 >
 > - **style**
->    - Type: String
->    - "round" or "square". Default: "round"
+>    - Type: String. Default: "round"
+>    - If not "round" or empty parameter, creates a GUI with edged corners.
 
 For example:
 
-	^l:: WinExeCmd.Notify('The header text', 'The body text', A_WinDir '\system32\user32.dll|Icon4')
+	WinExeCmd.Notify('The header text', 'The body text', A_WinDir '\system32\user32.dll|Icon4')
 
 
 ## CustomGUI
-Display Custom GUI.
+Display a Custom GUI.
 
 	CustomGUI(text, title, icon, options, owner, winSetAoT, posXY, sound, objBtn, iconSize, fontSize, textWidth, textHeight, btnWidth, btnHeight)
 
@@ -456,8 +446,8 @@ Display Custom GUI.
 >    - The text to display inside the GUI.
 >
 > - **title**
->    - Type: String
->    - The title of the GUI. Default: A_ScriptName
+>    - Type: String. Default: A_ScriptName
+>    - The title of the GUI.
 >
 > - **icon**
 >    - Type: String
@@ -467,16 +457,16 @@ Display Custom GUI.
 >    - Loads picture from file: 'HICON:*' LoadPicture(A_WinDir '\System32\imageres.dll', 'Icon4 w48', &imageType)     
 >                
 > - **options**
->    - Type: String
->    - Sets various options and styles for the appearance and behavior of the window. Default: "-MinimizeBox -MaximizeBox" -https://www.autohotkey.com/docs/v2/lib/Gui.htm#Opt
+>    - Type: String. Default: "-MinimizeBox -MaximizeBox"
+>    - Sets various options and styles for the appearance and behavior of the window. -https://www.autohotkey.com/docs/v2/lib/Gui.htm#Opt
 >
 > - **owner**
 >    - Type: GUI object
 >    - To make the window owned by another.
 >
 > - **winSetAoT**
->    - Type: Integer
->    - WinSetAlwaysOnTop. 0 or 1. Default: 0
+>    - Type: Integer. Default: 0
+>    - WinSetAlwaysOnTop. 0 or 1.
 >
 > - **posXY**
 >    - Type: String
@@ -484,16 +474,19 @@ Display Custom GUI.
 > - **sound**
 >    - Type: String
 >    - The path of the .wav file to be played. -https://www.autohotkey.com/docs/v2/lib/SoundPlay.htm
+>    - "soundx" , "soundi"
+>    - WinExeCmd.mSounds['Windows Ding'], WinExeCmd.mSounds['tada'] etc...
+>    - WAV files located in the "Sounds" folder at the root directory. WinExeCmd.mSounds['<Insert filename>']
 >
 > - **objBtn**
->    - Type: Object
->    - The button(s) of the GUI. Default: {1:{name:'*OK', callback:'this.CustomGUI_Destroy'}}
+>    - Type: Object. Default: {1:{name:'*OK', callback:'this.CustomGUI_Destroy'}}
+>    - The button(s) of the GUI.
 >
 > - **iconSize**
->    - Type: Integer
+>    - Type: Integer. Default: 32
 > 
 > - **fontSize**
->    - Type: Integer
+>    - Type: Integer. Default: 10
 > 
 > - **textWidth**
 >    - Type: Integer
@@ -502,22 +495,26 @@ Display Custom GUI.
 >    - Type: Integer
 > 
 > - **btnWidth**
->    - Type: Integer
+>    - Type: Integer. Default: 100
 > 
 > - **btnHeight**
->    - Type: Integer
+>    - Type: Integer. Default: 30
 
-For example:
+Example 1:
 
-  WinExeCmd.CustomGUI('Are you sure you want to delete all selected items?',, "icon?",,,,,,
-  {1: {name: '*Yes', callback: 'Btn_Yes_Click'}, 
-   2: {name: 'Cancel', callback: 'this.gCustomGUI_Destroy'}})
-   
-  Btn_Yes_Click(gindex:='', owner:='', *) {
+    WinExeCmd.CustomGUI('The script file failed to open.', 'Error', A_WinDir '\system32\user32.dll|Icon4')
 
-      WinExeCmd.Notify('CustomGUI', 'You clicked the Yes Button.', 'iconi')
-      WinExeCmd.gCustomGUI_Destroy(gindex, owner)
-  }
+Example 2:
+
+    WinExeCmd.CustomGUI('Are you sure you want to delete all selected items?',, "icon?",,,,,,
+    {1: {name: '*Yes', callback: 'Btn_Yes_Click'}, 
+     2: {name: 'Cancel', callback: 'this.gCustomGUI_Destroy'}})
+     
+    Btn_Yes_Click(gindex:='', owner:='', *) {
+        
+        WinExeCmd.Notify('CustomGUI', 'You clicked the Yes Button.', 'iconi')
+        WinExeCmd.gCustomGUI_Destroy(gindex, owner)
+    }
 
 
 ## Sound
@@ -529,10 +526,16 @@ Plays a sound.
 >    - Type: String
 >    - SoundPlay. -https://www.autohotkey.com/docs/v2/lib/SoundPlay.htm
 >    - "soundx" , "soundi"
+>    - WinExeCmd.mSounds['Windows Ding'], WinExeCmd.mSounds['tada'] etc... see Example 2.
+>    - WAV files located in the "Sounds" folder at the root directory. WinExeCmd.mSounds['<Insert filename>']
 
-For example:
+Example 1:
 
-	!q:: WinExeCmd.Sound('soundx')
+	WinExeCmd.Sound('soundx')
+
+Example 2:
+  
+  WinExeCmd.Sound(WinExeCmd.mSounds['Windows Ding'])
 
 
 ## Donation
