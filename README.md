@@ -261,7 +261,7 @@ Returns an array containing objects with all existing processes that match the s
 
 For example:
 
-  aObjProcessFinder := WinExeCmd.ProcessFinder('notepad.exe')
+	aObjProcessFinder := WinExeCmd.ProcessFinder('notepad.exe')
 
 
 ## WindowFinder
@@ -290,7 +290,7 @@ Returns an array containing objects with all existing windows that match the spe
   
 For example:
         
-  aObjWindowFinder := WinExeCmd.WindowFinder(, 'WordPadClass', 'wordpad.exe')
+	aObjWindowFinder := WinExeCmd.WindowFinder(, 'WordPadClass', 'wordpad.exe')
 
 
 ## DeviceFinder
@@ -306,14 +306,13 @@ Returns an array containing objects with the device matching the specified param
 
 For example:
 
-  aObjDeviceFinder := WinExeCmd.DeviceFinder('Kingston DataTraveler 3.0 USB Device')
-  WinExeCmd.Notify(, WinExeCmd.Displayobj(aObjDeviceFinder),,, 'topCenter')
+	aObjDeviceFinder := WinExeCmd.DeviceFinder('Kingston DataTraveler 3.0 USB Device')
+	WinExeCmd.Notify(, WinExeCmd.Displayobj(aObjDeviceFinder),,, 'topCenter')
   
-
 Check if a device is connected:  
  	
-  if WinExeCmd.DeviceFinder(,'USBSTOR\DISK&VEN_KINGSTON&PROD_DATATRAVELER_3.0&REV_\E0D55EA573DCF450E97C104C&0').Length
-    WinExeCmd.MsgBox('The device is connected',, 'iconi')
+	if WinExeCmd.DeviceFinder(,'USBSTOR\DISK&VEN_KINGSTON&PROD_DATATRAVELER_3.0&REV_\E0D55EA573DCF450E97C104C&0').Length
+		WinExeCmd.MsgBox('The device is connected',, 'iconi')
   
 
 ## Notify
@@ -389,7 +388,7 @@ Example 1:
 
 Example 2:
 
-  WinExeCmd.Notify('WinExeCommander', 'Calculator does not exist.', 'HICON:*' LoadPicture(A_WinDir '\System32\imageres.dll', 'Icon8 w48', &imageType))
+	WinExeCmd.Notify('WinExeCommander', 'Calculator does not exist.', 'HICON:*' LoadPicture(A_WinDir '\System32\imageres.dll', 'Icon8 w48', &imageType))
 
 
 ## MsgBox
