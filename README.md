@@ -478,19 +478,19 @@ Display a custom MsgBox.
 
 Example 1:
 
-  WinExeCmd.MsgBox('The script file failed to open.', 'Error', A_WinDir '\system32\user32.dll|Icon4')
+	WinExeCmd.MsgBox('The script file failed to open.', 'Error', A_WinDir '\system32\user32.dll|Icon4')
 
 Example 2:
 
-  WinExeCmd.MsgBox('Are you sure you want to delete all selected items?',, "icon?",,,,,,
-  {1: {name: '*Yes', callback: 'Btn_Yes_Click'}, 
-  2: {name: 'Cancel', callback: 'this.MsgBox_Destroy'}})
-     
-  Btn_Yes_Click(gindex:='', owner:='', *) {
-        
-    WinExeCmd.Notify('MsgBox', 'You clicked the Yes Button.', 'iconi')
-    WinExeCmd.MsgBox_Destroy(gindex, owner)
-  }
+	WinExeCmd.MsgBox('Are you sure you want to delete all selected items?',, "icon?",,,,,,
+	{1: {name: '*Yes', callback: 'Btn_Yes_Click'}, 
+	 2: {name: 'Cancel', callback: 'this.MsgBox_Destroy'}})
+	 
+	Btn_Yes_Click(gindex:='', owner:='', *) {
+		
+		WinExeCmd.Notify('MsgBox', 'You clicked the Yes Button.', 'iconi')
+		WinExeCmd.MsgBox_Destroy(gindex, owner)
+	}
 
 
 ## Sound
