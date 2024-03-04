@@ -1,3 +1,6 @@
+About:
+An AutoHotkey script to simplify the execution of functions upon process/window creation/termination and device connection/disconnection.
+
 # WinExeCommander	
 WinExeCommander is an AutoHotkey script to simplify the execution of functions upon process/window creation/termination and device connection/disconnection.
 
@@ -17,7 +20,7 @@ WinExeCommander is an AutoHotkey script to simplify the execution of functions u
 	- [WindowFinder](#windowfinder)
 	- [DeviceFinder](#devicefinder)
 	- [Notify](#notify)
-	- [CustomGUI](#customgui)
+	- [MsgBox](#msgbox)
 	- [Sound](#sound)
 - [Donation](#donation)
 - [Credits](#credits)
@@ -76,7 +79,7 @@ Function Name: Notepad
 	    if WinExist('ahk_id ' mEvent['id'])
 		    WinMove(900, 200, 500, 500, 'ahk_id ' mEvent['id'])
 	    else
-	        WinExeCmd.CustomGui('Notepad does not exist.',, A_WinDir '\system32\user32.dll|Icon4')
+	        WinExeCmd.MsgBox('Notepad does not exist.',, A_WinDir '\system32\user32.dll|Icon4')
 	}
 
 When the 'mspaint.exe' process is created, change its priority level to 'High'.
@@ -88,7 +91,7 @@ Function Name: MSPaint_ProcessSetPriority
 	    if ProcessExist(mEvent['pid'])
 	        ProcessSetPriority('High', mEvent['pid'])
 	    else
-	        WinExeCmd.CustomGui('mspaint.exe does not exist.',, A_WinDir '\system32\user32.dll|Icon4')
+	        WinExeCmd.MsgBox('mspaint.exe does not exist.',, A_WinDir '\system32\user32.dll|Icon4')
 	}
 
 * To identify a device
@@ -247,7 +250,7 @@ For example:
 	SetEvent(State, Event Name)
 
   > - **State**
-  >    - Type: Integer or String
+  >    - Type: Integer
   >    - **0:** Disable
   >    - **1:** Enable
   >
@@ -263,7 +266,7 @@ For example:
 	SetPeriodWMI(Period)
 
   > - **Period**
-  >    - Integer or String
+  >    - Integer
   
  For example:
   
@@ -311,17 +314,17 @@ Returns an array containing objects with all existing windows that match the spe
   >    - **RegEx:** Regular expression WinTitle matching.
   > 
   > - **DetectHiddenWindows**
-  >    - Type: Integer or String
+  >    - Type: Integer
   >    - **0:** Hidden windows are not detected. (Default)
   >    - **1:** Hidden windows are detected.
   > 
   > - **WinActive**
-  >    - Type: Integer or String
+  >    - Type: Integer
   >    - **0**
   >    - **1**  
   > 
   > - **WinMinMax**
-  >    - Type:Integer or String
+  >    - Type:Integer
   >    - **0:** The window is neither minimized nor maximized.
   >    - **1:** The window is maximized.
   >    - **-1:** The window is minimized.  
@@ -335,42 +338,39 @@ For example:
 Returns an array containing objects with the device matching the specified parameters. If there are no matching device, an empty array is returned.
 
 	DeviceFinder(DeviceName, DeviceID)
-  
-String
-  
+ 
   > - **DeviceName**
+  >    - Type: String
   >    - Names of the device.
   >
   > - **DeviceID**
+  >    - Type: String  
   >    - ID of the device.
 
 For example:
 
- 	^0::
-	{
-  		aObjDeviceFinder := WinExeCmd.DeviceFinder('Kingston DataTraveler 3.0 USB Device')
-  		WinExeCmd.Notify(, WinExeCmd.Displayobj(aObjDeviceFinder),,, 'topCenter')
-	}
+  	aObjDeviceFinder := WinExeCmd.DeviceFinder('Kingston DataTraveler 3.0 USB Device')
+  	WinExeCmd.Notify(, WinExeCmd.Displayobj(aObjDeviceFinder),,, 'topCenter')
   
 
-Check if device is connected:  
+Check if a device is connected:  
  	
 	if WinExeCmd.DeviceFinder(,'USBSTOR\DISK&VEN_KINGSTON&PROD_DATATRAVELER_3.0&REV_\E0D55EA573DCF450E97C104C&0').Length
-    WinExeCmd.CustomGui('The device is connected',, 'iconi')
+    WinExeCmd.MsgBox('The device is connected',, 'iconi')
   
 
 ## Notify
-Display notifications GUI.
+Display a notifications GUI.
         
 	Notify(hdTxt, bdTxt, Icon, options, position, duration, callback, sound, iconSize, hdFontSize, hdFontColor, hdFont, bdtxtWidth, bdFontSize, bdFontColor, bdFont, bgColor, style)
 
 > - **hdTxt**
 >    - Type: String
->    - Header text
+>    - Header text.
 >
 > - **bdTxt**
 >    - Type: String
->    - Body text
+>    - Body text.
 >
 > - **icon**
 >    - Type: String
@@ -429,17 +429,21 @@ Display notifications GUI.
 >
 > - **style**
 >    - Type: String. Default: "round"
->    - If not "round" or empty parameter, creates a GUI with edged corners.
+>    - Rounded or edged corners. "round" or "edge"
 
-For example:
+Example 1:
 
 	WinExeCmd.Notify('The header text', 'The body text', A_WinDir '\system32\user32.dll|Icon4')
 
+Example 2:
 
-## CustomGUI
-Display a Custom GUI.
+  WinExeCmd.Notify('WinExeCommander', 'Calculator does not exist.', 'HICON:*' LoadPicture(A_WinDir '\System32\imageres.dll', 'Icon8 w48', &imageType))
 
-	CustomGUI(text, title, icon, options, owner, winSetAoT, posXY, sound, objBtn, iconSize, fontSize, textWidth, textHeight, btnWidth, btnHeight)
+
+## MsgBox
+Display a custom MsgBox.
+
+	MsgBox(text, title, icon, options, owner, winSetAoT, posXY, sound, objBtn, iconSize, fontSize, textWidth, textHeight, btnWidth, btnHeight)
 
 > - **text**
 >    - Type: String
@@ -479,7 +483,7 @@ Display a Custom GUI.
 >    - WAV files located in the "Sounds" folder at the root directory. WinExeCmd.mSounds['Insert filename']
 >
 > - **objBtn**
->    - Type: Object. Default: {1:{name:'*OK', callback:'this.CustomGUI_Destroy'}}
+>    - Type: Object. Default: {1:{name:'*OK', callback:'this.MsgBox_Destroy'}}
 >    - The button(s) of the GUI.
 >
 > - **iconSize**
@@ -502,18 +506,18 @@ Display a Custom GUI.
 
 Example 1:
 
-    WinExeCmd.CustomGUI('The script file failed to open.', 'Error', A_WinDir '\system32\user32.dll|Icon4')
+    WinExeCmd.MsgBox('The script file failed to open.', 'Error', A_WinDir '\system32\user32.dll|Icon4')
 
 Example 2:
 
-    WinExeCmd.CustomGUI('Are you sure you want to delete all selected items?',, "icon?",,,,,,
+    WinExeCmd.MsgBox('Are you sure you want to delete all selected items?',, "icon?",,,,,,
     {1: {name: '*Yes', callback: 'Btn_Yes_Click'}, 
-     2: {name: 'Cancel', callback: 'this.gCustomGUI_Destroy'}})
+     2: {name: 'Cancel', callback: 'this.MsgBox_Destroy'}})
      
     Btn_Yes_Click(gindex:='', owner:='', *) {
         
-        WinExeCmd.Notify('CustomGUI', 'You clicked the Yes Button.', 'iconi')
-        WinExeCmd.gCustomGUI_Destroy(gindex, owner)
+        WinExeCmd.Notify('MsgBox', 'You clicked the Yes Button.', 'iconi')
+        WinExeCmd.MsgBox_Destroy(gindex, owner)
     }
 
 
@@ -535,7 +539,7 @@ Example 1:
 
 Example 2:
   
-  WinExeCmd.Sound(WinExeCmd.mSounds['Windows Ding'])
+	WinExeCmd.Sound(WinExeCmd.mSounds['Windows Ding'])
 
 
 ## Donation
