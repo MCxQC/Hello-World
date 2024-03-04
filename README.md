@@ -183,9 +183,6 @@ Function Name: MSPaint_ProcessSetPriority
 
 
 ### Process Parameters
-  > - **Process Name**
-  > - **Process Path**
-  >
   > - **Monitoring** 
   >    - **WMI**
   >    		- Check for the existence of the process at a specified time interval using WMI Provider Host process. (Default)
