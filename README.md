@@ -139,10 +139,7 @@ Function Name: MSPaint_ProcessSetPriority
 ### Window Parameters
   > - **WinTitle**:
   >    - Case-sensitive, except when using the i) modifier in a RegEx pattern.
-  > - **WinClass**
-  > - **Process Name**
-  > - **Process Path**
-  > 
+  >
   > - **WinTitleMatchMode**   
   >    - **1:** A window's title must start with the specified WinTitle to be a match.
   >    - **2:** A window's title can contain WinTitle anywhere inside it to be a match. (Default)
@@ -235,8 +232,6 @@ Function Name: MSPaint_ProcessSetPriority
 
 	SetProfile(Profile Name)
   
-  > - **Profile Name**	
-  
 For example:
 
 	WinExeCmd.SetProfile('All Events Disable')
@@ -248,8 +243,6 @@ For example:
   > - **State**
   >    - **0:** Disable
   >    - **1:** Enable
-  >
-  > - **Event Name**
 
 For example:
 
@@ -258,8 +251,6 @@ For example:
 
 ## SetPeriodWMI
 	SetPeriodWMI(Period)
-
-  > - **Period**
   
  For example:
   
@@ -269,11 +260,7 @@ For example:
 ## ProcessFinder
 Returns an array containing objects with all existing processes that match the specified parameters. If there are no matching processes, an empty array is returned.
         
-	ProcessFinder(ProcessName, ProcessPath) 
-
-  > - **Process Name**
-  > 
-  > - **Process Path**   
+	ProcessFinder(ProcessName, ProcessPath)   
 
 For example:
 
@@ -285,14 +272,6 @@ Returns an array containing objects with all existing windows that match the spe
         
 	WindowFinder(WinTitle, WinClass, ProcessName, ProcessPath, WinTitleMatchMode, DetectHiddenWindows, WinActive, WinMinMax)
 
-  > - **WinTitle**
-  >
-  > - **WinClass**
-  >
-  > - **Process Name**
-  >
-  > - **Process Path**
-  > 
   > - **WinTitleMatchMode**
   >    - **1:** A window's title must start with the specified WinTitle to be a match.
   >    - **2:** A window's title can contain WinTitle anywhere inside it to be a match. (Default)
