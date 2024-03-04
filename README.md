@@ -1,8 +1,5 @@
-About:
-An AutoHotkey script to simplify the execution of functions upon process/window creation/termination and device connection/disconnection.
-
 # WinExeCommander	
-WinExeCommander is an AutoHotkey script to simplify the execution of functions upon process/window creation/termination and device connection/disconnection.
+WinExeCommander is an AutoHotkey script to simplify the calling of functions when windows/processes are created/terminated, devices are connected/disconnected.
 
 - [Requirement](#requirement)
 - [Features](#features)
@@ -239,7 +236,6 @@ Function Name: MSPaint_ProcessSetPriority
 	SetProfile(Profile Name)
   
   > - **Profile Name**	
-  >    - Type: String
   
 For example:
 
@@ -250,12 +246,10 @@ For example:
 	SetEvent(State, Event Name)
 
   > - **State**
-  >    - Type: Integer
   >    - **0:** Disable
   >    - **1:** Enable
   >
   > - **Event Name**
-  >    - Type: String
 
 For example:
 
@@ -266,7 +260,6 @@ For example:
 	SetPeriodWMI(Period)
 
   > - **Period**
-  >    - Integer
   
  For example:
   
@@ -279,10 +272,8 @@ Returns an array containing objects with all existing processes that match the s
 	ProcessFinder(ProcessName, ProcessPath) 
 
   > - **Process Name**
-  >    - Type: String
   > 
-  > - **Process Path**
-  >    - Type: String    
+  > - **Process Path**   
 
 For example:
 
@@ -295,36 +286,28 @@ Returns an array containing objects with all existing windows that match the spe
 	WindowFinder(WinTitle, WinClass, ProcessName, ProcessPath, WinTitleMatchMode, DetectHiddenWindows, WinActive, WinMinMax)
 
   > - **WinTitle**
-  >    - Type: String
   >
   > - **WinClass**
-  >    - Type: String
   >
   > - **Process Name**
-  >    - Type: String
   >
   > - **Process Path**
-  >    - Type: String
   > 
   > - **WinTitleMatchMode**
-  >    - Type: Integer or String
   >    - **1:** A window's title must start with the specified WinTitle to be a match.
   >    - **2:** A window's title can contain WinTitle anywhere inside it to be a match. (Default)
   >    - **3:** A window's title must exactly match WinTitle.
   >    - **RegEx:** Regular expression WinTitle matching.
   > 
   > - **DetectHiddenWindows**
-  >    - Type: Integer
   >    - **0:** Hidden windows are not detected. (Default)
   >    - **1:** Hidden windows are detected.
   > 
   > - **WinActive**
-  >    - Type: Integer
   >    - **0**
   >    - **1**  
   > 
   > - **WinMinMax**
-  >    - Type:Integer
   >    - **0:** The window is neither minimized nor maximized.
   >    - **1:** The window is maximized.
   >    - **-1:** The window is minimized.  
@@ -340,22 +323,20 @@ Returns an array containing objects with the device matching the specified param
 	DeviceFinder(DeviceName, DeviceID)
  
   > - **DeviceName**
-  >    - Type: String
   >    - Names of the device.
   >
   > - **DeviceID**
-  >    - Type: String  
   >    - ID of the device.
 
 For example:
 
-  	aObjDeviceFinder := WinExeCmd.DeviceFinder('Kingston DataTraveler 3.0 USB Device')
-  	WinExeCmd.Notify(, WinExeCmd.Displayobj(aObjDeviceFinder),,, 'topCenter')
+  aObjDeviceFinder := WinExeCmd.DeviceFinder('Kingston DataTraveler 3.0 USB Device')
+  WinExeCmd.Notify(, WinExeCmd.Displayobj(aObjDeviceFinder),,, 'topCenter')
   
 
 Check if a device is connected:  
  	
-	if WinExeCmd.DeviceFinder(,'USBSTOR\DISK&VEN_KINGSTON&PROD_DATATRAVELER_3.0&REV_\E0D55EA573DCF450E97C104C&0').Length
+  if WinExeCmd.DeviceFinder(,'USBSTOR\DISK&VEN_KINGSTON&PROD_DATATRAVELER_3.0&REV_\E0D55EA573DCF450E97C104C&0').Length
     WinExeCmd.MsgBox('The device is connected',, 'iconi')
   
 
@@ -365,71 +346,66 @@ Display a notifications GUI.
 	Notify(hdTxt, bdTxt, Icon, options, position, duration, callback, sound, iconSize, hdFontSize, hdFontColor, hdFont, bdtxtWidth, bdFontSize, bdFontColor, bdFont, bgColor, style)
 
 > - **hdTxt**
->    - Type: String
 >    - Header text.
 >
 > - **bdTxt**
->    - Type: String
 >    - Body text.
 >
 > - **icon**
->    - Type: String
->    - Picture controls -https://www.autohotkey.com/docs/v2/lib/GuiControls.htm#Picture
+>    - Picture controls https://www.autohotkey.com/docs/v2/lib/GuiControls.htm#Picture
 >    - "icon!" , "icon?", "iconx", "iconi"
 >    - Icon from dll: A_WinDir '\system32\user32.dll|Icon4'
 >    - Loads picture from file: 'HICON:*' LoadPicture(A_WinDir '\System32\imageres.dll', 'Icon4 w48', &imageType)     
 >  
 > - **options**
->    - Type: String. Default: "+Owner -Caption +AlwaysOnTop"
+>    - Default: "+Owner -Caption +AlwaysOnTop"
 >
 > - **position**
->    - Type: String
->    - "bottomRight", "bottomCenter", "bottomLeft", "topLeft", "topCenter", "topRight". Default: "bottomRight"
+>    - "bottomRight", "bottomCenter", "bottomLeft", "topLeft", "topCenter", "topRight".
+>    - Default: "bottomRight"
 >
 > - **duration**
->    - Type: Integer. Default: "8000"
 >    - The display duration (in milliseconds) for the notification before it disappears. Set it to 0 to keep it on the screen until left-clicking on the GUI.
+>    - Default: 8000
 >
 > - **callback**
 >    - Type: Function Object
 >    - A function object to call when left-clicking on the GUI.
 >
 > - **sound**
->    - Type: String
->    - The path of the .wav file to be played. -https://www.autohotkey.com/docs/v2/lib/SoundPlay.htm
+>    - The path of the .wav file to be played. https://www.autohotkey.com/docs/v2/lib/SoundPlay.htm
 >    - WinExeCmd.mSounds['Windows Ding'], WinExeCmd.mSounds['tada'] etc...
 >    - WAV files located in the "Sounds" folder at the root directory. WinExeCmd.mSounds['Insert filename']
 >
 > - **iconSize**
->    - Type: Integer. Default: 32
+>    - Default: 32
 >
 > - **hdFontSize**
->    - Type: Integer. Default: 15
+>    - Default: 15
 >
 > - **hdFontColor**
->    - Type: String. Default: 'white'
+>    -  Default: 'white'
 >
 > - **hdFont**
->    - Type: String. Default: 'Segoe UI bold'
+>    - Default: 'Segoe UI bold'
 >
 > - **bdtxtWidth**
->    - Type: Integer
 >
 > - **bdFontSize**
->    - Type: Integer. Default: 12
+>    - Default: 12
 >
 > - **bdFontColor**
->    - Type: String. Default: 'white'
+>    - Default: 'white'
 >
 > - **bdFont**
->    - Type: String. Default: 'Segoe UI'
+>    - Default: 'Segoe UI'
 >
 > - **bgColor**
->    - Type: String. Default: '1F1F1F'
+>    - Default: '1F1F1F'
 >
 > - **style**
->    - Type: String. Default: "round"
->    - Rounded or edged corners. "round" or "edge"
+>    - Rounded or edged corners. "round" or "edge".
+>    - Default: "round"
 
 Example 1:
 
@@ -446,79 +422,75 @@ Display a custom MsgBox.
 	MsgBox(text, title, icon, options, owner, winSetAoT, posXY, sound, objBtn, iconSize, fontSize, textWidth, textHeight, btnWidth, btnHeight)
 
 > - **text**
->    - Type: String
 >    - The text to display inside the GUI.
 >
 > - **title**
->    - Type: String. Default: A_ScriptName
->    - The title of the GUI.
+>    - The title of the GUI. 
+>    - Default: A_ScriptName
 >
 > - **icon**
->    - Type: String
->    - Picture controls -https://www.autohotkey.com/docs/v2/lib/GuiControls.htm#Picture
+>    - Picture controls https://www.autohotkey.com/docs/v2/lib/GuiControls.htm#Picture
 >    - "icon!" , "icon?", "iconx", "iconi"
 >    - Icon from dll: A_WinDir '\system32\user32.dll|Icon4'
 >    - Loads picture from file: 'HICON:*' LoadPicture(A_WinDir '\System32\imageres.dll', 'Icon4 w48', &imageType)     
 >                
 > - **options**
->    - Type: String. Default: "-MinimizeBox -MaximizeBox"
->    - Sets various options and styles for the appearance and behavior of the window. -https://www.autohotkey.com/docs/v2/lib/Gui.htm#Opt
+>    - Sets various options and styles for the appearance and behavior of the window. https://www.autohotkey.com/docs/v2/lib/Gui.htm#Opt
+>    - Default: "-MinimizeBox -MaximizeBox"
 >
 > - **owner**
 >    - Type: GUI object
 >    - To make the window owned by another.
 >
 > - **winSetAoT**
->    - Type: Integer. Default: 0
->    - WinSetAlwaysOnTop. 0 or 1.
+>    - WinSetAlwaysOnTop https://www.autohotkey.com/docs/v2/lib/WinSetAlwaysOnTop.htm
+>    - **0:** (Default)
+>    - **1:**
 >
 > - **posXY**
->    - Type: String
 >
 > - **sound**
->    - Type: String
->    - The path of the .wav file to be played. -https://www.autohotkey.com/docs/v2/lib/SoundPlay.htm
+>    - The path of the .wav file to be played. https://www.autohotkey.com/docs/v2/lib/SoundPlay.htm
 >    - "soundx" , "soundi"
 >    - WinExeCmd.mSounds['Windows Ding'], WinExeCmd.mSounds['tada'] etc...
 >    - WAV files located in the "Sounds" folder at the root directory. WinExeCmd.mSounds['Insert filename']
 >
 > - **objBtn**
->    - Type: Object. Default: {1:{name:'*OK', callback:'this.MsgBox_Destroy'}}
 >    - The button(s) of the GUI.
+>    - Default: {1:{name:'*OK', callback:'this.MsgBox_Destroy'}}
 >
 > - **iconSize**
->    - Type: Integer. Default: 32
+>    - Default: 32
 > 
 > - **fontSize**
->    - Type: Integer. Default: 10
+>    - Default: 10
 > 
 > - **textWidth**
->    - Type: Integer
 > 
 > - **textHeight**
->    - Type: Integer
+>    - Rows of text (any number, even a floating point number such as r2.5)
 > 
 > - **btnWidth**
->    - Type: Integer. Default: 100
+>    - Default: 100
 > 
 > - **btnHeight**
->    - Type: Integer. Default: 30
+>    - Default: 30
 
 Example 1:
 
-    WinExeCmd.MsgBox('The script file failed to open.', 'Error', A_WinDir '\system32\user32.dll|Icon4')
+  WinExeCmd.MsgBox('The script file failed to open.', 'Error', A_WinDir '\system32\user32.dll|Icon4')
 
 Example 2:
 
-    WinExeCmd.MsgBox('Are you sure you want to delete all selected items?',, "icon?",,,,,,
-    {1: {name: '*Yes', callback: 'Btn_Yes_Click'}, 
-     2: {name: 'Cancel', callback: 'this.MsgBox_Destroy'}})
+  WinExeCmd.MsgBox('Are you sure you want to delete all selected items?',, "icon?",,,,,,
+  {1: {name: '*Yes', callback: 'Btn_Yes_Click'}, 
+  2: {name: 'Cancel', callback: 'this.MsgBox_Destroy'}})
      
-    Btn_Yes_Click(gindex:='', owner:='', *) {
+  Btn_Yes_Click(gindex:='', owner:='', *) {
         
-        WinExeCmd.Notify('MsgBox', 'You clicked the Yes Button.', 'iconi')
-        WinExeCmd.MsgBox_Destroy(gindex, owner)
-    }
+    WinExeCmd.Notify('MsgBox', 'You clicked the Yes Button.', 'iconi')
+    WinExeCmd.MsgBox_Destroy(gindex, owner)
+  }
 
 
 ## Sound
@@ -527,8 +499,7 @@ Plays a sound.
 	Sound(sound)
 
 > - **sound**
->    - Type: String
->    - SoundPlay. -https://www.autohotkey.com/docs/v2/lib/SoundPlay.htm
+>    - SoundPlay. https://www.autohotkey.com/docs/v2/lib/SoundPlay.htm
 >    - "soundx" , "soundi"
 >    - WinExeCmd.mSounds['Windows Ding'], WinExeCmd.mSounds['tada'] etc... see Example 2.
 >    - WAV files located in the "Sounds" folder at the root directory. WinExeCmd.mSounds['Insert filename']
