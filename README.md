@@ -64,7 +64,7 @@ Function Name: Calculator_AlwaysOnTop
 	    if WinExist('ahk_id ' mEvent['id'])
 	        WinSetAlwaysOnTop(1, 'ahk_id ' mEvent['id'])
 	    else
-	        WinExeCmd.MsgBox('Calculator does not exist.', 'WinExeCommander', A_WinDir '\system32\user32.dll|Icon4')    
+	        WinExeCmd.MsgBox('Calculator does not exist.', 'WinExeCommander', 'iconx')    
 	}
 
 When the "mspaint.exe" process is created, change its priority level to "High".
@@ -76,7 +76,7 @@ Function Name: MSPaint_ProcessSetPriority
 	    if ProcessExist(mEvent['pid'])
 	        ProcessSetPriority('High', mEvent['pid'])
 	    else
-	        WinExeCmd.MsgBox('MSPaint does not exist.', 'WinExeCommander', A_WinDir '\system32\user32.dll|Icon4')
+	        WinExeCmd.MsgBox('MSPaint does not exist.', 'WinExeCommander', 'iconx')
 	}
 
 * To identify a device
@@ -295,7 +295,6 @@ Returns an array containing objects with the device matching the specified param
 For example:
 
 	aObjDeviceFinder := WinExeCmd.DeviceFinder('Kingston DataTraveler 3.0 USB Device')
-	WinExeCmd.Notify(, WinExeCmd.Displayobj(aObjDeviceFinder),,, 'topCenter')
   
 Check if a device is connected:  
  	
