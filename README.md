@@ -1,6 +1,10 @@
 # WinExeCommander	
 WinExeCommander is an AutoHotkey script to simplify the calling of functions when windows/processes are created/terminated, devices are connected/disconnected.
 
+![](https://i.imgur.com/fnRhH1h.png)
+
+![](https://i.imgur.com/l2ZXYuj.png)
+
 - [Requirement](#requirement)
 - [Features](#features)
 - [Supported devices](#supported-devices)
@@ -21,10 +25,6 @@ WinExeCommander is an AutoHotkey script to simplify the calling of functions whe
 	- [Sound](#sound)
 - [Donation](#donation)
 - [Credits](#credits)
-
-![](https://i.imgur.com/fnRhH1h.png)
-
-![](https://i.imgur.com/l2ZXYuj.png)
 
 ## Requirement
 * AutoHotkey v2
