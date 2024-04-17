@@ -44,11 +44,11 @@ USB, Bluetooth, HDMI etc...
 * Add an Event
   - Double-click the tray icon or right-click on it and choose "Event Manager".
   - Click the "Add Event" button.
-  - Choose Window, Process, or Device from the top dropdown list.
-  - To fill the edit fields, you can manually enter data, double-click on a listview item, or right-click on an item and select "Copy Row Data to Edit Fields".
+  - Click on Window, Process, or Device button.
+  - To fill the edit fields, you can manually enter data, or double-click on a listview item, or right-click on an item and select "Copy Row Data to Edit Fields".
 
 * Edit an Event
-  - Click the "Edit" button, double-click on it in the list or right-click and choose "Edit Event".
+  - Select an event and click the 'Edit' button, or double-click on it in the listview, or right-click and choose 'Edit Event'
   
 * Write a function associated with the event.
   - In the file "WinExeCommander.ahk", create a function to be called when the event is created or terminated. Append "_Created" or "_Terminated" to the event function name.
@@ -71,7 +71,7 @@ When the Notepad app is opened, changes the position and/or size of Notepad.
 
 Function Name: Notepad
 
-	Notepad_Created(mEvent) {
+	Notepad_WinMove_Created(mEvent) {
 	    
 	    if WinExist('ahk_id ' mEvent['id'])
 		    WinMove(900, 200, 500, 500, 'ahk_id ' mEvent['id'])
@@ -98,7 +98,7 @@ Function Name: MSPaint_ProcessSetPriority
   - Alternatively, run "DeviceInfoFinder.ahk", found in the "Tools" tray menu, menubar, and the device section.
   
 * Loading Profiles
-  - The profile contains the Events information, period WMI and the windows events. By default, when loading a profile, the existing events will remain the same, and only the event states are loaded. In the Profile Manager, you can choose whether to load the period WMI and windows events or not. Enabling "Replace All Events" will replace all existing events with those from the profile.
+  - The profile includes the events, the WMI period interval, and the window events (WinEvents) to monitor. In the Profile Manager, you can select whether or not to load them when loading profiles.
 
 * Applying Changes
   - To apply modifications, make sure to click the "Apply" button after creating or modifying an event, changing the WMI period, loading a profile etc...
@@ -124,13 +124,13 @@ Function Name: MSPaint_ProcessSetPriority
   >    - Set the function's thread to critical.
   >
   > - **Status**
-  >    - Display GUI with the Event status in the bottom right corner.
+  >    - Display GUI with the event status in the bottom right corner.
   >  
   > - **Info**
-  >    - Display GUI with the Event information in the top left corner.
+  >    - Display GUI with the event information in the top left corner.
   >  
   > - **Log Info**
-  >    - Log Event information to "EventsLog.txt"
+  >    - Log event information to "EventsLog.txt"
   >   
   > - **Sound**
   >    - Notification Sounds.
@@ -159,11 +159,11 @@ Function Name: MSPaint_ProcessSetPriority
   >    - **0:** The window is neither minimized nor maximized.
   >    - **1:** The window is maximized.
   >    - **-1:** The window is minimized.
-  >    - **Limitation:** Only one window per Event can be monitored.
+  >    - **Limitation:** Only one window per event can be monitored.
   >   
   > - **Monitoring** 
   >    - **WinEvent**
-  >        - SetWinEventHook. Sets an event hook function for a range of Windows Events. (Default)
+  >        - SetWinEventHook. Sets an event hook function for a range of Windows events. (Default)
   >    - **Timer**
   >        - Check for the existence of the window at a specified time interval.
   >
@@ -217,8 +217,8 @@ Function Name: MSPaint_ProcessSetPriority
   >    - Delay (DeviceChange): The approximate delay (in milliseconds) for checking the existence of the device after a device event message is fired by the DeviceChange function.
   >  
   > - **Mode**
-  >    - **1:** Call "Function_Created" for every device connected. Call "Function_Terminated" for every device disconnected. (Default)
-  >    - **2:** Call "Function_Created" only for the initial device connected. Call "Function_Terminated" only when the last device is disconnected.
+  >    - **1:** Call "Function_Created" for every device connected. Call "Function_Terminated" for every device disconnected.
+  >    - **2:** Call "Function_Created" only for the initial device connected. Call "Function_Terminated" only when the last device is disconnected. (Default)
   >    - **3:** Call "Function_Created" for every device connected. Call "Function_Terminated" only when the last device is disconnected.
   
 
@@ -235,7 +235,7 @@ For example:
 
 
 ## SetEvent
-	SetEvent(State, Event Name)
+	SetEvent(State, Event name)
 
   > - **State**
   >    - **0:** Disable
@@ -249,7 +249,7 @@ For example:
 ## SetPeriodWMI
 	SetPeriodWMI(Period)
   
- For example:
+For example:
   
 	WinExeCmd.SetPeriodWMI(3000)
 
@@ -318,7 +318,7 @@ Check if a device is connected:
 ## Notify
 Display a notifications GUI.
         
-	Notify(hdTxt, bdTxt, Icon, options, position, duration, callback, sound, iconSize, hdFontSize, hdFontColor, hdFont, bdtxtWidth, bdFontSize, bdFontColor, bdFont, bgColor, style)
+	Notify(hdTxt, bdTxt, Icon, options, position, duration, callback, sound, iconSize, hdFontSize, hdFontColor, hdFont, bdFontSize, bdFontColor, bdFont, bgColor, style)
 
 > - **hdTxt**
 >    - Header text.
@@ -364,8 +364,6 @@ Display a notifications GUI.
 > - **hdFont**
 >    - Default: 'Segoe UI bold'
 >
-> - **bdtxtWidth**
->
 > - **bdFontSize**
 >    - Default: 12
 >
@@ -394,7 +392,7 @@ Example 2:
 ## MsgBox
 Display a custom MsgBox.
 
-	MsgBox(text, title, icon, options, owner, winSetAoT, posXY, sound, objBtn, iconSize, fontSize, textWidth, textHeight, btnWidth, btnHeight)
+	MsgBox(text, title, icon, options, owner, winSetAoT, posXY, sound, objBtn, iconSize, fontSize, btnWidth, btnHeight)
 
 > - **text**
 >    - The text to display inside the GUI.
@@ -430,20 +428,16 @@ Display a custom MsgBox.
 >    - WinExeCmd.mSounds['Windows Ding'], WinExeCmd.mSounds['tada'] etc...
 >    - WAV files located in the "Sounds" folder at the root directory. WinExeCmd.mSounds['Insert filename']
 >
-> - **objBtn**
+> - **aObjBtn**
+>    - Type: Array of Object
 >    - The button(s) of the GUI.
->    - Default: {1:{name:'*OK', callback:'this.MsgBox_Destroy'}}
+>    - Default: [{name:'*OK', callback:'this.MsgBox_Destroy'}]
 >
 > - **iconSize**
 >    - Default: 32
 > 
 > - **fontSize**
 >    - Default: 10
-> 
-> - **textWidth**
-> 
-> - **textHeight**
->    - Rows of text (any number, even a floating point number such as r2.5)
 > 
 > - **btnWidth**
 >    - Default: 100
@@ -457,15 +451,15 @@ Example 1:
 
 Example 2:
 
-	WinExeCmd.MsgBox('Are you sure you want to delete all selected items?',, "icon?",,,,,,
-	{1: {name: '*Yes', callback: 'Btn_Yes_Click'}, 
-	 2: {name: 'Cancel', callback: 'this.MsgBox_Destroy'}})
-	 
-	Btn_Yes_Click(gindex:='', owner:='', *) {
-		
-		WinExeCmd.Notify('MsgBox', 'You clicked the Yes Button.', 'iconi')
-		WinExeCmd.MsgBox_Destroy(gindex, owner)
-	}
+  WinExeCmd.MsgBox('Are you sure you want to delete all selected items?',, "icon?",,,,,,
+  [{name:'*Yes', callback: 'Btn_Yes_Click'},
+   {name: 'Cancel', callback: 'this.MsgBox_Destroy'}])
+
+  Btn_Yes_Click(g, *) {
+      
+      WinExeCmd.Notify(, 'You clicked the Yes Button.', 'iconi',,,,, 'soundi')
+      WinExeCmd.MsgBox_Destroy(g)
+  }
 
 
 ## Sound
@@ -490,8 +484,11 @@ Example 2:
 
 ## Donation
   - If you found this script useful and would like to donate. It would be greatly appreciated. Thank you!
-    https://www.paypal.com/paypalme/martinchartier  
+    https://www.paypal.com/paypalme/martinchartier
 
+
+## License
+  - MIT
 
 ## Credits
 * **AutoHotkey**
@@ -502,6 +499,18 @@ Example 2:
 * **JSON.ahk by thqby, HotKeyIt.**
   - https://github.com/thqby/ahk2_lib/blob/master/JSON.ahk
   - https://github.com/HotKeyIt/Yaml
+
+* **GuiCtrlTips by just me.**
+  - https://github.com/AHK-just-me/AHKv2_GuiCtrlTips  
+
+* **LV_GridColor by just me.**
+  - https://www.autohotkey.com/boards/viewtopic.php?f=83&t=125259 
+
+* **GuiButtonIcon by FanaticGuru.**	
+  - https://www.autohotkey.com/boards/viewtopic.php?f=83&t=115871
+  
+* **DisplayObj by FanaticGuru. (inspired by tidbit and Lexikos v1 code)**
+  - https://www.autohotkey.com/boards/viewtopic.php?p=507896#p507896
   
 * **EnumDeviceInfo by teadrinker. (based on JEE_DeviceList by jeeswg)**
   - https://www.autohotkey.com/boards/viewtopic.php?t=121125&p=537515  
@@ -511,24 +520,15 @@ Example 2:
   - https://www.autohotkey.com/board/topic/15214-getcommandline/
 	
 * **WTSEnumProcesses by SKAN.**
-  - https://www.autohotkey.com/boards/viewtopic.php?t=4365	
-	
-* **GuiButtonIcon by FanaticGuru.**	
-  - https://www.autohotkey.com/boards/viewtopic.php?f=83&t=115871
-  
-* **DisplayObj by FanaticGuru. (inspired by tidbit and Lexikos v1 code)**
-  - https://www.autohotkey.com/boards/viewtopic.php?p=507896#p507896
+  - https://www.autohotkey.com/boards/viewtopic.php?t=4365
  
 * **IsProcessElevated by jNizM**    
   - https://github.com/jNizM/ahk-scripts-v2/blob/main/src/ProcessThreadModule/IsProcessElevated.ahk
 
-* **GuiCtrlTips by just me.**
-  - https://github.com/AHK-just-me/AHKv2_GuiCtrlTips
-
 * **MoveControls by Descolada. (from UIATreeInspector.ahk)**
   - https://github.com/Descolada/UIA-v2
 
-* **FrameShadow by Klark92**
+* **FrameShadow by Klark92.**
   - https://www.autohotkey.com/boards/viewtopic.php?f=6&t=29117&hilit=FrameShadow
 
 * **Notify is inspired by NotifyV2 (from the-Automator.com)**
