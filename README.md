@@ -22,8 +22,9 @@ WinExeCommander is an AutoHotkey script to simplify the calling of functions whe
 - [Donation](#donation)
 - [Credits](#credits)
 
+![](https://i.imgur.com/fnRhH1h.png)
 
-![myImage](https://imgur.com/a/6qBIseT)
+![](https://i.imgur.com/l2ZXYuj.png)
 
 ## Requirement
 * AutoHotkey v2
