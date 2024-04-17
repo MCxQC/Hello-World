@@ -287,7 +287,7 @@ Returns an array containing objects with the device matching the specified param
 	DeviceFinder(DeviceName, DeviceID)
  
   > - **DeviceName**
-  >    - Names of the device.
+  >    - Name of the device.
   >
   > - **DeviceID**
   >    - ID of the device.
