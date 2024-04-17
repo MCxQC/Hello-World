@@ -377,7 +377,7 @@ Example 2:
 
 
 ## MsgBox
-Display a custom MsgBox.
+Display a custom MsgBox without stopping the thread.
 
 	MsgBox(text, title, icon, options, owner, winSetAoT, posXY, sound, objBtn, iconSize, fontSize, btnWidth, btnHeight)
 
@@ -404,8 +404,8 @@ Display a custom MsgBox.
 >
 > - **winSetAoT**
 >    - WinSetAlwaysOnTop https://www.autohotkey.com/docs/v2/lib/WinSetAlwaysOnTop.htm
->    - **0:** (Default)
->    - **1:**
+>    - **0:** turns off the setting. (Default)
+>    - **1:** turns on the setting.
 >
 > - **posXY**
 >
@@ -438,15 +438,15 @@ Example 1:
 
 Example 2:
 
-  WinExeCmd.MsgBox('Are you sure you want to delete all selected items?',, "icon?",,,,,,
-  [{name:'*Yes', callback: 'Btn_Yes_Click'},
-   {name: 'Cancel', callback: 'this.MsgBox_Destroy'}])
-
-  Btn_Yes_Click(g, *) {
-      
-      WinExeCmd.Notify(, 'You clicked the Yes Button.', 'iconi',,,,, 'soundi')
-      WinExeCmd.MsgBox_Destroy(g)
-  }
+	WinExeCmd.MsgBox('Are you sure you want to delete all selected items?',, "icon?",,,,,,
+	[{name:'*Yes', callback: 'Btn_Yes_Click'},
+	 {name: 'Cancel', callback: 'this.MsgBox_Destroy'}])
+	
+	Btn_Yes_Click(g, *) {
+	    
+	    WinExeCmd.Notify(, 'You clicked the Yes Button.', 'iconi',,,,, 'soundi')
+	    WinExeCmd.MsgBox_Destroy(g)
+	}
 
 
 ## Sound
