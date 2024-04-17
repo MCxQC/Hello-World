@@ -59,36 +59,24 @@ When the Calculator app is opened, set the window to be always on top.
 
 Function Name: Calculator_AlwaysOnTop
 
- 	Calculator_AlwaysOnTop_Created(mEvent) {
+	Calculator_AlwaysOnTop_Created(mEvent) {
 	    
 	    if WinExist('ahk_id ' mEvent['id'])
 	        WinSetAlwaysOnTop(1, 'ahk_id ' mEvent['id'])
 	    else
-	        WinExeCmd.Notify('WinExeCommander', 'Calculator does not exist.', A_WinDir '\system32\user32.dll|Icon4')    
+	        WinExeCmd.MsgBox('Calculator does not exist.', 'WinExeCommander', A_WinDir '\system32\user32.dll|Icon4')    
 	}
 
-When the Notepad app is opened, changes the position and/or size of Notepad.
-
-Function Name: Notepad
-
-	Notepad_WinMove_Created(mEvent) {
-	    
-	    if WinExist('ahk_id ' mEvent['id'])
-		    WinMove(900, 200, 500, 500, 'ahk_id ' mEvent['id'])
-	    else
-	        WinExeCmd.MsgBox('Notepad does not exist.',, A_WinDir '\system32\user32.dll|Icon4')
-	}
-
-When the 'mspaint.exe' process is created, change its priority level to 'High'.
+When the "mspaint.exe" process is created, change its priority level to "High".
 
 Function Name: MSPaint_ProcessSetPriority
 	
- 	MSPaint_ProcessSetPriority_Created(mEvent) {
+	MSPaint_ProcessSetPriority_Created(mEvent) {
 	
 	    if ProcessExist(mEvent['pid'])
 	        ProcessSetPriority('High', mEvent['pid'])
 	    else
-	        WinExeCmd.MsgBox('mspaint.exe does not exist.',, A_WinDir '\system32\user32.dll|Icon4')
+	        WinExeCmd.MsgBox('MSPaint does not exist.', 'WinExeCommander', A_WinDir '\system32\user32.dll|Icon4')
 	}
 
 * To identify a device
@@ -98,7 +86,7 @@ Function Name: MSPaint_ProcessSetPriority
   - Alternatively, run "DeviceInfoFinder.ahk", found in the "Tools" tray menu, menubar, and the device section.
   
 * Loading Profiles
-  - The profile includes the events, the WMI period interval, and the window events (WinEvents) to monitor. In the Profile Manager, you can select whether or not to load them when loading profiles.
+  - The profile includes all events values, WMI period interval and window events (WinEvents) states. In the Profile Manager, you can select whether to load all event values or only the events states when loading profiles.
 
 * Applying Changes
   - To apply modifications, make sure to click the "Apply" button after creating or modifying an event, changing the WMI period, loading a profile etc...
