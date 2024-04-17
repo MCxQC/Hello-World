@@ -97,7 +97,7 @@ Function Name: MSPaint_ProcessSetPriority
   - To apply, select it from the dropdown menu in the settings. 
 
 * Adding notification sounds
- - Create a "Sounds" folder in the root directory and place WAV files within that folder.
+  - Create a "Sounds" folder in the root directory and place WAV files within that folder.
  
 * Start with Windows
   - To automatically run this script on startup, add its shortcut to the Startup folder.  
@@ -143,7 +143,7 @@ Function Name: MSPaint_ProcessSetPriority
   >    - **Check:** Monitoring for active window.
   > 
   > - **WinMinMax** 
-  >    - **Null:** Not monitoring WinMinMax
+  >    - **Null:** Not monitoring WinMinMax.
   >    - **0:** The window is neither minimized nor maximized.
   >    - **1:** The window is maximized.
   >    - **-1:** The window is minimized.
@@ -472,7 +472,7 @@ Example 2:
 
 ## Donation
   - If you found this script useful and would like to donate. It would be greatly appreciated. Thank you!
-    https://www.paypal.com/paypalme/martinchartier
+    https://www.paypal.com/paypalme/martinchartier/10
 
 
 ## License
