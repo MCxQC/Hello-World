@@ -488,7 +488,7 @@ Each item object may include:
 
 ---
 
-
+<a name="supported-image-formats"></a>
 ### 🖼️ Supported Image Formats
 
 - File path to a standard image. (`png, jpeg, jpg, ico, gif, bmp, tif`)
