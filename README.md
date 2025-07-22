@@ -402,7 +402,7 @@ These properties accept either a function object or a *predefined action*.
 ### 💬 Tooltip & Effects
 | Property         | Type    | Description
 | ---------------- | ------- | -------------------------------------
-| `AutoTooltip`    | boolean | Generates the tooltip text if `Tooltip` is not set, based on item text or image name.
+| <h3 id="autoTooltip">`AutoTooltip`</h3>    | boolean | Generates the tooltip text if `Tooltip` is not set, based on item text or image name.
 | `EnableTooltip`  | boolean | Enables tooltips for menu items.
 | `EnableGlow`     | boolean | Enables glow effect on hover.
 | `EnableItemText` | boolean | Shows text labels on menu items.
