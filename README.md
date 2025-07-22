@@ -441,7 +441,7 @@ Each item object may include:
 | Property      | Type   | Description
 | ------------- | ------ | -------------------------------------
 | `Image`       | string | Image displayed on the menu item. See:  [Supported Image Formats](#supported-image-formats).
-| `Tooltip`     | string | Tooltip text shown on hover. See also: [`AutoTooltip`](#tooltip--effects).
+| `Tooltip`     | string | Tooltip text shown on hover. See also: [`AutoTooltip`](#autoTooltips).
 | `Text`        | string | Text to display on the menu item.
 | `Click`       | function object or string | Action to execute when the item is clicked.
 | `RightClick`  | function object or string | Action to execute when the item is right-clicked.
