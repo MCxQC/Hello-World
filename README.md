@@ -94,7 +94,7 @@ Explore all customization options of the Radify class, configure settings, previ
 
 **Note:**
 
-- The Skins folder supports `.png` files only. Other image formats can be assigned programmatically or via **Radify Skin Editor**. See:  [Supported Image Formats](🖼️#supported-image-formats) .
+- The Skins folder supports `.png` files only. Other image formats can be assigned programmatically or via **Radify Skin Editor**. See:  [Supported Image Formats](#supported-image-formats) .
 
 ***Radial menu v4 skins***
 
