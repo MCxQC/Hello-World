@@ -85,6 +85,7 @@ t
 t
 t
 t
+
 <a name="supported-image-formats"></a>
 
 ### 🖼️ Supported Image Formats
