@@ -488,8 +488,7 @@ Each item object may include:
 
 ---
 
-<a name="supported-image-formats"></a>
-### 🖼️ Supported Image Formats
+<h3 id="supported-image-formats">🖼️ Supported Image Formats</h3>
 
 - File path to a standard image. (`png, jpeg, jpg, ico, gif, bmp, tif`)
 - Filename located in the `/Images` folder (include the file extension, e.g., `downloads.png`).
