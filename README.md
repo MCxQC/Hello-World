@@ -1,7 +1,7 @@
 test
 t
 
-[Supported Image Formats](#supported-image-formats)
+[Supported Image Formats](supported-image-formats).
 
 t
 t
@@ -85,7 +85,6 @@ t
 t
 t
 t
+<a name="supported-image-formats"></a>
 
-
-
-### Supported Image Formats 🖼️
+### 🖼️ Supported Image Formats
