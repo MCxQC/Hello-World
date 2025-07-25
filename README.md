@@ -366,7 +366,7 @@ Creates a menu with the specified ID, structure, and configuration options.
 
 ---
 
-## Options Object Properties
+## Options Object Properties 🧩
 
 Configuration options for the menu.
 
