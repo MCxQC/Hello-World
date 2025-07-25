@@ -294,11 +294,11 @@ Creates a menu with the specified ID, structure, and configuration options.
 | ----------- | ------ | -------------------------------------
 | `MenuID`    | string | Unique identifier of the menu.
 | `MenuItems` | array  | The menu structure: an array of one or more inner arrays (rings), each containing [item objects](#item-object-properties).
-| [`Options`](#options-object-properties) | object | Configuration options for the menu.
+| `Options`   | object | Configuration options for the menu.
 
 ---
 
-### ⚙️ Options Object Properties
+### Options Object Properties
 
 Configuration options for the menu.
 
