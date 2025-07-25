@@ -1,6 +1,6 @@
 **Note:**
 
-- The Skins folder supports `.png` files only. Other image formats can be assigned programmatically or via **Radify Skin Editor**. See: [Supported Image Formats](#supported-image-formats).
+- The Skins folder supports `.png` files only. Other image formats can be assigned programmatically or via **Radify Skin Editor**. See: [Supported Image Formats](#🧩-supported-image-formats).
 
 ---
 
