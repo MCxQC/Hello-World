@@ -260,6 +260,74 @@ Radify can be included as a library in any AutoHotkey v2 script, allowing you to
 
 ---
 
+### Item Object Properties
+
+Defines the characteristics and behavior of a menu item.
+
+Each item object may include:
+
+| Property      | Type   | Description
+| ------------- | ------ | -------------------------------------
+| `Image`       | string | Image displayed on the menu item. See:  [Supported Image Formats](#supported-image-formats).
+| `Tooltip`     | string | Tooltip text shown on hover. See also: [`AutoTooltip`](#tooltip--effects).
+| `Text`        | string | Text to display on the menu item.
+| `Click`       | function object or string | Action to execute when the item is clicked.
+| `RightClick`  | function object or string | Action to execute when the item is right-clicked.
+| `ShiftClick`  | function object or string | Action to execute when the item is shift-clicked.
+| `AltClick`    | function object or string | Action to execute when the item is alt-clicked.
+| `CtrlClick`   | function object or string | Action to execute when the item is ctrl+clicked. If the `CtrlClick` action is not defined, `Ctrl + Click` executes the item’s `Click` action (if defined), without closing the menu.
+| `HotkeyClick`         | string | Hotkey that triggers the `Click` action.
+| `HotkeyRightClick`    | string | Hotkey that triggers the `RightClick` action.
+| `HotkeyShiftClick`    | string | Hotkey that triggers the `ShiftClick` action.
+| `HotkeyAltClick`      | string | Hotkey that triggers the `AltClick` action.
+| `HotkeyCtrlClick`     | string | Hotkey that triggers the `CtrlClick` action.
+| `HotstringClick`      | string | Hotstring that triggers the `Click` action.
+| `HotstringRightClick` | string | Hotstring that triggers the `RightClick` action.
+| `HotstringShiftClick` | string | Hotstring that triggers the `ShiftClick` action.
+| `HotstringAltClick`   | string | Hotstring that triggers the `AltClick` action.
+| `HotstringCtrlClick`  | string | Hotstring that triggers the `CtrlClick` action.
+| `SubMenu`             | array  | The submenu structure: an array of one or more inner arrays (rings), each containing [`item objects`](#item-object-properties).
+| `SubmenuOptions`      | object | Options specific to the submenu.
+
+---
+
+**Additional Properties:**
+
+- `ItemBackgroundImage`, `ItemImageScale`, `ItemImageYRatio`, `SubmenuIndicatorImage`, `SubmenuIndicatorSize`, `SubmenuIndicatorYRatio`, `SoundOnSelect`, `CloseOnItemClick`, `CloseOnItemRightClick`, `MirrorClickToRightClick` and All [Text Styling](#text-styling) settings.
+
+---
+
+`Click`, `RightClick`, `ShiftClick`, `AltClick` and `CtrlClick` accept either a function object or a *predefined action*.
+
+**Predefined Actions:**
+
+- `Close`: Closes the entire menu tree.
+- `CloseMenu`: Closes only the current menu.
+
+---
+
+**Special Interactions:**
+
+- `Ctrl + Click`: If the `CtrlClick` action is not defined, `Ctrl + Click` executes the item’s `Click` action (if defined), without closing the menu.
+
+**Empty Items:**
+
+- An empty object `{}` inserts a blank space in the menu, useful for spacing or alignment.
+
+---
+
+### Supported Image Formats
+
+- File path to a standard image. (`png, jpeg, jpg, ico, gif, bmp, tif`)
+- Filename located in the `/Images` folder (include the file extension, e.g., `downloads.png`).
+- Image handle (`hIcon`, `hBitmap`).
+- Icons from resource libraries (`.exe`, `.dll`, `.cpl`). Use the format: `full_path|iconN`, where `N` is the icon index. If `|iconN` is omitted, icon index 1 is used by default.
+  - Examples:
+    - `A_WinDir '\System32\imageres.dll|icon19'`
+    - `A_ProgramFiles '\Everything\Everything.exe'`
+
+---
+
 # 🔧 Class Methods
 
 Available methods for the **Radify** class:
@@ -468,74 +536,6 @@ These properties accept either a function object or a *predefined action*.
 |                     |        | - 5: Nearest Neighbor
 |                     |        | - 6: High Quality Bilinear
 |                     |        | - 7: High Quality Bicubic
-
----
-
-### Item Object Properties
-
-Defines the characteristics and behavior of a menu item.
-
-Each item object may include:
-
-| Property      | Type   | Description
-| ------------- | ------ | -------------------------------------
-| `Image`       | string | Image displayed on the menu item. See:  [Supported Image Formats](#supported-image-formats).
-| `Tooltip`     | string | Tooltip text shown on hover. See also: [`AutoTooltip`](#tooltip--effects).
-| `Text`        | string | Text to display on the menu item.
-| `Click`       | function object or string | Action to execute when the item is clicked.
-| `RightClick`  | function object or string | Action to execute when the item is right-clicked.
-| `ShiftClick`  | function object or string | Action to execute when the item is shift-clicked.
-| `AltClick`    | function object or string | Action to execute when the item is alt-clicked.
-| `CtrlClick`   | function object or string | Action to execute when the item is ctrl+clicked. If the `CtrlClick` action is not defined, `Ctrl + Click` executes the item’s `Click` action (if defined), without closing the menu.
-| `HotkeyClick`         | string | Hotkey that triggers the `Click` action.
-| `HotkeyRightClick`    | string | Hotkey that triggers the `RightClick` action.
-| `HotkeyShiftClick`    | string | Hotkey that triggers the `ShiftClick` action.
-| `HotkeyAltClick`      | string | Hotkey that triggers the `AltClick` action.
-| `HotkeyCtrlClick`     | string | Hotkey that triggers the `CtrlClick` action.
-| `HotstringClick`      | string | Hotstring that triggers the `Click` action.
-| `HotstringRightClick` | string | Hotstring that triggers the `RightClick` action.
-| `HotstringShiftClick` | string | Hotstring that triggers the `ShiftClick` action.
-| `HotstringAltClick`   | string | Hotstring that triggers the `AltClick` action.
-| `HotstringCtrlClick`  | string | Hotstring that triggers the `CtrlClick` action.
-| `SubMenu`             | array  | The submenu structure: an array of one or more inner arrays (rings), each containing [`item objects`](#item-object-properties).
-| `SubmenuOptions`      | object | Options specific to the submenu.
-
----
-
-**Additional Properties:**
-
-- `ItemBackgroundImage`, `ItemImageScale`, `ItemImageYRatio`, `SubmenuIndicatorImage`, `SubmenuIndicatorSize`, `SubmenuIndicatorYRatio`, `SoundOnSelect`, `CloseOnItemClick`, `CloseOnItemRightClick`, `MirrorClickToRightClick` and All [Text Styling](#text-styling) settings.
-
----
-
-`Click`, `RightClick`, `ShiftClick`, `AltClick` and `CtrlClick` accept either a function object or a *predefined action*.
-
-**Predefined Actions:**
-
-- `Close`: Closes the entire menu tree.
-- `CloseMenu`: Closes only the current menu.
-
----
-
-**Special Interactions:**
-
-- `Ctrl + Click`: If the `CtrlClick` action is not defined, `Ctrl + Click` executes the item’s `Click` action (if defined), without closing the menu.
-
-**Empty Items:**
-
-- An empty object `{}` inserts a blank space in the menu, useful for spacing or alignment.
-
----
-
-### Supported Image Formats
-
-- File path to a standard image. (`png, jpeg, jpg, ico, gif, bmp, tif`)
-- Filename located in the `/Images` folder (include the file extension, e.g., `downloads.png`).
-- Image handle (`hIcon`, `hBitmap`).
-- Icons from resource libraries (`.exe`, `.dll`, `.cpl`). Use the format: `full_path|iconN`, where `N` is the icon index. If `|iconN` is omitted, icon index 1 is used by default.
-  - Examples:
-    - `A_WinDir '\System32\imageres.dll|icon19'`
-    - `A_ProgramFiles '\Everything\Everything.exe'`
 
 ---
 
