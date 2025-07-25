@@ -293,7 +293,7 @@ Creates a menu with the specified ID, structure, and configuration options.
 | Parameter   | Type   | Description
 | ----------- | ------ | -------------------------------------
 | `MenuID`    | string | Unique identifier of the menu.
-| `MenuItems` | array  | The menu structure: an array of one or more inner arrays (rings), each containing [`item objects`](#item-object-properties).
+| `MenuItems` | array  | The menu structure: an array of one or more inner arrays (rings), each containing [item objects](#item-object-properties).
 | [`Options`](#options-object-properties) | object | Configuration options for the menu.
 
 ---
