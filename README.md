@@ -365,7 +365,7 @@ Each menu's options are merged in the following order:
 
 ---
 
-### 📝 Text Styling
+### Text Styling
 
 | Property           | Type   | Description
 | ------------------ | ------ | -------------------------------------
