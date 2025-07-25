@@ -316,7 +316,7 @@ Each item object may include:
 
 ---
 
-### Supported Image Formats
+### Supported Image Formats 🧩
 
 - File path to a standard image. (`png, jpeg, jpg, ico, gif, bmp, tif`)
 - Filename located in the `/Images` folder (include the file extension, e.g., `downloads.png`).
