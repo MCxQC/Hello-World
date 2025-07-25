@@ -23,7 +23,7 @@
 
 ---
 
-### 💬 Tooltip & Effects
+### Tooltip & Effects
 | Property         | Type    | Description
 | ---------------- | ------- | -------------------------------------
 | `AutoTooltip`    | boolean | Generates the tooltip text if `Tooltip` is not set, based on item text or image name.
