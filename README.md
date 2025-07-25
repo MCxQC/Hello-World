@@ -260,7 +260,7 @@ Radify can be included as a library in any AutoHotkey v2 script, allowing you to
 
 ---
 
-### Item Object Properties
+# Item Object Properties
 
 Defines the characteristics and behavior of a menu item.
 
