@@ -161,18 +161,18 @@ Radify can be included as a library in any AutoHotkey v2 script, allowing you to
     ;==============================================
 
     Radify.CreateMenu('myMenu', [
-    	[   ; ring 1
+        [   ; ring 1
             {image: 'device-manager.png', click: (*) => Run('devmgmt.msc')},
-    		{image: 'disk-management.png', click: (*) => Run('diskmgmt.msc')},
-    		{image: 'computer-management.png', click: (*) => Run('mmc.exe compmgmt.msc')},
-    		{image: 'system-configuration.png', click: (*) => Run('msconfig.exe')},
+            {image: 'disk-management.png', click: (*) => Run('diskmgmt.msc')},
+            {image: 'computer-management.png', click: (*) => Run('mmc.exe compmgmt.msc')},
+            {image: 'system-configuration.png', click: (*) => Run('msconfig.exe')},
             {image: 'system-information.png', click: (*) => Run('msinfo32.exe')},
-    		{image: 'task-scheduler.png', click: (*) => Run('mmc.exe taskschd.msc')},
-    	],
-    	[   ; ring 2
-    		{image: 'services.png', click: (*) => Run('services.msc')},
-    		{image: 'registry-editor.png', click: (*) => Run('regedit.exe')},
-    		{image: 'optimize-drives.png', click: (*) => Run('dfrgui.exe')},
+            {image: 'task-scheduler.png', click: (*) => Run('mmc.exe taskschd.msc')},
+        ],
+        [   ; ring 2
+            {image: 'services.png', click: (*) => Run('services.msc')},
+            {image: 'registry-editor.png', click: (*) => Run('regedit.exe')},
+            {image: 'optimize-drives.png', click: (*) => Run('dfrgui.exe')},
             {image: 'system-image.png', click: (*) => Run('sdclt.exe /BLBBACKUPWIZARD')},
             {image: 'event-viewer.png', click: (*) => Run('eventvwr.msc')},
             {image: 'windows-tools.png', click: (*) => Run('shell:::{D20EA4E1-3957-11D2-A40B-0C5020524153}')},
@@ -194,7 +194,7 @@ Radify can be included as a library in any AutoHotkey v2 script, allowing you to
                 itemImageYRatio: 0.25,
                 textYRatio: 0.75
             },
-    	],
+        ],
     ])
 
     ^1::Radify.Show('myMenu')
@@ -293,7 +293,7 @@ Each item object may include:
 
 **Additional Properties:**
 
-- `ItemBackgroundImage`, `ItemImageScale`, `ItemImageYRatio`, `SubmenuIndicatorImage`, `SubmenuIndicatorSize`, `SubmenuIndicatorYRatio`, `SoundOnSelect`, `CloseOnItemClick`, `CloseOnItemRightClick`, `MirrorClickToRightClick` and All [Text Styling](#text-styling) settings.
+- `ItemBackgroundImage`, `ItemImageScale`, `ItemImageYRatio`, `SubmenuIndicatorImage`, `SubmenuIndicatorSize`, `SubmenuIndicatorYRatio`, `SoundOnSelect`, `CloseOnItemClick`, `CloseOnItemRightClick`, `MirrorClickToRightClick` and all [text styling](#text-styling) settings.
 
 ---
 
@@ -584,4 +584,3 @@ If you find my AHK code useful and would like to show your appreciation, any don
 ### 📄 License
 
 - MIT License
-
