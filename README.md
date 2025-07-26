@@ -268,7 +268,7 @@ Each item object may include:
 
 | Property      | Type   | Description
 | ------------- | ------ | -------------------------------------
-| `Image`       | string | Image displayed on the menu item. See:  [Supported Image Formats](#supported-image-formats).
+| `Image`       | string | Image displayed on the menu item. See:  [Supported Image Formats](#📦-supported-image-formats).
 | `Tooltip`     | string | Tooltip text shown on hover. See also: [`AutoTooltip`](#tooltip--effects).
 | `Text`        | string | Text to display on the menu item.
 | `Click`       | function object or string | Action to execute when the item is clicked.
@@ -316,7 +316,7 @@ Each item object may include:
 
 ---
 
-### Supported Image Formats
+### 📦 Supported Image Formats
 
 - File path to a standard image. (`png, jpeg, jpg, ico, gif, bmp, tif`)
 - Filename located in the `/Images` folder (include the file extension, e.g., `downloads.png`).
