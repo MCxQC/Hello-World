@@ -142,7 +142,7 @@ You can also configure these directories programmatically using the following me
 
 ## Quick Start with Built-in Menus
 
-Run **Radify Menus.ahk** to access pre-built menus with 200+ items including emojis, special characters, websites, system settings, tools, and power options. You can add, customize, or remove items by editing the **Radify Menus.ahk** file directly.
+Run **Radify Menus.ahk** to access pre-built menus with 200+ items including emojis, symbols, websites, system settings, tools, and power options. You can add, customize, or remove items by editing the **Radify Menus.ahk** file directly.
 
 ## As a Library in Your Scripts
 
