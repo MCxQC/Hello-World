@@ -36,7 +36,7 @@ Inspired by [Radial menu v4](https://www.autohotkey.com/boards/viewtopic.php?f=6
 - **Tools:** 15+ Windows system utilities and administrative tools.
 - **Power Options:** Shutdown, Restart, Sleep, Advanced Startup, and Restart to Safe Mode.
 - **Power Plans:** Set the active power plan.
-- **System Cleanup:** Useful shortcuts for cleaning and managing temporary files.
+- **System Cleanup:** Useful shortcuts for cleaning your system.
 
 ---
 
