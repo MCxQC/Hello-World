@@ -30,7 +30,7 @@ Inspired by [Radial menu v4](https://www.autohotkey.com/boards/viewtopic.php?f=6
 ## ✨ Built-In Menus
 
 - **Emojis Picker:** 50+ popular emojis.
-- **Characters Picker:** 60+ common special characters.
+- **Symbols Picker:** 60+ common symbols.
 - **Websites:** 30+ frequently used websites.
 - **Settings:** 15+ system settings (GUID and ms-settings: URI links).
 - **Tools:** 15+ Windows system utilities and administrative tools.
