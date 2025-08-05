@@ -146,7 +146,7 @@ Run **Radify Menus.ahk** to access pre-built menus with 200+ items including emo
 
 ## As a Library in Your Scripts
 
-Radify can be included as a library in any AutoHotkey v2 script, allowing you to create custom radial menus:
+Radify can be included as a library in any AutoHotkey v2 script:
 
 ---
 
