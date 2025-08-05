@@ -114,6 +114,11 @@ Explore all customization options of the Radify class, configure settings, previ
 
 ## 📁 Set Media Directory
 
+Files in those folders can be referenced by filename only.
+
+- Include the file extension when referencing image files (e.g., `downloads.png`).
+- Omit the `.wav` extension when referencing sound files (e.g., `tada`).
+
 Steps:
 
 1. Open the **Radify Skin Editor**
@@ -124,11 +129,6 @@ You can also configure these directories programmatically using the following me
 
 - `SetImageDir(dirPath)` – sets the image directory
 - `SetSoundDir(dirPath)` – sets the sound directory
-
-Files in those folders can be referenced by filename only.
-
-- Include the file extension when referencing image files (e.g., `downloads.png`).
-- Omit the `.wav` extension when referencing sound files (e.g., `tada`).
 
 ---
 
