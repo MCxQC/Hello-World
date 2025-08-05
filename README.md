@@ -50,7 +50,7 @@ Explore all customization options of the Radify class, configure settings, previ
 
 ---
 
-## ✨ Skin Editor Features
+## ✨ Features
 
 - **Browse Skins:** Preview all available skins.
 - **Configure Settings:** Configure default and individual skin settings.
