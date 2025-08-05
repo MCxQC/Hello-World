@@ -406,7 +406,7 @@ To pass other options to submenus, use the `SubmenuOptions` key on individual me
 
 Each menu's options are merged in the following order:
 - User-defined options passed to the `CreateMenu` method.
-- Skin-defined options. (if any)
+- Skin-defined options.
 - Global default options.
 
 ---
