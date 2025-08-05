@@ -25,7 +25,7 @@ Inspired by [Radial menu v4](https://www.autohotkey.com/boards/viewtopic.php?f=6
 - **Interactive Effects:** Show tooltips and glow effects when hovering over items.
 - **Sound Effects:** Add audio feedback for various menu interactions.
 - **Skin Support:** Apply different skins. Compatible with [Radial menu v4 skins](https://www.autohotkey.com/boards/viewtopic.php?t=12078).
-- **Built-In Menu Items:** 200+ items including emojis, special characters, websites, system settings, administrative tools, and power management options.
+- **Built-In Menu Items:** 200+ items including emojis, symbols, websites, system settings, administrative tools, and power management options.
 
 ## ✨ Built-In Menus
 
