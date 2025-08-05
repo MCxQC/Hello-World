@@ -240,7 +240,7 @@ Radify can be included as a library in any AutoHotkey v2 script:
 
 ## Specific Item Actions (Same item, two actions)
 
-**Items in the Emojis, Symbols, Websites, and Shopping submenus**
+**Items in the Emojis, Symbols, Websites, AI, and Shopping submenus**
 - `Click`: Executes the primary action.
 - `Right-Click`: Executes the primary action and keeps the menu open. By default, `Ctrl + Click` also executes the item’s `Click` action (if defined), without closing the menu.
 
