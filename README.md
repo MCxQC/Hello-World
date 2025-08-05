@@ -5,7 +5,7 @@ Inspired by [Radial menu v4](https://www.autohotkey.com/boards/viewtopic.php?f=6
 
 ---
 
-![myImage](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExemo4aTBxcmhhMGRycDgzMXg4bGtkNjZsMnV1eGQ1NzU4ZzN4cm5wdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jyxsf4FT8OB5nBvtXU/giphy.gif)
+![myImage](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjJld2hrZ243OTk1NnJhcWdjYjRyeXUxbXc5MW81OXRkOTdhNW91cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WxY98hu8ecuirxzxrE/giphy.gif)
 
 ---
 
@@ -21,7 +21,7 @@ Inspired by [Radial menu v4](https://www.autohotkey.com/boards/viewtopic.php?f=6
 - **Customizable Menu Options:** Configure images, text, tooltips, item size, skins, and more.
 - **Custom Click Actions:** Assign various click actions to menus and individual items.
 - **Hotkeys and Hotstrings:** Assign custom hotkeys and hotstrings to trigger specific item actions.
-- **Multi-Level Submenus:** Create nested menus with unlimited depth.
+- **Multi-Level Submenus:** Create nested menus.
 - **Interactive Effects:** Show tooltips and glow effects when hovering over items.
 - **Sound Effects:** Add audio feedback for various menu interactions.
 - **Skin Support:** Apply different skins. Compatible with [Radial menu v4 skins](https://www.autohotkey.com/boards/viewtopic.php?t=12078).
@@ -99,7 +99,7 @@ Explore all customization options of the Radify class, configure settings, previ
 
 **Note:**
 
-- The Skins folder supports `.png` files only. Other image formats can be assigned programmatically or via **Radify Skin Editor**. See: [Supported Image Formats](#supported-image-formats).
+- The Skins folder requires `.png` files for skin assets. Other image formats can be assigned programmatically or via **Radify Skin Editor**. See: [Supported Image Formats](#supported-image-formats).
 
 ***Radial menu v4 skins***
 
@@ -114,16 +114,21 @@ Explore all customization options of the Radify class, configure settings, previ
 
 ## 📁 Set Media Directory
 
-Files in those folders can be referenced by filename only. The application looks for files in two specific folders: `/Images` and `/Sounds`.
+Files in those folders can be referenced by filename only.
 
-- For **images**, include the file extension. (e.g., `downloads.png`)
-- For **sounds**, omit the `.wav` extension. (e.g., `tada`)
+- Include the file extension when referencing image files (e.g., `downloads.png`).
+- Omit the `.wav` extension when referencing sound files (e.g., `tada`).
 
 Steps:
 
 1. Open the **Radify Skin Editor**
 2. Click the folder icon
 3. Choose a new directory
+
+You can also configure these directories programmatically using the following methods:
+
+- `SetImageDir(dirPath)` – sets the image directory
+- `SetSoundDir(dirPath)` – sets the sound directory
 
 ---
 
@@ -268,24 +273,24 @@ Each item object may include:
 
 | Property      | Type   | Description
 | ------------- | ------ | -------------------------------------
-| `Image`       | string | Image displayed on the menu item. See:  [Supported Image Formats](#📦-supported-image-formats).
+| `Image`       | string \| number | Image displayed on the menu item. See:  [Supported Image Formats](#supported-image-formats).
 | `Tooltip`     | string | Tooltip text shown on hover. See also: [`AutoTooltip`](#tooltip--effects).
 | `Text`        | string | Text to display on the menu item.
-| `Click`       | function object or string | Action to execute when the item is clicked.
-| `RightClick`  | function object or string | Action to execute when the item is right-clicked.
-| `ShiftClick`  | function object or string | Action to execute when the item is shift-clicked.
-| `AltClick`    | function object or string | Action to execute when the item is alt-clicked.
-| `CtrlClick`   | function object or string | Action to execute when the item is ctrl+clicked. If the `CtrlClick` action is not defined, `Ctrl + Click` executes the item’s `Click` action (if defined), without closing the menu.
+| `Click`       | function object \| string | Action to execute when the item is clicked.
+| `RightClick`  | function object \| string | Action to execute when the item is right-clicked.
+| `CtrlClick`   | function object \| string | Action to execute when the item is ctrl+clicked. If the `CtrlClick` action is not defined, `Ctrl + Click` executes the item’s `Click` action (if defined), without closing the menu.
+| `ShiftClick`  | function object \| string | Action to execute when the item is shift-clicked.
+| `AltClick`    | function object \| string | Action to execute when the item is alt-clicked.
 | `HotkeyClick`         | string | Hotkey that triggers the `Click` action.
 | `HotkeyRightClick`    | string | Hotkey that triggers the `RightClick` action.
+| `HotkeyCtrlClick`     | string | Hotkey that triggers the `CtrlClick` action.
 | `HotkeyShiftClick`    | string | Hotkey that triggers the `ShiftClick` action.
 | `HotkeyAltClick`      | string | Hotkey that triggers the `AltClick` action.
-| `HotkeyCtrlClick`     | string | Hotkey that triggers the `CtrlClick` action.
 | `HotstringClick`      | string | Hotstring that triggers the `Click` action.
 | `HotstringRightClick` | string | Hotstring that triggers the `RightClick` action.
+| `HotstringCtrlClick`  | string | Hotstring that triggers the `CtrlClick` action.
 | `HotstringShiftClick` | string | Hotstring that triggers the `ShiftClick` action.
 | `HotstringAltClick`   | string | Hotstring that triggers the `AltClick` action.
-| `HotstringCtrlClick`  | string | Hotstring that triggers the `CtrlClick` action.
 | `SubMenu`             | array  | The submenu structure: an array of one or more inner arrays (rings), each containing [`item objects`](#item-object-properties).
 | `SubmenuOptions`      | object | Options specific to the submenu.
 
@@ -297,7 +302,7 @@ Each item object may include:
 
 ---
 
-`Click`, `RightClick`, `ShiftClick`, `AltClick` and `CtrlClick` accept either a function object or a *predefined action*.
+`Click`, `RightClick`, `CtrlClick`, `ShiftClick` and `AltClick` accept either a function object or a *predefined action*.
 
 **Predefined Actions:**
 
@@ -316,7 +321,7 @@ Each item object may include:
 
 ---
 
-### 📦 Supported Image Formats
+# Supported Image Formats
 
 - File path to a standard image. (`png, jpeg, jpg, ico, gif, bmp, tif`)
 - Filename located in the `/Images` folder (include the file extension, e.g., `downloads.png`).
@@ -332,7 +337,7 @@ Each item object may include:
 
 Available methods for the **Radify** class:
 
-## 🔧 Show(MenuID, AutoCenterMouse)
+## 🔧 `Show(MenuID, AutoCenterMouse)`
 
 Shows the menu at the current mouse position.
 
@@ -343,7 +348,7 @@ Shows the menu at the current mouse position.
 
 ---
 
-## 🔧 Close(MenuID, SuppressSounds)
+## 🔧 `Close(MenuID, SuppressSounds)`
 
 Closes the entire menu tree of the specified menu.
 
@@ -354,7 +359,31 @@ Closes the entire menu tree of the specified menu.
 
 ---
 
-## 🔧 CreateMenu(MenuID, MenuItems, Options)
+## 🔧 `SetImageDir(DirPath)`
+
+Sets the directory for images, allowing image files to be referenced by filename only.
+Must be called before creating a menu to change the directory.
+Include the file extension when referencing image files (e.g., `downloads.png`).
+
+| Parameter | Type                | Description
+| --------- | ------------------- | -------------------------------------
+| `dirPath` | string \| undefined | The image directory path. If omitted, defaults to `rootDir\Images`. The path may include the `rootDir\` prefix, which refers to the directory containing `Radify.ahk`.
+
+---
+
+## 🔧 `SetSoundDir(DirPath)`
+
+Sets the directory for sounds, allowing sound files to be referenced by filename only.
+Must be called before creating a menu to change the directory.
+Omit the `.wav` extension when referencing sound files (e.g., `tada`).
+
+| Parameter | Type                | Description
+| --------- | ------------------- | -------------------------------------
+| `dirPath` | string \| undefined | The sound directory path. If omitted, defaults to `rootDir\Sounds`. The path may include the `rootDir\` prefix, which refers to the directory containing `Radify.ahk`.
+
+---
+
+## 🔧 `CreateMenu(MenuID, MenuItems, Options)`
 
 Creates a menu with the specified ID, structure, and configuration options.
 
@@ -384,16 +413,16 @@ Each menu's options are merged in the following order:
 
 ### 🎨 Skin & Images
 
-| Property                | Type   | Description
-| ----------------------- | ------ | -------------------------------------
-| `Skin`                  | string | Folder in `/Skins` containing skin assets.
-| `ItemGlowImage`         | string | Glow effect image on hover. Requires `EnableGlow` to be `true`.
-| `MenuOuterRimImage`     | string | Image for the outer rim of the menu.
-| `MenuBackgroundImage`   | string | Background image of the menu.
-| `ItemBackgroundImage`   | string | Background image for individual menu items. Requires `ItemBackgroundImageOnItems` to be `true`.
-| `CenterBackgroundImage` | string | Background image for the center. Requires `ItemBackgroundImageOnCenter` to be `true`.
-| `CenterImage`           | string | Image shown in the center of the menu.
-| `SubmenuIndicatorImage` | string | Icon indicating a submenu.
+| Property                | Type             | Description
+|------------------------ | ---------------- | -------------------------------------
+| `Skin`                  | string           | Folder in `/Skins` containing skin assets.
+| `ItemGlowImage`         | string \| number | Glow effect image on hover. Requires `EnableGlow` to be `true`.
+| `MenuOuterRimImage`     | string \| number | Image for the outer rim of the menu.
+| `MenuBackgroundImage`   | string \| number | Background image of the menu.
+| `ItemBackgroundImage`   | string \| number | Background image for individual menu items. Requires `ItemBackgroundImageOnItems` to be `true`.
+| `CenterBackgroundImage` | string \| number | Background image for the center. Requires `ItemBackgroundImageOnCenter` to be `true`.
+| `CenterImage`           | string \| number | Image shown in the center of the menu.
+| `SubmenuIndicatorImage` | string \| number | Icon indicating a submenu.
 
 ---
 
@@ -410,7 +439,7 @@ Each menu's options are merged in the following order:
 **Supported Sound Formats:**
 
 - Path to a `.wav` file.
-- Filename from `C:\Windows\Media` or `\Sounds` folder. Omit the `.wav` extension. (e.g., `tada`)
+- Filename from the `C:\Windows\Media` folder or the configured `\Sounds` directory. Omit the `.wav` extension when referencing sound files (e.g., `tada`).
 
 ---
 
@@ -453,13 +482,12 @@ Each menu's options are merged in the following order:
 |                    |        | - 4: AntiAlias
 |                    |        | - 5: ClearTypeGridFit
 
-
 ---
 
 ### 🖱️ Click Behavior
 
 | Property                  | Type    | Description
-|---------------------------| ------- | -------------------------------------
+|-------------------------- | ------- | -------------------------------------
 | `MirrorClickToRightClick` | boolean | Automatically assigns the `Click` function to `RightClick` for items that have a `Click` action but no `RightClick` action defined.
 
 ---
@@ -468,10 +496,10 @@ Each menu's options are merged in the following order:
 
 | Property           | Type                      | Description
 |------------------- | ------------------------- | -------------------------------------
-| `MenuClick`        | function object or string | Action to execute when clicking the menu background.
-| `MenuRightClick`   | function object or string | Action to execute when right-clicking the menu background.
-| `CenterClick`      | function object or string | Action to execute when clicking the center area.
-| `CenterRightClick` | function object or string | Action to execute when right-clicking the center area.
+| `MenuClick`        | function object \| string | Action to execute when clicking the menu background.
+| `MenuRightClick`   | function object \| string | Action to execute when right-clicking the menu background.
+| `CenterClick`      | function object \| string | Action to execute when clicking the center area.
+| `CenterRightClick` | function object \| string | Action to execute when right-clicking the center area.
 
 These properties accept either a function object or a *predefined action*.
 
@@ -486,7 +514,7 @@ These properties accept either a function object or a *predefined action*.
 ### ⚙️ Menu Closing Behavior
 
 | Property                | Type    | Description
-|------------------------ |-------- | -------------------------------------
+|------------------------ | ------- | -------------------------------------
 | `CloseOnItemClick`      | boolean | Closes the entire menu tree when a menu item is clicked.
 | `CloseOnItemRightClick` | boolean | Closes the entire menu tree when a menu item is right-clicked.
 | `CloseMenuBlock`        | boolean | Prevents the menu from closing via the specific `HotIfWinExist(WinTitle)` example below. Close(MenuID) still works normally.
@@ -519,7 +547,7 @@ These properties accept either a function object or a *predefined action*.
 ### 🧮 Rendering
 
 | Property            | Type   | Description
-| -----------------   | ------ | -------------------------------------
+| ------------------- | ------ | -------------------------------------
 | `GuiOptions`        | string | AutoHotkey GUI options
 | `SmoothingMode`     | number | Shape rendering mode:
 |                     |        | - 0: Default
@@ -560,6 +588,7 @@ If you find my AHK code useful and would like to show your appreciation, any don
 ---
 
 **Radify**
+
 - [CalculatePopupWindowPosition](https://www.autohotkey.com/boards/viewtopic.php?t=103459) by lexikos
 - [PlayWavConcurrent](https://www.autohotkey.com/boards/viewtopic.php?f=83&t=130425) by Faddix
 - [ToolTipEx](https://github.com/nperovic/ToolTipEx) by nperovic
@@ -584,4 +613,3 @@ If you find my AHK code useful and would like to show your appreciation, any don
 ### 📄 License
 
 - MIT License
-
