@@ -575,6 +575,12 @@ If you find my AHK code useful and would like to show your appreciation, any don
 
 ---
 
+### 📄 License
+
+- MIT License
+
+---
+
 # 🎖️ Credits
 
 - [AutoHotkey](https://www.autohotkey.com) – Steve Gray, Chris Mallett, portions of the AutoIt Team, and various others.
@@ -607,9 +613,3 @@ If you find my AHK code useful and would like to show your appreciation, any don
 - Control_GetFont by SKAN, swagfag
   - [AHK Forum](https://www.autohotkey.com/board/topic/66235-retrieving-the-fontname-and-fontsize-of-a-gui-control)
   - [AHK Forum](https://www.autohotkey.com/boards/viewtopic.php?t=113540)
-
----
-
-### 📄 License
-
-- MIT License
