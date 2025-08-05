@@ -575,7 +575,7 @@ If you find my AHK code useful and would like to show your appreciation, any don
 
 ---
 
-### 📄 License
+# 📄 License
 
 - MIT License
 
