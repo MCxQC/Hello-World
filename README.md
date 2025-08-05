@@ -604,7 +604,7 @@ If you find my AHK code useful and would like to show your appreciation, any don
 - [ColorPicker](https://github.com/TheArkive/ColorPicker_ahk2) by Maestrith, TheArkive (v2 conversion)
 - [GetFontNames](https://www.autohotkey.com/boards/viewtopic.php?t=66000) by teadrinker
 - [MoveControls](https://github.com/Descolada/UIA-v2) by Descolada (from *UIATreeInspector.ahk*)
-- **Control_GetFont** by SKAN, swagfag
+- Control_GetFont by SKAN, swagfag
   - [AHK Forum](https://www.autohotkey.com/board/topic/66235-retrieving-the-fontname-and-fontsize-of-a-gui-control)
   - [AHK Forum](https://www.autohotkey.com/boards/viewtopic.php?t=113540)
 
