@@ -19,7 +19,7 @@ Inspired by [Radial menu v4](https://www.autohotkey.com/boards/viewtopic.php?f=6
 ## ✨ Features
 
 - **Customizable Menu Options:** Configure images, text, tooltips, item size, skins, and more.
-- **Custom Click Actions:** Assign various click actions to menus and individual items.
+- **Custom Click Actions:** Assign various click actions to individual items and menus.
 - **Hotkeys and Hotstrings:** Assign custom hotkeys and hotstrings to trigger specific item actions.
 - **Multi-Level Submenus:** Create nested menus.
 - **Interactive Effects:** Show tooltips and glow effects when hovering over items.
