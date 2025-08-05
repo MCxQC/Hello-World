@@ -188,7 +188,7 @@ Radify can be included as a library in any AutoHotkey v2 script:
                 tooltip: 'Resource Monitor',
                 itemImageScale: 0.35,
                 itemImageYRatio: 0.25,
-                textYRatio: 0.75
+                textYRatio: 0.75,
             },
             {
                 image: 'monitor.png',
@@ -197,7 +197,7 @@ Radify can be included as a library in any AutoHotkey v2 script:
                 tooltip: 'Performance Monitor',
                 itemImageScale: 0.35,
                 itemImageYRatio: 0.25,
-                textYRatio: 0.75
+                textYRatio: 0.75,
             },
         ],
     ])
