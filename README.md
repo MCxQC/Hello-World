@@ -223,10 +223,10 @@ Radify can be included as a library in any AutoHotkey v2 script:
 - `Middle mouse button`: Opens *mainMenu* with the cursor centered on the menu.
 - `Tray icon clicks`:
   - `Click`: Opens *mainMenu*
-  - `Double-Click`: Opens *websitesMenu*
-  - `Ctrl + Click`: Opens *symbolMenu*
-  - `Shift + Click`: Opens *emojisMenu*
-  - `Alt + Click`: Opens *appsMenu*
+  - `Double-Click`: Opens *appsMenu*
+  - `Ctrl + Click`: Opens *websitesMenu*
+  - `Shift + Click`: Opens *aiMenu*
+  - `Alt + Click`: Opens *systemPowerMenu*
 
 ## Close Menu
 
