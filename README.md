@@ -405,7 +405,7 @@ Omit the `.wav` extension when referencing sound files (e.g., `tada`).
 
 # 🔧 Class Properties
 
-Properties of the **Radify** class.
+Properties of the **Radify** class:
 
 ## 🔧 `lastMenuOpenInfo`
 
@@ -416,6 +416,29 @@ Stores information about the last opened menu. Updated each time a menu is shown
 | `mouseX`         | number | X-coordinate when the menu was opened.
 | `mouseY`         | number | Y-coordinate when the menu was opened.
 | `hwndUnderMouse` | number | HWND of the window under the mouse when the menu was opened.
+
+**Access example:**
+
+    ; Toggles the always-on-top state of window
+    ToggleWindowAlwaysOnTop() {
+        info := Radify.lastMenuOpenInfo
+        hwndUnderMouse := info.hwndUnderMouse
+
+        try {
+            winTitleUM := WinGetTitle('ahk_id ' hwndUnderMouse)
+            winClassUM := WinGetClass('ahk_id ' hwndUnderMouse)
+        } catch
+            return
+
+        if (!winTitleUM || winTitleUM = 'Program Manager' || winClassUM = 'Shell_TrayWnd')
+            return
+
+        WinSetAlwaysOnTop(-1, 'ahk_id ' hwndUnderMouse)
+        exStyle := WinGetExStyle('ahk_id ' hwndUnderMouse)
+        CoordMode('ToolTip', 'Screen')
+        ToolTip(winTitleUM '`nAlways on Top "' (exStyle & 0x8 ? 'On' : 'Off') '"', info.mouseX, info.mouseY, 19)
+        SetTimer((*) => ToolTip(,,,19), -2500)
+    }
 
 ---
 
