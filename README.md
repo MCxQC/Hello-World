@@ -148,11 +148,11 @@ Explore all customization options of the Radify class, configure settings, previ
 
 ***Radial menu v4 skins***
 
-- All settings are loaded from `Preferences.json` instead of individual `skin definition.txt` files.
+- Unlike **Radial Menu v4**, which used per-skin `skin definition.txt` files, all settings are loaded from `Preferences.json`.
 
 - To set the submenu indicator image, you can:
-  - In **Radify Skin Editor**, set a default `SubmenuIndicatorImage`, or assign one per skin.
   - Add a `SubmenuIndicator.png` file to each skin folder.
+  - In **Radify Skin Editor**, set a default `SubmenuIndicatorImage`, or assign one per skin.
   - Set `SubmenuIndicatorImage` programmatically.
 
 ---
