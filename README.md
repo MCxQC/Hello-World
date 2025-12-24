@@ -250,7 +250,7 @@ Radify can be included as a library in any AutoHotkey v2 script to create menus.
 
 - # Quick Start with Built-in Menus
 
-Run **Radify Menus.ahk** to access pre-built menus with 200+ items including emojis, symbols, websites, system settings, tools, and power options. You can create, customize, or modify items by editing the file.
+Run **Radify Menus.ahk** to access pre-built menus with 200+ items including emojis, symbols, websites, system settings, tools, and power options. You can create or modify menus and their items by editing the file.
 
 ---
 
