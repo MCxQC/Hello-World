@@ -136,11 +136,13 @@ Explore all customization options of the Radify class, configure settings, previ
 - `ItemGlow.png`
 - `MenuOuterRim.png`
 - `MenuBack.png`
-- `ItemBack.png` *(required)*
+- `ItemBack.png`
 - `CenterImage.png`
 - `SubmenuIndicator.png`
 
 **Note:**
+
+- Only `ItemBack.png` is required for a skin to be considered valid. If this file is missing, the skin will not be loaded.
 
 - The Skins folder requires `.png` files for skin assets. Other image formats can be assigned programmatically or via **Radify Skin Editor**. See: [Supported Image Formats](#supported-image-formats).
 
