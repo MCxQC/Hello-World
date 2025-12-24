@@ -26,11 +26,11 @@ Inspired by [Radial menu v4](https://www.autohotkey.com/boards/viewtopic.php?f=6
   - [Quick Start with Built-in Menus](#quick-start-with-built-in-menus)
 - [Item Object Properties](#item-object-properties)
 - [Class Methods](#class-methods)
-  - CreateMenu
-  - Show
-  - Close
-  - SetImageDir
-  - SetSoundDir
+  - CreateMenu()
+  - Show()
+  - Close()
+  - SetImageDir()
+  - SetSoundDir()
 - [Class Properties](#class-properties)
 - [Options Object Properties](#options-object-properties)
   - [Skin & Images](#skin--images)
