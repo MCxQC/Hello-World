@@ -652,21 +652,23 @@ These properties accept either a function object or a *predefined action*.
 ---
 
 # Media Directories Configuration
-
 Image and sound files in the configured directories can be referenced by filename only, including the file extension (e.g., `downloads.png`, `tada.wav`).
 
-- Directories can be configured in two ways:
-  - Through the **Radify Skin Editor** interface
-    1. Open **Radify Skin Editor**
-    2. Click the folder icon
-    3. Select a new directory for images or sounds
-  - Programmatically using `SetImageDir(DirPath)` and `SetSoundDir(DirPath)` methods before creating menus.
+Directories can be configured in two ways:
 
-- Available placeholders:
-  - `RootDir`: the directory containing `Radify.ahk`.
-  - `PicturesDir`: the Windows Pictures folder.
-  - `MusicDir`: the Windows Music folder.
-  - `DocumentsDir`: the Windows Documents folder.
+1. Through the **Radify Skin Editor** interface
+   - Open **Radify Skin Editor**
+   - Click the folder icon
+   - Select a new directory for images or sounds
+
+2. Programmatically using `SetImageDir(DirPath)` and `SetSoundDir(DirPath)` methods before creating menus.
+
+Available placeholders:
+
+- `RootDir`: the directory containing `Radify.ahk`.
+- `PicturesDir`: the Windows Pictures folder.
+- `MusicDir`: the Windows Music folder.
+- `DocumentsDir`: the Windows Documents folder.
 
 ---
 
