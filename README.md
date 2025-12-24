@@ -165,7 +165,7 @@ Image and sound files in the configured directories can be referenced by filenam
 
 ## Radify Skin Editor Notes
 
-- Reload any script using **Radify** after making changes for the changes to take effect.
+- After making changes, reload any script that uses **Radify** for them to take effect.
 
 ---
 
@@ -652,6 +652,7 @@ These properties accept either a function object or a *predefined action*.
 ---
 
 # Media Directories Configuration
+
 Image and sound files in the configured directories can be referenced by filename only, including the file extension (e.g., `downloads.png`, `tada.wav`).
 
 Directories can be configured in two ways:
