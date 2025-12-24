@@ -15,6 +15,7 @@ Inspired by [Radial menu v4](https://www.autohotkey.com/boards/viewtopic.php?f=6
 - [Features](#features)
 - [Built-in Menus](#built-in-menus)
 - [Radify Skin Editor](#radify-skin-editor)
+  - [Features](#features)
   - [Modify Default Settings](#modify-default-settings)
   - [Modify a Skin](#modify-a-skin)
   - [Set a Skin as Default](#set-a-skin-as-default)
@@ -23,7 +24,6 @@ Inspired by [Radial menu v4](https://www.autohotkey.com/boards/viewtopic.php?f=6
 - [How to Use](#how-to-use)
   - [As a Library in a Script](#as-a-library-in-a-script)
   - [Quick Start with Built-in Menus](#quick-start-with-built-in-menus)
-  - [Default Actions and Shortcuts](#default-actions-and-shortcuts-in-radify-menusahk)
 - [Item Object Properties](#item-object-properties)
 - [Class Methods](#class-methods)
   - [CreateMenu()](#createmenu)
@@ -246,7 +246,7 @@ Radify can be included as a library in any AutoHotkey v2 script to create menus.
 
 ---
 
-- ## Quick Start with Built-in Menus
+- # Quick Start with Built-in Menus
 
 Run **Radify Menus.ahk** to access pre-built menus with 200+ items including emojis, symbols, websites, system settings, tools, and power options. You can create, customize, or modify items by editing the file.
 
