@@ -34,7 +34,6 @@ Inspired by [Radial menu v4](https://www.autohotkey.com/boards/viewtopic.php?f=6
 - [Class Properties](#class-properties)
 - [Options Object Properties](#options-object-properties)
   - [Skin & Images](#skin--images)
-  - [Sounds](#sounds)
   - [Layout](#layout)
   - [Text Styling](#text-styling)
   - [Click Behavior](#click-behavior)
@@ -42,6 +41,7 @@ Inspired by [Radial menu v4](https://www.autohotkey.com/boards/viewtopic.php?f=6
   - [Menu Closing Behavior](#menu-closing-behavior)
   - [Window & Interaction](#window--interaction)
   - [Tooltip & Effects](#tooltip--effects)
+  - [Sounds](#sounds)
   - [Rendering](#rendering)
 - [Media Directories Configuration](#media-directories-configuration)
 - [Supported Image Formats](#supported-image-formats)
@@ -511,18 +511,6 @@ Menu options are merged in the following order:
 
 ---
 
-### Sounds
-
-| Property          | Type   | Description
-| ----------------- | ------ | -------------------------------------
-| `SoundOnSelect`   | string | Sound played when an item is selected.
-| `SoundOnShow`     | string | Sound played when the menu opens.
-| `SoundOnClose`    | string | Sound played when the menu closes.
-| `SoundOnSubShow`  | string | Sound played when a submenu opens.
-| `SoundOnSubClose` | string | Sound played when a submenu closes.
-
----
-
 ### Layout
 
 | Property                      | Type    | Description
@@ -623,6 +611,18 @@ These properties accept either a function object or a *predefined action*.
 | `AutoTooltip`   | boolean | Generates the tooltip text if `Tooltip` is not set, based on item text or image name.
 | `EnableTooltip` | boolean | Enables tooltips for menu items.
 | `EnableGlow`    | boolean | Enables glow effect on hover.
+
+---
+
+### Sounds
+
+| Property          | Type   | Description
+| ----------------- | ------ | -------------------------------------
+| `SoundOnSelect`   | string | Sound played when an item is selected.
+| `SoundOnShow`     | string | Sound played when the menu opens.
+| `SoundOnClose`    | string | Sound played when the menu closes.
+| `SoundOnSubShow`  | string | Sound played when a submenu opens.
+| `SoundOnSubClose` | string | Sound played when a submenu closes.
 
 ---
 
