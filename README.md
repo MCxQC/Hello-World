@@ -655,7 +655,14 @@ These properties accept either a function object or a *predefined action*.
 
 Image and sound files in the configured directories can be referenced by filename only, including the file extension (e.g., `downloads.png`, `tada.wav`).
 
-Directories can be configured in two ways:
+**Default directories:**
+
+- Images: `RootDir\Images`
+- Sounds: `RootDir\Sounds`
+
+Where `RootDir` is the absolute path to the directory containing `Radify.ahk` or the compiled executable.
+
+**Directories can be configured in two ways:**
 
 1. Through the **Radify Skin Editor** interface
    - Open **Radify Skin Editor**
@@ -664,7 +671,7 @@ Directories can be configured in two ways:
 
 2. Programmatically using `SetImageDir(DirPath)` and `SetSoundDir(DirPath)` methods before creating menus.
 
-Available placeholders:
+**Available placeholders:**
 
 - `RootDir`: the directory containing `Radify.ahk`.
 - `PicturesDir`: the Windows Pictures folder.
