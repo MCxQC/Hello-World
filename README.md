@@ -660,7 +660,7 @@ Image and sound files in the configured directories can be referenced by filenam
 - Images: `RootDir\Images`
 - Sounds: `RootDir\Sounds`
 
-Where `RootDir` is the absolute path to the directory containing `Radify.ahk` or the compiled executable.
+`RootDir` is the directory containing `Radify.ahk` or the compiled executable.
 
 **Directories can be configured in two ways:**
 
