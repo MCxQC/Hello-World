@@ -487,8 +487,7 @@ The Windows Documents folder.
 
 Configuration options for the menu.
 
-Options apply only to the current menu and are not inherited by submenus, except for `skin` and its associated skin-defined options.
-To set options for submenus, use the `submenuOptions` property.
+Options apply only to the current menu and are not inherited by submenus, except for `skin` and its associated skin-defined options. To set options for a `submenu` of a menu item, use the item’s `submenuOptions` property.
 
 Menu options are merged in the following order:
 
